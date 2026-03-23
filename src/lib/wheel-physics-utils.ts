@@ -168,7 +168,9 @@ export function computeSnapTarget(
 ): number {
 	const baseDeceleration = dragSensitivity * 10;
 	const overshoot = (0.5 * velocity * velocity) / baseDeceleration;
-	const rawTarget = currentIndexFromOffset + Math.sign(velocity) * overshoot;
+	// Velocity sign is inverted relative to index direction:
+	// drag down (positive velocity) increases offset → decreases index → overshoot toward lower index.
+	const rawTarget = currentIndexFromOffset - Math.sign(velocity) * overshoot;
 	return Math.round(rawTarget);
 }
 
