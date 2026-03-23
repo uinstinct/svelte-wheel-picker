@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Project configuration files and dependency installation
+- [x] 01-01-PLAN.md — Project configuration files and dependency installation
 - [ ] 01-02-PLAN.md — Source files (placeholder component, test, demo route) and success criteria verification
 
 ### Phase 2: Types and Utility Hooks
