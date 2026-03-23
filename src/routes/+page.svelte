@@ -58,22 +58,29 @@
 </main>
 
 <style>
-	:global(body) {
-		font-family: system-ui, -apple-system, sans-serif;
-		background: #ffffff;
-		color: #111;
-		margin: 0;
-		padding: 32px;
+	:global(:root) {
+		color-scheme: light dark;
+		--color-bg: #ffffff;
+		--color-text: #111111;
+		--color-text-muted: #555555;
+		--color-surface: #f4f4f5;
 	}
 
 	@media (prefers-color-scheme: dark) {
-		:global(body) {
-			background: #0f0f0f;
-			color: #eee;
+		:global(:root) {
+			--color-bg: #0f0f0f;
+			--color-text: #eeeeee;
+			--color-text-muted: #aaaaaa;
+			--color-surface: #1c1c1e;
 		}
-		.wheel-container {
-			background: #1c1c1e;
-		}
+	}
+
+	:global(body) {
+		font-family: system-ui, -apple-system, sans-serif;
+		background: var(--color-bg);
+		color: var(--color-text);
+		margin: 0;
+		padding: 32px;
 	}
 
 	main {
@@ -96,7 +103,7 @@
 
 	p {
 		font-size: 14px;
-		color: #666;
+		color: var(--color-text-muted);
 		margin-bottom: 8px;
 	}
 
@@ -105,7 +112,7 @@
 	}
 
 	.wheel-container {
-		background: #f4f4f5;
+		background: var(--color-surface);
 		border-radius: 8px;
 		padding: 16px;
 		display: flex;
