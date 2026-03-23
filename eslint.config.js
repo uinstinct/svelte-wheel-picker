@@ -21,6 +21,6 @@ export default [
 		},
 	},
 	{
-		ignores: ['build/', 'dist/', '.svelte-kit/', 'node_modules/'],
+		ignores: ['build/', 'dist/', '.svelte-kit/', 'node_modules/', '.claude/', '.playwright/'],
 	},
 ];
