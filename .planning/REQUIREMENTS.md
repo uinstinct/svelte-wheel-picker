@@ -14,10 +14,10 @@
 
 ### Interaction
 
-- [ ] **INTR-01**: Touch drag scrolling with inertia (exponential decay)
-- [ ] **INTR-02**: Mouse drag scrolling with inertia
+- [x] **INTR-01**: Touch drag scrolling with inertia (exponential decay)
+- [x] **INTR-02**: Mouse drag scrolling with inertia
 - [ ] **INTR-03**: Mouse wheel/trackpad scroll with sensitivity control
-- [ ] **INTR-04**: Snap-to-item on release
+- [x] **INTR-04**: Snap-to-item on release
 - [ ] **INTR-05**: Keyboard navigation (Arrow Up/Down, Home, End)
 - [x] **INTR-06**: Type-ahead search (buffer keystrokes, find matching option)
 
@@ -26,14 +26,14 @@
 - [x] **MODE-01**: Controlled mode (value + onValueChange callback)
 - [x] **MODE-02**: Uncontrolled mode (defaultValue, internal state)
 - [ ] **MODE-03**: Infinite loop scrolling mode
-- [ ] **MODE-04**: Disabled option support (skip in keyboard/drag)
+- [x] **MODE-04**: Disabled option support (skip in keyboard/drag)
 
 ### Styling & API
 
 - [ ] **STYL-01**: Highlight/selection overlay (center row indicator)
 - [ ] **STYL-02**: classNames prop for per-element class injection
 - [ ] **STYL-03**: Data attributes (data-rwp-*) for CSS targeting
-- [ ] **STYL-04**: Configurable visibleCount, dragSensitivity, scrollSensitivity, optionItemHeight
+- [x] **STYL-04**: Configurable visibleCount, dragSensitivity, scrollSensitivity, optionItemHeight
 
 ### Distribution
 
@@ -75,20 +75,20 @@
 | COMP-02 | Phase 5 | Pending |
 | COMP-03 | Phase 2 | Complete |
 | COMP-04 | Phase 2 | Complete |
-| INTR-01 | Phase 3 | Pending |
-| INTR-02 | Phase 3 | Pending |
+| INTR-01 | Phase 3 | Complete |
+| INTR-02 | Phase 3 | Complete |
 | INTR-03 | Phase 3 | Pending |
-| INTR-04 | Phase 3 | Pending |
+| INTR-04 | Phase 3 | Complete |
 | INTR-05 | Phase 3 | Pending |
 | INTR-06 | Phase 2 | Complete |
 | MODE-01 | Phase 2 | Complete |
 | MODE-02 | Phase 2 | Complete |
 | MODE-03 | Phase 4 | Pending |
-| MODE-04 | Phase 3 | Pending |
+| MODE-04 | Phase 3 | Complete |
 | STYL-01 | Phase 3 | Pending |
 | STYL-02 | Phase 3 | Pending |
 | STYL-03 | Phase 3 | Pending |
-| STYL-04 | Phase 3 | Pending |
+| STYL-04 | Phase 3 | Complete |
 | DIST-01 | Phase 2 | Complete |
 | DIST-02 | Phase 5 | Pending |
 | DIST-03 | Phase 5 | Pending |
