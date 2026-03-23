@@ -60,10 +60,14 @@ Plans:
   1. Dragging the wheel on a touch device produces smooth inertia scrolling that decelerates and snaps to the nearest enabled option on release
   2. Dragging with a mouse and using the scroll wheel both produce inertia scroll with snap-to-item on a desktop browser
   3. Arrow Up/Down keys move selection one item at a time; Home/End jump to first/last enabled option; disabled options are skipped in all navigation modes
-  4. The center row shows a visible selection highlight overlay, and all structural elements expose `data-rwp-*` attributes that can be targeted with consumer CSS
+  4. The center row shows a visible selection highlight overlay, and all structural elements expose `data-swp-*` attributes that can be targeted with consumer CSS
   5. Passing a `classNames` prop injects custom classes onto the correct elements; changing `visibleCount`, `optionItemHeight`, `dragSensitivity`, and `scrollSensitivity` props visibly affects layout and feel
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Types extension + pure physics functions + WheelPhysics reactive class
+- [ ] 03-02-PLAN.md — WheelPicker.svelte component, barrel exports, tests, and demo page
+- [ ] 03-03-PLAN.md — Visual and functional verification checkpoint
 
 ### Phase 4: Infinite Loop Mode
 **Goal**: WheelPicker wraps seamlessly at both ends when `infinite` is true, with no visible jump or stutter at boundaries
@@ -94,7 +98,7 @@ Plans:
 **Requirements**: DIST-04, DIST-05
 **Success Criteria** (what must be TRUE):
   1. Running `npx shadcn-svelte@latest add [registry-url]` copies the component source files into a consumer project and the component renders correctly
-  2. The demo site at the root route shows at least two working examples (e.g., time picker, standalone single wheel) using `data-rwp-*` CSS targeting for styling
+  2. The demo site at the root route shows at least two working examples (e.g., time picker, standalone single wheel) using `data-swp-*` CSS targeting for styling
   3. The demo site loads without JavaScript errors and all wheels are interactive on both desktop and a mobile viewport
 **Plans**: TBD
 **UI hint**: yes
@@ -108,7 +112,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
 | 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
-| 3. WheelPicker Core | 0/TBD | Not started | - |
+| 3. WheelPicker Core | 0/3 | In progress | - |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
 | 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
 | 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |
