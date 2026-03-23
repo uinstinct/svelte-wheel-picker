@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Completed 02-types-and-utility-hooks-02-PLAN.md
-last_updated: "2026-03-23T12:52:14.294Z"
+status: Ready to execute
+stopped_at: Completed 03-wheelpicker-core-01-PLAN.md
+last_updated: "2026-03-23T13:42:00.718Z"
 progress:
   total_phases: 6
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 8
+  completed_plans: 6
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both touch and desktop
-**Current focus:** Phase 02 — types-and-utility-hooks
+**Current focus:** Phase 03 — wheelpicker-core
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
+Phase: 03 (wheelpicker-core) — EXECUTING
+Plan: 2 of 3
 
 ## Performance Metrics
 
@@ -51,6 +51,7 @@ Plan: Not started
 | Phase 02-types-and-utility-hooks P01 | 3 | 2 tasks | 4 files |
 | Phase 02-types-and-utility-hooks P03 | 3 | 1 tasks | 3 files |
 | Phase 02-types-and-utility-hooks P02 | 4 | 1 tasks | 3 files |
+| Phase 03-wheelpicker-core P01 | 22 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,9 @@ Recent decisions affecting current work:
 - [Phase 02-types-and-utility-hooks]: TypeaheadSearch class-based for #timer and #lastTime encapsulation;  on #buffer/#lastKey for runes consistency
 - [Phase 02-types-and-utility-hooks]: Class-based Svelte 5 rune hook pattern: private $state fields in class enable reactivity outside components
 - [Phase 02-types-and-utility-hooks]: Controlled/uncontrolled detection via typeof onChange === 'function' at construction time
+- [Phase 03-wheelpicker-core]: vitest config split into unit (node) + browser (Playwright) projects — Playwright segfaults in sandbox, pure logic tests need node environment
+- [Phase 03-wheelpicker-core]: WheelPhysics: single $state offset field; all animation tracking (isDragging, rafId, yList) is non-reactive plain class fields to prevent reactive cycles
+- [Phase 03-wheelpicker-core]: Physics constants (RESISTANCE=0.3, MAX_VELOCITY=30) copied verbatim from React v1.2.2 source for UX parity
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T12:49:11.647Z
-Stopped at: Completed 02-types-and-utility-hooks-02-PLAN.md
+Last session: 2026-03-23T13:42:00.706Z
+Stopped at: Completed 03-wheelpicker-core-01-PLAN.md
 Resume file: None
