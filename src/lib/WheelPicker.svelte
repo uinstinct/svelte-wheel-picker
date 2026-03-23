@@ -1,5 +1,207 @@
 <script lang="ts">
-	let { label = 'Wheel Picker' }: { label?: string } = $props();
+	import type { WheelPickerProps } from './types.js';
+	import { WheelPhysics } from './use-wheel-physics.svelte.js';
+	import { useControllableState } from './use-controllable-state.svelte.js';
+	import { useTypeaheadSearch } from './use-typeahead-search.svelte.js';
+	import {
+		DEFAULT_VISIBLE_COUNT,
+		DEFAULT_ITEM_HEIGHT,
+		DEFAULT_DRAG_SENSITIVITY,
+		DEFAULT_SCROLL_SENSITIVITY,
+	} from './wheel-physics-utils.js';
+
+	let {
+		options,
+		value,
+		defaultValue,
+		onValueChange,
+		classNames,
+		visibleCount: rawVisibleCount = DEFAULT_VISIBLE_COUNT,
+		optionItemHeight = DEFAULT_ITEM_HEIGHT,
+		dragSensitivity = DEFAULT_DRAG_SENSITIVITY,
+		scrollSensitivity = DEFAULT_SCROLL_SENSITIVITY,
+	}: WheelPickerProps = $props();
+
+	// D-07: visibleCount must be odd — warn and round up if even
+	const visibleCount = $derived.by(() => {
+		if (rawVisibleCount % 2 === 0) {
+			console.warn(
+				`[WheelPicker] visibleCount must be an odd number. Received ${rawVisibleCount}, rounding up to ${rawVisibleCount + 1}.`
+			);
+			return rawVisibleCount + 1;
+		}
+		return rawVisibleCount;
+	});
+
+	// Controlled/uncontrolled state management
+	const state = useControllableState({
+		value,
+		defaultValue,
+		onChange: onValueChange,
+	});
+
+	// Derive the currently selected index
+	const selectedIndex = $derived(options.findIndex((o) => o.value === state.current));
+
+	// Determine initial index — use selectedIndex if found, otherwise first enabled
+	const initialIndex = $derived.by(() => {
+		if (selectedIndex >= 0) return selectedIndex;
+		const first = options.findIndex((o) => !o.disabled);
+		return first >= 0 ? first : 0;
+	});
+
+	// Instantiate the physics engine
+	const physics = new WheelPhysics({
+		itemHeight: optionItemHeight,
+		visibleCount: visibleCount,
+		dragSensitivity,
+		scrollSensitivity,
+		options,
+		initialIndex,
+		onSnap: (index: number) => {
+			const opt = options[index];
+			if (opt && !opt.disabled) {
+				state.current = opt.value;
+			}
+		},
+	});
+
+	// Typeahead search instance
+	const typeahead = useTypeaheadSearch();
+
+	// Cleanup on component destroy
+	$effect(() => {
+		return () => {
+			physics.destroy();
+			typeahead.destroy();
+		};
+	});
+
+	// React to external `value` prop changes (D-05: cancel mid-flight, jump to new position)
+	$effect(() => {
+		const v = value;
+		if (v === undefined) return;
+		const idx = options.findIndex((o) => o.value === v);
+		if (idx >= 0) {
+			physics.cancelAnimation();
+			physics.animateTo(idx);
+		}
+	});
+
+	// Helper: animate the wheel to a given index and update state
+	function setValue(index: number) {
+		physics.animateTo(index);
+	}
+
+	// Keyboard navigation (per RESEARCH Pattern 5)
+	function handleKeydown(e: KeyboardEvent) {
+		const currentIdx = selectedIndex >= 0 ? selectedIndex : 0;
+		switch (e.key) {
+			case 'ArrowDown': {
+				e.preventDefault();
+				let next = currentIdx + 1;
+				while (next < options.length && options[next].disabled) next++;
+				if (next < options.length) setValue(next);
+				break;
+			}
+			case 'ArrowUp': {
+				e.preventDefault();
+				let next = currentIdx - 1;
+				while (next >= 0 && options[next].disabled) next--;
+				if (next >= 0) setValue(next);
+				break;
+			}
+			case 'Home': {
+				e.preventDefault();
+				const first = options.findIndex((o) => !o.disabled);
+				if (first !== -1) setValue(first);
+				break;
+			}
+			case 'End': {
+				e.preventDefault();
+				for (let i = options.length - 1; i >= 0; i--) {
+					if (!options[i].disabled) {
+						setValue(i);
+						break;
+					}
+				}
+				break;
+			}
+			default: {
+				const result = typeahead.search(e.key, options, currentIdx);
+				if (result !== -1) setValue(result);
+			}
+		}
+	}
+
+	// Pointer event handlers (Pattern 2: Pointer Capture for reliable drag tracking)
+	function onPointerDown(e: PointerEvent) {
+		(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+		physics.startDrag(e.clientY);
+	}
+
+	function onPointerMove(e: PointerEvent) {
+		physics.moveDrag(e.clientY);
+	}
+
+	function onPointerUp(e: PointerEvent) {
+		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+		physics.endDrag();
+	}
+
+	// Wheel/trackpad scroll handler — one item per scroll event
+	function onWheel(e: WheelEvent) {
+		e.preventDefault();
+		physics.handleWheel(e.deltaY);
+	}
 </script>
 
-<div data-wheel-picker>{label}</div>
+<div
+	data-swp-wrapper
+	class={classNames?.wrapper ?? undefined}
+	style:height="{visibleCount * optionItemHeight}px"
+	style:overflow="hidden"
+	style:position="relative"
+	tabindex="0"
+	role="listbox"
+	onpointerdown={onPointerDown}
+	onpointermove={onPointerMove}
+	onpointerup={onPointerUp}
+	onpointercancel={onPointerUp}
+	onwheel={onWheel}
+	onkeydown={handleKeydown}
+>
+	<!-- Selection overlay — absolutely positioned center row indicator -->
+	<div
+		data-swp-selection
+		class={classNames?.selection ?? undefined}
+		style:position="absolute"
+		style:top="{Math.floor(visibleCount / 2) * optionItemHeight}px"
+		style:left="0"
+		style:right="0"
+		style:height="{optionItemHeight}px"
+		style:pointer-events="none"
+	></div>
+
+	<!-- Options container — translated by physics offset -->
+	<div style:transform="translateY({physics.offset}px)">
+		{#each options as option, i}
+			<div
+				data-swp-option
+				data-swp-selected={selectedIndex === i ? 'true' : undefined}
+				data-swp-disabled={option.disabled ? 'true' : undefined}
+				class={classNames?.option ?? undefined}
+				style:height="{optionItemHeight}px"
+				style:display="flex"
+				style:align-items="center"
+				style:justify-content="center"
+				role="option"
+				aria-selected={selectedIndex === i}
+			>
+				<span data-swp-option-text class={classNames?.optionText ?? undefined}>
+					{option.label}
+				</span>
+			</div>
+		{/each}
+	</div>
+</div>
