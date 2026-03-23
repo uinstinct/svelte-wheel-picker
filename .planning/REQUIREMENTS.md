@@ -23,8 +23,8 @@
 
 ### Modes & State
 
-- [ ] **MODE-01**: Controlled mode (value + onValueChange callback)
-- [ ] **MODE-02**: Uncontrolled mode (defaultValue, internal state)
+- [x] **MODE-01**: Controlled mode (value + onValueChange callback)
+- [x] **MODE-02**: Uncontrolled mode (defaultValue, internal state)
 - [ ] **MODE-03**: Infinite loop scrolling mode
 - [ ] **MODE-04**: Disabled option support (skip in keyboard/drag)
 
@@ -81,8 +81,8 @@
 | INTR-04 | Phase 3 | Pending |
 | INTR-05 | Phase 3 | Pending |
 | INTR-06 | Phase 2 | Complete |
-| MODE-01 | Phase 2 | Pending |
-| MODE-02 | Phase 2 | Pending |
+| MODE-01 | Phase 2 | Complete |
+| MODE-02 | Phase 2 | Complete |
 | MODE-03 | Phase 4 | Pending |
 | MODE-04 | Phase 3 | Pending |
 | STYL-01 | Phase 3 | Pending |
