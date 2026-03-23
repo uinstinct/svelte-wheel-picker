@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import type { WheelPickerProps } from './types.js';
 	import { WheelPhysics } from './use-wheel-physics.svelte.js';
 	import { useControllableState } from './use-controllable-state.svelte.js';
@@ -77,12 +78,20 @@
 		};
 	});
 
+	// Keep state.current reactive in controlled mode — update tracked value when value prop changes
+	$effect(() => {
+		state.updateControlledValue(value);
+	});
+
 	// React to external `value` prop changes (D-05: cancel mid-flight, jump to new position)
+	// Guard: only animate if the target index differs from the current visual position.
+	// IMPORTANT: physics.currentIndex reads physics.offset ($state) — must be untracked to prevent
+	// this effect from re-running on every pointer-move or animation tick.
 	$effect(() => {
 		const v = value;
 		if (v === undefined) return;
 		const idx = options.findIndex((o) => o.value === v);
-		if (idx >= 0) {
+		if (idx >= 0 && idx !== untrack(() => physics.currentIndex)) {
 			physics.cancelAnimation();
 			physics.animateTo(idx);
 		}

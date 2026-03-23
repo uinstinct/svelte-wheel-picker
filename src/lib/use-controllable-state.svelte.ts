@@ -2,7 +2,8 @@ class ControllableState<T extends string | number> {
 	#internal = $state<T | undefined>(undefined);
 	#onChange: ((value: T | undefined) => void) | undefined;
 	#isControlled: boolean;
-	#controlledValue: T | undefined;
+	// $state so that reactive consumers (selectedIndex $derived) re-evaluate when prop changes
+	#controlledValue = $state<T | undefined>(undefined);
 
 	constructor(opts: {
 		value?: T;
@@ -18,6 +19,14 @@ class ControllableState<T extends string | number> {
 		} else {
 			this.#internal = opts.defaultValue;
 		}
+	}
+
+	/**
+	 * Update the tracked controlled value when the external `value` prop changes.
+	 * Must be called from a $effect in the consuming component whenever `value` changes.
+	 */
+	updateControlledValue(value: T | undefined): void {
+		this.#controlledValue = value;
 	}
 
 	get current(): T | undefined {

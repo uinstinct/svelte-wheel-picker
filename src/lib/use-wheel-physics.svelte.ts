@@ -275,6 +275,17 @@ export class WheelPhysics {
 	}
 
 	/**
+	 * Returns the option index that the current offset visually corresponds to.
+	 * Used to guard against redundant animations when the wheel is already positioned correctly.
+	 */
+	get currentIndex(): number {
+		return clampIndex(
+			offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount),
+			this.#options.length
+		);
+	}
+
+	/**
 	 * Immediately sets the offset to the position for the given index, no animation.
 	 * Used for initial render and controlled value updates.
 	 */

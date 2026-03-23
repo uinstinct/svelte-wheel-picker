@@ -190,14 +190,18 @@ describe('computeSnapTarget', () => {
 		expect(computeSnapTarget(3, 0, 3)).toBe(3);
 	});
 
-	it('overshoots in the positive direction with positive velocity', () => {
+	it('overshoots in the negative direction with positive velocity (drag down = lower index)', () => {
+		// Positive velocity = drag down = offset increases = lower index in view.
+		// Inertia should carry toward lower indices (negative index direction).
 		const target = computeSnapTarget(2, 10, 3);
-		expect(target).toBeGreaterThan(2);
+		expect(target).toBeLessThan(2);
 	});
 
-	it('overshoots in the negative direction with negative velocity', () => {
+	it('overshoots in the positive direction with negative velocity (drag up = higher index)', () => {
+		// Negative velocity = drag up = offset decreases = higher index in view.
+		// Inertia should carry toward higher indices (positive index direction).
 		const target = computeSnapTarget(2, -10, 3);
-		expect(target).toBeLessThan(2);
+		expect(target).toBeGreaterThan(2);
 	});
 });
 
