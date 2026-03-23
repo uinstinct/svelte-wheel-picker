@@ -2,6 +2,7 @@ node_modules/
 dist/
 build/
 .svelte-kit/
+.playwright/
 .env
 .env.*
 !.env.example
