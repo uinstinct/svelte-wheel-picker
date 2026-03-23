@@ -44,4 +44,12 @@ export interface WheelPickerProps<T extends string | number = string> {
 	onValueChange?: (value: T) => void;
 	/** Per-element CSS class overrides. */
 	classNames?: WheelPickerClassNames;
+	/** Number of visible option rows. Must be odd. Default: 5. */
+	visibleCount?: number;
+	/** Height in pixels of each option row. Default: 30. */
+	optionItemHeight?: number;
+	/** Pointer drag delta multiplier (affects inertia deceleration). Default: 3. */
+	dragSensitivity?: number;
+	/** Scroll wheel delta multiplier (affects snap animation duration). Default: 5. */
+	scrollSensitivity?: number;
 }
