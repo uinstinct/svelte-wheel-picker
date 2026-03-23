@@ -30,7 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. `npm run test` runs Vitest in real-browser mode via Playwright with no jsdom fallback
   3. `publint` reports zero errors against the `package.json` exports configuration
   4. A basic smoke-test component can be imported from `src/lib/index.ts` in the demo route without TypeScript errors
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project configuration files and dependency installation
+- [ ] 01-02-PLAN.md — Source files (placeholder component, test, demo route) and success criteria verification
 
 ### Phase 2: Types and Utility Hooks
 **Goal**: The foundational TypeScript types and two rune-based utility hooks exist, giving WheelPicker a stable import layer
@@ -98,7 +102,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Setup | 0/TBD | Not started | - |
+| 1. Project Setup | 0/2 | Planning complete | - |
 | 2. Types and Utility Hooks | 0/TBD | Not started | - |
 | 3. WheelPicker Core | 0/TBD | Not started | - |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
