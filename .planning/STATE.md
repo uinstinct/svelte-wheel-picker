@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Completed 01-project-setup-01-01-PLAN.md
-last_updated: "2026-03-23T11:26:50.699Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 01-project-setup-01-02-PLAN.md
+last_updated: "2026-03-23T11:57:08.204Z"
 progress:
   total_phases: 6
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -47,6 +47,7 @@ Plan: 2 of 2
 
 *Updated after each plan completion*
 | Phase 01-project-setup P01 | 5m | 2 tasks | 15 files |
+| Phase 01-project-setup P02 | 5 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -61,6 +62,9 @@ Recent decisions affecting current work:
 - [Phase 01-project-setup]: Use @eslint/js@10.0.1 (10.1.0 does not exist on npm — research version was wrong)
 - [Phase 01-project-setup]: PLAYWRIGHT_BROWSERS_PATH=.playwright set in test scripts — system cache dir had EPERM
 - [Phase 01-project-setup]: Placeholder WheelPicker.svelte + +page.svelte created in Plan 01 (required for svelte-kit sync)
+- [Phase 01-project-setup]: Removed invalid 'hot' option from vitest.config.ts — not valid in @sveltejs/vite-plugin-svelte v7
+- [Phase 01-project-setup]: Added .claude/ and .playwright/ to ESLint ignores to prevent linting GSD tooling and Playwright browser binaries
+- [Phase 01-project-setup]: Browser tests blocked by sandbox environment (Playwright session timeout) — documented as known limitation, not a code defect
 
 ### Pending Todos
 
@@ -75,6 +79,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T11:26:50.685Z
-Stopped at: Completed 01-project-setup-01-01-PLAN.md
+Last session: 2026-03-23T11:57:08.192Z
+Stopped at: Completed 01-project-setup-01-02-PLAN.md
 Resume file: None

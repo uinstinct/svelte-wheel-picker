@@ -12,7 +12,7 @@ Six phases build the library bottom-up: scaffolding first, then types and utilit
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Project Setup** - SvelteKit library scaffold with correct toolchain and package structure
+- [x] **Phase 1: Project Setup** - SvelteKit library scaffold with correct toolchain and package structure (completed 2026-03-23)
 - [ ] **Phase 2: Types and Utility Hooks** - Core TypeScript types, controllable state hook, type-ahead hook
 - [ ] **Phase 3: WheelPicker Core** - Finite scroll, inertia, snap, keyboard, styling API — the iOS feel
 - [ ] **Phase 4: Infinite Loop Mode** - Ghost-item duplication and modulo offset for seamless wrap-around
@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — Project configuration files and dependency installation
-- [ ] 01-02-PLAN.md — Source files (placeholder component, test, demo route) and success criteria verification
+- [x] 01-02-PLAN.md — Source files (placeholder component, test, demo route) and success criteria verification
 
 ### Phase 2: Types and Utility Hooks
 **Goal**: The foundational TypeScript types and two rune-based utility hooks exist, giving WheelPicker a stable import layer
@@ -102,7 +102,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Setup | 0/2 | Planning complete | - |
+| 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
 | 2. Types and Utility Hooks | 0/TBD | Not started | - |
 | 3. WheelPicker Core | 0/TBD | Not started | - |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
