@@ -71,35 +71,35 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| COMP-01 | TBD | Pending |
-| COMP-02 | TBD | Pending |
-| COMP-03 | TBD | Pending |
-| COMP-04 | TBD | Pending |
-| INTR-01 | TBD | Pending |
-| INTR-02 | TBD | Pending |
-| INTR-03 | TBD | Pending |
-| INTR-04 | TBD | Pending |
-| INTR-05 | TBD | Pending |
-| INTR-06 | TBD | Pending |
-| MODE-01 | TBD | Pending |
-| MODE-02 | TBD | Pending |
-| MODE-03 | TBD | Pending |
-| MODE-04 | TBD | Pending |
-| STYL-01 | TBD | Pending |
-| STYL-02 | TBD | Pending |
-| STYL-03 | TBD | Pending |
-| STYL-04 | TBD | Pending |
-| DIST-01 | TBD | Pending |
-| DIST-02 | TBD | Pending |
-| DIST-03 | TBD | Pending |
-| DIST-04 | TBD | Pending |
-| DIST-05 | TBD | Pending |
+| COMP-01 | Phase 3 | Pending |
+| COMP-02 | Phase 5 | Pending |
+| COMP-03 | Phase 2 | Pending |
+| COMP-04 | Phase 2 | Pending |
+| INTR-01 | Phase 3 | Pending |
+| INTR-02 | Phase 3 | Pending |
+| INTR-03 | Phase 3 | Pending |
+| INTR-04 | Phase 3 | Pending |
+| INTR-05 | Phase 3 | Pending |
+| INTR-06 | Phase 2 | Pending |
+| MODE-01 | Phase 2 | Pending |
+| MODE-02 | Phase 2 | Pending |
+| MODE-03 | Phase 4 | Pending |
+| MODE-04 | Phase 3 | Pending |
+| STYL-01 | Phase 3 | Pending |
+| STYL-02 | Phase 3 | Pending |
+| STYL-03 | Phase 3 | Pending |
+| STYL-04 | Phase 3 | Pending |
+| DIST-01 | Phase 2 | Pending |
+| DIST-02 | Phase 5 | Pending |
+| DIST-03 | Phase 5 | Pending |
+| DIST-04 | Phase 6 | Pending |
+| DIST-05 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 23 total
-- Mapped to phases: 0
-- Unmapped: 23 ⚠️
+- Mapped to phases: 23
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-23*
-*Last updated: 2026-03-23 after initial definition*
+*Last updated: 2026-03-23 after roadmap creation*
