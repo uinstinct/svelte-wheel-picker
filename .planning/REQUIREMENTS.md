@@ -9,8 +9,8 @@
 
 - [ ] **COMP-01**: WheelPicker single-wheel scrollable component
 - [ ] **COMP-02**: WheelPickerWrapper container for multiple side-by-side wheels
-- [ ] **COMP-03**: Options prop accepting array of `{ value, label, textValue?, disabled? }`
-- [ ] **COMP-04**: Generic TypeScript type `T extends string | number` for option values
+- [x] **COMP-03**: Options prop accepting array of `{ value, label, textValue?, disabled? }`
+- [x] **COMP-04**: Generic TypeScript type `T extends string | number` for option values
 
 ### Interaction
 
@@ -37,7 +37,7 @@
 
 ### Distribution
 
-- [ ] **DIST-01**: TypeScript throughout with full type exports
+- [x] **DIST-01**: TypeScript throughout with full type exports
 - [ ] **DIST-02**: Zero runtime dependencies
 - [ ] **DIST-03**: Publishable npm package with proper exports/types/svelte fields
 - [ ] **DIST-04**: shadcn-svelte CLI integration (registry.json + built files)
@@ -73,8 +73,8 @@
 |-------------|-------|--------|
 | COMP-01 | Phase 3 | Pending |
 | COMP-02 | Phase 5 | Pending |
-| COMP-03 | Phase 2 | Pending |
-| COMP-04 | Phase 2 | Pending |
+| COMP-03 | Phase 2 | Complete |
+| COMP-04 | Phase 2 | Complete |
 | INTR-01 | Phase 3 | Pending |
 | INTR-02 | Phase 3 | Pending |
 | INTR-03 | Phase 3 | Pending |
@@ -89,7 +89,7 @@
 | STYL-02 | Phase 3 | Pending |
 | STYL-03 | Phase 3 | Pending |
 | STYL-04 | Phase 3 | Pending |
-| DIST-01 | Phase 2 | Pending |
+| DIST-01 | Phase 2 | Complete |
 | DIST-02 | Phase 5 | Pending |
 | DIST-03 | Phase 5 | Pending |
 | DIST-04 | Phase 6 | Pending |
