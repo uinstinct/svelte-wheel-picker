@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Phase complete — ready for verification
-stopped_at: Completed 02-types-and-utility-hooks-03-PLAN.md
-last_updated: "2026-03-23T12:48:59.023Z"
+stopped_at: Completed 02-types-and-utility-hooks-02-PLAN.md
+last_updated: "2026-03-23T12:49:11.658Z"
 progress:
   total_phases: 6
   completed_phases: 2
@@ -50,6 +50,7 @@ Plan: 3 of 3
 | Phase 01-project-setup P02 | 5 | 2 tasks | 2 files |
 | Phase 02-types-and-utility-hooks P01 | 3 | 2 tasks | 4 files |
 | Phase 02-types-and-utility-hooks P03 | 3 | 1 tasks | 3 files |
+| Phase 02-types-and-utility-hooks P02 | 4 | 1 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,8 @@ Recent decisions affecting current work:
 - [Phase 02-types-and-utility-hooks]: WheelPickerClassNames uses Svelte-idiomatic names (wrapper/option/optionText/selection) not React names
 - [Phase 02-types-and-utility-hooks]: vite@8.0.1 added as explicit devDependency (was missing symlink causing tsc error)
 - [Phase 02-types-and-utility-hooks]: TypeaheadSearch class-based for #timer and #lastTime encapsulation;  on #buffer/#lastKey for runes consistency
+- [Phase 02-types-and-utility-hooks]: Class-based Svelte 5 rune hook pattern: private $state fields in class enable reactivity outside components
+- [Phase 02-types-and-utility-hooks]: Controlled/uncontrolled detection via typeof onChange === 'function' at construction time
 
 ### Pending Todos
 
@@ -84,6 +87,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T12:48:51.987Z
-Stopped at: Completed 02-types-and-utility-hooks-03-PLAN.md
+Last session: 2026-03-23T12:49:11.647Z
+Stopped at: Completed 02-types-and-utility-hooks-02-PLAN.md
 Resume file: None
