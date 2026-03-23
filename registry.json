@@ -1,0 +1,6 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry.json",
+	"name": "@uinstinct/svelte-wheel-picker",
+	"homepage": "https://github.com/uinstinct/svelte-wheel-picker",
+	"items": []
+}
