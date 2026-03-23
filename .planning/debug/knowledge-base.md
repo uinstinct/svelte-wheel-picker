@@ -12,3 +12,11 @@ Resolved debug sessions. Used by `gsd-debugger` to surface known-pattern hypothe
 - **Files changed:** src/routes/+page.svelte
 ---
 
+## wheel-picker-snap-broken — Snap and selection update broken due to unintended $effect reactive subscription to physics.offset
+- **Date:** 2026-03-23
+- **Error patterns:** snap, does not snap, selection update, onSnap, onValueChange, drag, inertia, animateTo, physics, offset, $effect, $state, controlled, untrack
+- **Root cause:** The `$effect` for external value changes in WheelPicker.svelte read `physics.currentIndex` (which reads `physics.offset`, a `$state`) without `untrack()`. Svelte tracked `physics.offset` as a dependency, so the effect re-ran on every pointer-move and animation frame. Each re-run called `physics.cancelAnimation()` + `physics.animateTo(controlledIndex)`, snapping the wheel back to the controlled value on every frame and preventing `onSnap` from ever firing. Secondary causes: `ControllableState.#controlledValue` was never updated from prop changes (controlled mode stuck at initial value), and `computeSnapTarget` had the inertia direction inverted.
+- **Fix:** (1) Wrapped `physics.currentIndex` read in `untrack(() => physics.currentIndex)` inside the external value `$effect`. (2) Made `ControllableState.#controlledValue` reactive (`$state`) and added `updateControlledValue()` method called from the `$effect`. (3) Inverted velocity sign in `computeSnapTarget` so drag-down carries to lower indices.
+- **Files changed:** src/lib/WheelPicker.svelte, src/lib/use-controllable-state.svelte.ts, src/lib/wheel-physics-utils.ts, src/lib/wheel-physics-utils.test.ts, src/lib/use-wheel-physics.svelte.ts
+---
+
