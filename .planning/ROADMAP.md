@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Project Setup** - SvelteKit library scaffold with correct toolchain and package structure (completed 2026-03-23)
 - [x] **Phase 2: Types and Utility Hooks** - Core TypeScript types, controllable state hook, type-ahead hook (completed 2026-03-23)
-- [ ] **Phase 3: WheelPicker Core** - Finite scroll, inertia, snap, keyboard, styling API — the iOS feel
+- [x] **Phase 3: WheelPicker Core** - Finite scroll, inertia, snap, keyboard, styling API — the iOS feel (completed 2026-03-23)
 - [ ] **Phase 4: Infinite Loop Mode** - Ghost-item duplication and modulo offset for seamless wrap-around
 - [ ] **Phase 5: WheelPickerWrapper and Package** - Group container, npm publication, publint validation
 - [ ] **Phase 6: shadcn Registry and Demo Site** - CLI registry integration and interactive demo
@@ -67,7 +67,7 @@ Plans:
 Plans:
 - [x] 03-01-PLAN.md — Types extension + pure physics functions + WheelPhysics reactive class
 - [x] 03-02-PLAN.md — WheelPicker.svelte component, barrel exports, tests, and demo page
-- [ ] 03-03-PLAN.md — Visual and functional verification checkpoint
+- [x] 03-03-PLAN.md — Visual and functional verification checkpoint
 
 ### Phase 4: Infinite Loop Mode
 **Goal**: WheelPicker wraps seamlessly at both ends when `infinite` is true, with no visible jump or stutter at boundaries
@@ -112,7 +112,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
 | 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
-| 3. WheelPicker Core | 2/3 | In Progress|  |
+| 3. WheelPicker Core | 3/3 | Complete   | 2026-03-23 |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
 | 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
 | 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |
