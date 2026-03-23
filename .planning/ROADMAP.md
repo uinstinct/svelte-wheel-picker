@@ -48,7 +48,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — TypeScript type definitions and package barrel exports
+- [x] 02-01-PLAN.md — TypeScript type definitions and package barrel exports
 - [ ] 02-02-PLAN.md — useControllableState hook (controlled/uncontrolled reactive state)
 - [ ] 02-03-PLAN.md — useTypeaheadSearch hook (keystroke accumulation with cycling)
 
@@ -107,7 +107,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
-| 2. Types and Utility Hooks | 0/3 | Not started | - |
+| 2. Types and Utility Hooks | 1/3 | In Progress|  |
 | 3. WheelPicker Core | 0/TBD | Not started | - |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
 | 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
