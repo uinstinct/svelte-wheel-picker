@@ -19,7 +19,7 @@
 - [ ] **INTR-03**: Mouse wheel/trackpad scroll with sensitivity control
 - [ ] **INTR-04**: Snap-to-item on release
 - [ ] **INTR-05**: Keyboard navigation (Arrow Up/Down, Home, End)
-- [ ] **INTR-06**: Type-ahead search (buffer keystrokes, find matching option)
+- [x] **INTR-06**: Type-ahead search (buffer keystrokes, find matching option)
 
 ### Modes & State
 
@@ -80,7 +80,7 @@
 | INTR-03 | Phase 3 | Pending |
 | INTR-04 | Phase 3 | Pending |
 | INTR-05 | Phase 3 | Pending |
-| INTR-06 | Phase 2 | Pending |
+| INTR-06 | Phase 2 | Complete |
 | MODE-01 | Phase 2 | Pending |
 | MODE-02 | Phase 2 | Pending |
 | MODE-03 | Phase 4 | Pending |

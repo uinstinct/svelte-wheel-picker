@@ -13,7 +13,7 @@ Six phases build the library bottom-up: scaffolding first, then types and utilit
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Project Setup** - SvelteKit library scaffold with correct toolchain and package structure (completed 2026-03-23)
-- [ ] **Phase 2: Types and Utility Hooks** - Core TypeScript types, controllable state hook, type-ahead hook
+- [x] **Phase 2: Types and Utility Hooks** - Core TypeScript types, controllable state hook, type-ahead hook (completed 2026-03-23)
 - [ ] **Phase 3: WheelPicker Core** - Finite scroll, inertia, snap, keyboard, styling API — the iOS feel
 - [ ] **Phase 4: Infinite Loop Mode** - Ghost-item duplication and modulo offset for seamless wrap-around
 - [ ] **Phase 5: WheelPickerWrapper and Package** - Group container, npm publication, publint validation
@@ -49,8 +49,8 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md — TypeScript type definitions and package barrel exports
-- [ ] 02-02-PLAN.md — useControllableState hook (controlled/uncontrolled reactive state)
-- [ ] 02-03-PLAN.md — useTypeaheadSearch hook (keystroke accumulation with cycling)
+- [x] 02-02-PLAN.md — useControllableState hook (controlled/uncontrolled reactive state)
+- [x] 02-03-PLAN.md — useTypeaheadSearch hook (keystroke accumulation with cycling)
 
 ### Phase 3: WheelPicker Core
 **Goal**: A single WheelPicker wheel delivers the iOS-feel interaction — touch, mouse, keyboard, snap, styling API — in finite mode
@@ -107,7 +107,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
-| 2. Types and Utility Hooks | 1/3 | In Progress|  |
+| 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
 | 3. WheelPicker Core | 0/TBD | Not started | - |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
 | 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
