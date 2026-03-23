@@ -66,7 +66,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md — Types extension + pure physics functions + WheelPhysics reactive class
-- [ ] 03-02-PLAN.md — WheelPicker.svelte component, barrel exports, tests, and demo page
+- [x] 03-02-PLAN.md — WheelPicker.svelte component, barrel exports, tests, and demo page
 - [ ] 03-03-PLAN.md — Visual and functional verification checkpoint
 
 ### Phase 4: Infinite Loop Mode
@@ -112,7 +112,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
 | 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
-| 3. WheelPicker Core | 1/3 | In Progress|  |
+| 3. WheelPicker Core | 2/3 | In Progress|  |
 | 4. Infinite Loop Mode | 0/TBD | Not started | - |
 | 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
 | 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |

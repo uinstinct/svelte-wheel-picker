@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 03-wheelpicker-core-01-PLAN.md
-last_updated: "2026-03-23T13:42:00.718Z"
+stopped_at: Completed 03-wheelpicker-core-02-PLAN.md
+last_updated: "2026-03-23T13:46:26.612Z"
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 ## Current Position
 
 Phase: 03 (wheelpicker-core) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Plan: 2 of 3
 | Phase 02-types-and-utility-hooks P03 | 3 | 1 tasks | 3 files |
 | Phase 02-types-and-utility-hooks P02 | 4 | 1 tasks | 3 files |
 | Phase 03-wheelpicker-core P01 | 22 | 2 tasks | 5 files |
+| Phase 03-wheelpicker-core P02 | 15 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,9 @@ Recent decisions affecting current work:
 - [Phase 03-wheelpicker-core]: vitest config split into unit (node) + browser (Playwright) projects — Playwright segfaults in sandbox, pure logic tests need node environment
 - [Phase 03-wheelpicker-core]: WheelPhysics: single $state offset field; all animation tracking (isDragging, rafId, yList) is non-reactive plain class fields to prevent reactive cycles
 - [Phase 03-wheelpicker-core]: Physics constants (RESISTANCE=0.3, MAX_VELOCITY=30) copied verbatim from React v1.2.2 source for UX parity
+- [Phase 03-wheelpicker-core]: WheelPhysics API: endDrag/handleWheel/animateTo take minimal args — internal config handles itemHeight/visibleCount/sensitivity
+- [Phase 03-wheelpicker-core]: Conditional attribute omission: use undefined (not false/null) to prevent data-swp-selected/disabled from appearing in DOM when false
+- [Phase 03-wheelpicker-core]: Consumer styling via :global([data-swp-wrapper].wheel) targeting library elements from consumer style blocks
 
 ### Pending Todos
 
@@ -91,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T13:42:00.706Z
-Stopped at: Completed 03-wheelpicker-core-01-PLAN.md
+Last session: 2026-03-23T13:46:26.600Z
+Stopped at: Completed 03-wheelpicker-core-02-PLAN.md
 Resume file: None
