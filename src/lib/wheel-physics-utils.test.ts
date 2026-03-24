@@ -4,6 +4,7 @@ import {
 	indexToOffset,
 	offsetToIndex,
 	clampIndex,
+	wrapIndex,
 	snapToNearestEnabled,
 	calculateVelocity,
 	computeSnapTarget,
@@ -96,6 +97,44 @@ describe('clampIndex', () => {
 	it('handles length 1', () => {
 		expect(clampIndex(0, 1)).toBe(0);
 		expect(clampIndex(5, 1)).toBe(0);
+	});
+});
+
+describe('wrapIndex', () => {
+	it('wrapIndex(0, 5) returns 0 (identity)', () => {
+		expect(wrapIndex(0, 5)).toBe(0);
+	});
+
+	it('wrapIndex(4, 5) returns 4 (identity at boundary)', () => {
+		expect(wrapIndex(4, 5)).toBe(4);
+	});
+
+	it('wrapIndex(5, 5) returns 0 (wraps forward one cycle)', () => {
+		expect(wrapIndex(5, 5)).toBe(0);
+	});
+
+	it('wrapIndex(-1, 5) returns 4 (wraps backward one step)', () => {
+		expect(wrapIndex(-1, 5)).toBe(4);
+	});
+
+	it('wrapIndex(-6, 5) returns 4 (wraps backward multiple cycles)', () => {
+		expect(wrapIndex(-6, 5)).toBe(4);
+	});
+
+	it('wrapIndex(10, 5) returns 0 (wraps forward multiple cycles)', () => {
+		expect(wrapIndex(10, 5)).toBe(0);
+	});
+
+	it('wrapIndex(0, 1) returns 0 (single-item list)', () => {
+		expect(wrapIndex(0, 1)).toBe(0);
+	});
+
+	it('wrapIndex(3, 1) returns 0 (single-item list, forward wrap)', () => {
+		expect(wrapIndex(3, 1)).toBe(0);
+	});
+
+	it('wrapIndex(-1, 1) returns 0 (single-item list, backward wrap)', () => {
+		expect(wrapIndex(-1, 1)).toBe(0);
 	});
 });
 
