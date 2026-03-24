@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Executing
-stopped_at: Completed 04-infinite-loop-mode-01-PLAN.md
-last_updated: "2026-03-24T12:45:08Z"
+status: Ready to plan
+stopped_at: Completed 04-infinite-loop-mode-02-PLAN.md
+last_updated: "2026-03-24T12:51:37Z"
 progress:
   total_phases: 6
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both touch and desktop
-**Current focus:** Phase 03 — wheelpicker-core
+**Current focus:** Phase 04 — infinite-loop-mode (complete)
 
 ## Current Position
 
-Phase: 4
-Plan: 2
+Phase: 5
+Plan: Not started
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Plan: 2
 | Phase 03-wheelpicker-core P02 | 15 | 2 tasks | 4 files |
 | Phase 03-wheelpicker-core P03 | 30 | 1 tasks | 2 files |
 | Phase 04-infinite-loop-mode P01 | 5 | 2 tasks | 4 files |
+| Phase 04-infinite-loop-mode P02 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,9 @@ Recent decisions affecting current work:
 - [Phase 03-wheelpicker-core]: Dark mode CSS: define custom property values at :root and override only variables in prefers-color-scheme dark — eliminates cascade specificity conflicts
 - [Phase 04-infinite-loop-mode]: wrapIndex uses ((index % n) + n) % n formula from React v1.2.2 for exact UX parity
 - [Phase 04-infinite-loop-mode]: #infinite is plain boolean (not $state) — configuration field, not DOM-driving reactive state
+- [Phase 04-infinite-loop-mode]: Ghost items carry data-swp-option but never data-swp-selected per D-03
+- [Phase 04-infinite-loop-mode]: Before-ghosts use [...options].reverse() so last item sits directly above real section
+- [Phase 04-infinite-loop-mode]: Keyboard wrap passes extended indices to animateTo; onSnap normalizes via wrapIndex + jumpTo
 
 ### Pending Todos
 
@@ -101,6 +105,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-24T12:45:08Z
-Stopped at: Completed 04-infinite-loop-mode-01-PLAN.md
+Last session: 2026-03-24T12:51:37Z
+Stopped at: Completed 04-infinite-loop-mode-02-PLAN.md
 Resume file: None

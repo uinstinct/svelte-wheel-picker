@@ -80,8 +80,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — wrapIndex utility, infinite prop type, WheelPhysics infinite branches + unit tests
-- [ ] 04-02-PLAN.md — Ghost item rendering, keyboard wrapping, onSnap normalization, demo page
+- [x] 04-01-PLAN.md — wrapIndex utility, infinite prop type, WheelPhysics infinite branches + unit tests
+- [x] 04-02-PLAN.md — Ghost item rendering, keyboard wrapping, onSnap normalization, demo page
 
 ### Phase 5: WheelPickerWrapper and Package
 **Goal**: Multiple wheels work together as a unit and the library is publishable to npm with correct exports
@@ -116,6 +116,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Project Setup | 2/2 | Complete   | 2026-03-23 |
 | 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
 | 3. WheelPicker Core | 3/3 | Complete   | 2026-03-23 |
-| 4. Infinite Loop Mode | 0/2 | Not started | - |
+| 4. Infinite Loop Mode | 2/2 | Complete | 2026-03-24 |
 | 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
 | 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |
