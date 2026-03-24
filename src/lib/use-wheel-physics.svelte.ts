@@ -17,6 +17,7 @@ import {
 	indexToOffset,
 	offsetToIndex,
 	clampIndex,
+	wrapIndex,
 	snapToNearestEnabled,
 	calculateVelocity,
 	computeSnapTarget,
@@ -54,6 +55,7 @@ export class WheelPhysics {
 	#scrollSensitivity: number;
 	#options: WheelPickerOption[];
 	#onSnap: (index: number) => void;
+	#infinite: boolean;
 
 	// ---------------------------------------------------------------------------
 	// Private non-reactive animation/drag state (NOT $state — Pitfall 2)
@@ -89,6 +91,7 @@ export class WheelPhysics {
 		visibleCount?: number;
 		dragSensitivity?: number;
 		scrollSensitivity?: number;
+		infinite?: boolean;
 		options: WheelPickerOption[];
 		initialIndex: number;
 		onSnap: (index: number) => void;
@@ -97,6 +100,7 @@ export class WheelPhysics {
 		this.#visibleCount = opts.visibleCount ?? DEFAULT_VISIBLE_COUNT;
 		this.#dragSensitivity = opts.dragSensitivity ?? DEFAULT_DRAG_SENSITIVITY;
 		this.#scrollSensitivity = opts.scrollSensitivity ?? DEFAULT_SCROLL_SENSITIVITY;
+		this.#infinite = opts.infinite ?? false;
 		this.#options = opts.options;
 		this.#onSnap = opts.onSnap;
 
@@ -116,6 +120,7 @@ export class WheelPhysics {
 		visibleCount?: number;
 		dragSensitivity?: number;
 		scrollSensitivity?: number;
+		infinite?: boolean;
 		options?: WheelPickerOption[];
 		onSnap?: (index: number) => void;
 	}): void {
@@ -123,6 +128,7 @@ export class WheelPhysics {
 		if (opts.visibleCount !== undefined) this.#visibleCount = opts.visibleCount;
 		if (opts.dragSensitivity !== undefined) this.#dragSensitivity = opts.dragSensitivity;
 		if (opts.scrollSensitivity !== undefined) this.#scrollSensitivity = opts.scrollSensitivity;
+		if (opts.infinite !== undefined) this.#infinite = opts.infinite;
 		if (opts.options !== undefined) this.#options = opts.options;
 		if (opts.onSnap !== undefined) this.#onSnap = opts.onSnap;
 	}
@@ -159,11 +165,13 @@ export class WheelPhysics {
 
 		let newOffset = this.#dragStartOffset + delta;
 
-		// Apply rubber-band resistance at boundaries
-		if (newOffset > maxOffset) {
-			newOffset = maxOffset + (newOffset - maxOffset) * RESISTANCE;
-		} else if (newOffset < minOffset) {
-			newOffset = minOffset + (newOffset - minOffset) * RESISTANCE;
+		// Apply rubber-band resistance at boundaries (skip for infinite mode)
+		if (!this.#infinite) {
+			if (newOffset > maxOffset) {
+				newOffset = maxOffset + (newOffset - maxOffset) * RESISTANCE;
+			} else if (newOffset < minOffset) {
+				newOffset = minOffset + (newOffset - minOffset) * RESISTANCE;
+			}
 		}
 
 		this.offset = newOffset;
@@ -183,10 +191,10 @@ export class WheelPhysics {
 		this.#isDragging = false;
 
 		const velocity = calculateVelocity(this.#yList, this.#itemHeight);
-		const currentIndex = clampIndex(
-			offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount),
-			this.#options.length
-		);
+		const rawIndex = offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount);
+		const currentIndex = this.#infinite
+			? wrapIndex(rawIndex, this.#options.length)
+			: clampIndex(rawIndex, this.#options.length);
 
 		if (Math.abs(velocity) < 0.5) {
 			// Slow release — snap directly to nearest enabled option
@@ -195,9 +203,15 @@ export class WheelPhysics {
 		} else {
 			// Inertia — compute overshoot target
 			const rawTarget = computeSnapTarget(currentIndex, velocity, this.#dragSensitivity);
-			const clamped = clampIndex(rawTarget, this.#options.length);
-			const snapIndex = snapToNearestEnabled(clamped, this.#options);
-			this.animateTo(snapIndex);
+			if (this.#infinite) {
+				const wrapped = wrapIndex(rawTarget, this.#options.length);
+				const snapIndex = snapToNearestEnabled(wrapped, this.#options);
+				this.animateTo(snapIndex);
+			} else {
+				const clamped = clampIndex(rawTarget, this.#options.length);
+				const snapIndex = snapToNearestEnabled(clamped, this.#options);
+				this.animateTo(snapIndex);
+			}
 		}
 	}
 
@@ -216,17 +230,24 @@ export class WheelPhysics {
 		if (now - this.#lastWheelTime < 100) return;
 		this.#lastWheelTime = now;
 
-		const currentIndex = clampIndex(
-			offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount),
-			this.#options.length
-		);
+		const rawIndex = offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount);
+		const currentIndex = this.#infinite
+			? wrapIndex(rawIndex, this.#options.length)
+			: clampIndex(rawIndex, this.#options.length);
 
 		// deltaY > 0 = scroll down = move to next item (increment index)
 		const direction = deltaY > 0 ? 1 : -1;
-		const targetIndex = clampIndex(currentIndex + direction, this.#options.length);
-		const snapIndex = snapToNearestEnabled(targetIndex, this.#options);
 
-		this.animateTo(snapIndex);
+		if (this.#infinite) {
+			const next = currentIndex + direction;
+			const wrapped = wrapIndex(next, this.#options.length);
+			const snapIndex = snapToNearestEnabled(wrapped, this.#options);
+			this.animateTo(snapIndex);
+		} else {
+			const targetIndex = clampIndex(currentIndex + direction, this.#options.length);
+			const snapIndex = snapToNearestEnabled(targetIndex, this.#options);
+			this.animateTo(snapIndex);
+		}
 	}
 
 	// ---------------------------------------------------------------------------
@@ -279,10 +300,10 @@ export class WheelPhysics {
 	 * Used to guard against redundant animations when the wheel is already positioned correctly.
 	 */
 	get currentIndex(): number {
-		return clampIndex(
-			offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount),
-			this.#options.length
-		);
+		const raw = offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount);
+		return this.#infinite
+			? wrapIndex(raw, this.#options.length)
+			: clampIndex(raw, this.#options.length);
 	}
 
 	/**
