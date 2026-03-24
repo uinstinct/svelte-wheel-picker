@@ -10,6 +10,7 @@
 		DEFAULT_DRAG_SENSITIVITY,
 		DEFAULT_SCROLL_SENSITIVITY,
 	} from './wheel-physics-utils.js';
+	import { wrapIndex } from './wheel-physics-utils.js';
 
 	let {
 		options,
@@ -21,6 +22,7 @@
 		optionItemHeight = DEFAULT_ITEM_HEIGHT,
 		dragSensitivity = DEFAULT_DRAG_SENSITIVITY,
 		scrollSensitivity = DEFAULT_SCROLL_SENSITIVITY,
+		infinite = false,
 	}: WheelPickerProps = $props();
 
 	// D-07: visibleCount must be odd — warn and round up if even
@@ -59,10 +61,21 @@
 		scrollSensitivity,
 		options,
 		initialIndex,
+		infinite,
 		onSnap: (index: number) => {
-			const opt = options[index];
-			if (opt && !opt.disabled) {
-				state.current = opt.value;
+			if (infinite) {
+				// D-04: Normalize offset on snap settle
+				const wrappedIndex = wrapIndex(index, options.length);
+				physics.jumpTo(wrappedIndex);
+				const opt = options[wrappedIndex];
+				if (opt && !opt.disabled) {
+					state.current = opt.value;
+				}
+			} else {
+				const opt = options[index];
+				if (opt && !opt.disabled) {
+					state.current = opt.value;
+				}
 			}
 		},
 	});
@@ -108,16 +121,43 @@
 		switch (e.key) {
 			case 'ArrowDown': {
 				e.preventDefault();
-				let next = currentIdx + 1;
-				while (next < options.length && options[next].disabled) next++;
-				if (next < options.length) setValue(next);
+				if (infinite) {
+					let next = currentIdx + 1;
+					let guard = 0;
+					while (options[wrapIndex(next, options.length)]?.disabled && guard < options.length) {
+						next++;
+						guard++;
+					}
+					if (guard < options.length) {
+						// Animate to the extended index (ghost position) for correct direction.
+						// onSnap will normalize back to [0, N-1] via wrapIndex + jumpTo.
+						setValue(next);
+					}
+				} else {
+					let next = currentIdx + 1;
+					while (next < options.length && options[next].disabled) next++;
+					if (next < options.length) setValue(next);
+				}
 				break;
 			}
 			case 'ArrowUp': {
 				e.preventDefault();
-				let next = currentIdx - 1;
-				while (next >= 0 && options[next].disabled) next--;
-				if (next >= 0) setValue(next);
+				if (infinite) {
+					let next = currentIdx - 1;
+					let guard = 0;
+					while (options[wrapIndex(next, options.length)]?.disabled && guard < options.length) {
+						next--;
+						guard++;
+					}
+					if (guard < options.length) {
+						// Animate to the extended index (ghost position) for correct direction.
+						setValue(next);
+					}
+				} else {
+					let next = currentIdx - 1;
+					while (next >= 0 && options[next].disabled) next--;
+					if (next >= 0) setValue(next);
+				}
 				break;
 			}
 			case 'Home': {
@@ -194,6 +234,28 @@
 
 	<!-- Options container — translated by physics offset -->
 	<div style:transform="translateY({physics.offset}px)">
+		{#if infinite}
+			<!-- Before-ghosts: reversed so options[N-1] appears just above real section (Pitfall 3) -->
+			{#each [...options].reverse() as option}
+				<div
+					data-swp-option
+					data-swp-disabled={option.disabled ? 'true' : undefined}
+					class={classNames?.option ?? undefined}
+					style:height="{optionItemHeight}px"
+					style:display="flex"
+					style:align-items="center"
+					style:justify-content="center"
+					role="option"
+					aria-selected={false}
+				>
+					<span data-swp-option-text class={classNames?.optionText ?? undefined}>
+						{option.label}
+					</span>
+				</div>
+			{/each}
+		{/if}
+
+		<!-- Real items section -->
 		{#each options as option, i}
 			<div
 				data-swp-option
@@ -212,5 +274,26 @@
 				</span>
 			</div>
 		{/each}
+
+		{#if infinite}
+			<!-- After-ghosts: same order as real items -->
+			{#each options as option}
+				<div
+					data-swp-option
+					data-swp-disabled={option.disabled ? 'true' : undefined}
+					class={classNames?.option ?? undefined}
+					style:height="{optionItemHeight}px"
+					style:display="flex"
+					style:align-items="center"
+					style:justify-content="center"
+					role="option"
+					aria-selected={false}
+				>
+					<span data-swp-option-text class={classNames?.optionText ?? undefined}>
+						{option.label}
+					</span>
+				</div>
+			{/each}
+		{/if}
 	</div>
 </div>
