@@ -25,7 +25,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "package": "svelte-package && publint",
+    "package": "svelte-package && rm -rf dist/__tests__ && rm -f dist/*.test.js dist/*.test.d.ts && publint",
     "prepack": "npm run package",
     "test": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest run",
     "test:watch": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest",
