@@ -21,6 +21,7 @@
 
 	let selectedFruit = $state('cherry');
 	let selectedDisabled = $state('1');
+	let selectedInfinite = $state('cherry');
 </script>
 
 <main>
@@ -51,6 +52,22 @@
 				onValueChange={(v) => {
 					selectedDisabled = v;
 				}}
+				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
+			/>
+		</div>
+	</section>
+
+	<section>
+		<h2>Infinite Loop</h2>
+		<p>Selected: {selectedInfinite}</p>
+		<div class="wheel-container">
+			<WheelPicker
+				options={fruitOptions}
+				value={selectedInfinite}
+				onValueChange={(v) => {
+					selectedInfinite = v;
+				}}
+				infinite={true}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
