@@ -92,8 +92,11 @@ Plans:
   2. `npm pack` produces a tarball that a fresh SvelteKit project can install and import without TypeScript errors, with full type inference on generic props
   3. `publint` reports zero errors; the package has no runtime dependencies in `node_modules` propagation (`sideEffects: false`, zero deps)
   4. An SSR-enabled SvelteKit consumer app imports the package without a `window is not defined` error at module evaluation time
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — WheelPickerWrapper component, types, barrel export trim, demo page
+- [ ] 05-02-PLAN.md — Package build validation, SSR safety, tarball verification
 
 ### Phase 6: shadcn Registry and Demo Site
 **Goal**: Developers can add the component via `shadcn-svelte` CLI and see a working interactive demo
@@ -117,5 +120,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
 | 3. WheelPicker Core | 3/3 | Complete   | 2026-03-23 |
 | 4. Infinite Loop Mode | 2/2 | Complete | 2026-03-24 |
-| 5. WheelPickerWrapper and Package | 0/TBD | Not started | - |
+| 5. WheelPickerWrapper and Package | 0/2 | Not started | - |
 | 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |
