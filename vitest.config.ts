@@ -36,6 +36,7 @@ export default defineConfig({
 						'src/lib/use-controllable-state.test.ts',
 						'src/lib/use-typeahead-search.test.ts',
 						'src/lib/__tests__/WheelPickerWrapper.test.ts',
+						'src/lib/__tests__/focus-routing.test.ts',
 					],
 				},
 			}),
