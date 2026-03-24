@@ -52,4 +52,6 @@ export interface WheelPickerProps<T extends string | number = string> {
 	dragSensitivity?: number;
 	/** Scroll wheel delta multiplier (affects snap animation duration). Default: 5. */
 	scrollSensitivity?: number;
+	/** Enable infinite loop scrolling (wraps at both ends). Default: false. */
+	infinite?: boolean;
 }

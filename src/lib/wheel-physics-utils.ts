@@ -88,6 +88,20 @@ export function clampIndex(index: number, optionsLength: number): number {
 }
 
 /**
+ * Wraps an index into the valid range [0, optionsLength) using modulo.
+ * Handles negative indices correctly (JavaScript modulo returns negative for negative inputs).
+ *
+ * Formula from @ncdai/react-wheel-picker v1.2.2: ((index % n) + n) % n
+ *
+ * @param index - The index to wrap (may be negative or >= optionsLength)
+ * @param optionsLength - Total number of options
+ * @returns The wrapped index in [0, optionsLength - 1]
+ */
+export function wrapIndex(index: number, optionsLength: number): number {
+	return ((index % optionsLength) + optionsLength) % optionsLength;
+}
+
+/**
  * Finds the nearest enabled option from a target index.
  *
  * Walks outward in both directions (lower-delta first), returning the nearest
