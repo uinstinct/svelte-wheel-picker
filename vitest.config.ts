@@ -34,6 +34,7 @@ export default defineConfig({
 						'src/lib/WheelPicker.test.ts',
 						'src/lib/use-controllable-state.test.ts',
 						'src/lib/use-typeahead-search.test.ts',
+						'src/lib/__tests__/WheelPickerWrapper.test.ts',
 					],
 				},
 			}),

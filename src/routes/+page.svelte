@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { WheelPicker } from '$lib';
+	import { WheelPicker, WheelPickerWrapper } from '$lib';
 
 	const fruitOptions = [
 		{ value: 'apple', label: 'Apple' },
@@ -22,6 +22,19 @@
 	let selectedFruit = $state('cherry');
 	let selectedDisabled = $state('1');
 	let selectedInfinite = $state('cherry');
+
+	const hourOptions = Array.from({ length: 12 }, (_, i) => ({
+		value: String(i + 1).padStart(2, '0'),
+		label: String(i + 1).padStart(2, '0'),
+	}));
+
+	const minuteOptions = Array.from({ length: 60 }, (_, i) => ({
+		value: String(i).padStart(2, '0'),
+		label: String(i).padStart(2, '0'),
+	}));
+
+	let selectedHour = $state('12');
+	let selectedMinute = $state('00');
 </script>
 
 <main>
@@ -70,6 +83,27 @@
 				infinite={true}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
+		</div>
+	</section>
+
+	<section>
+		<h2>Two Wheels</h2>
+		<p>Hour: {selectedHour} — Minute: {selectedMinute}</p>
+		<div class="wheel-container">
+			<WheelPickerWrapper classNames={{ group: 'time-picker-group' }}>
+				<WheelPicker
+					options={hourOptions}
+					value={selectedHour}
+					onValueChange={(v) => { selectedHour = v; }}
+					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
+				/>
+				<WheelPicker
+					options={minuteOptions}
+					value={selectedMinute}
+					onValueChange={(v) => { selectedMinute = v; }}
+					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
+				/>
+			</WheelPickerWrapper>
 		</div>
 	</section>
 </main>
@@ -165,5 +199,11 @@
 
 	:global([data-swp-option][data-swp-selected='true']) {
 		font-weight: 500;
+	}
+
+	:global([data-swp-group].time-picker-group) {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
 	}
 </style>

@@ -55,3 +55,19 @@ export interface WheelPickerProps<T extends string | number = string> {
 	/** Enable infinite loop scrolling (wraps at both ends). Default: false. */
 	infinite?: boolean;
 }
+
+/**
+ * Per-element class name overrides for WheelPickerWrapper.
+ */
+export type WheelPickerWrapperClassNames = {
+	/** Outer group container div */
+	group?: string;
+};
+
+/**
+ * Props for the WheelPickerWrapper component.
+ */
+export interface WheelPickerWrapperProps {
+	/** Per-element CSS class overrides for the wrapper group. */
+	classNames?: WheelPickerWrapperClassNames;
+}
