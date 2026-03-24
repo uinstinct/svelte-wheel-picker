@@ -95,7 +95,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — WheelPickerWrapper component, types, barrel export trim, demo page
+- [x] 05-01-PLAN.md — WheelPickerWrapper component, types, barrel export trim, demo page
 - [ ] 05-02-PLAN.md — Package build validation, SSR safety, tarball verification
 
 ### Phase 6: shadcn Registry and Demo Site
@@ -120,5 +120,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Types and Utility Hooks | 3/3 | Complete   | 2026-03-23 |
 | 3. WheelPicker Core | 3/3 | Complete   | 2026-03-23 |
 | 4. Infinite Loop Mode | 2/2 | Complete | 2026-03-24 |
-| 5. WheelPickerWrapper and Package | 0/2 | Not started | - |
+| 5. WheelPickerWrapper and Package | 1/2 | In Progress|  |
 | 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |

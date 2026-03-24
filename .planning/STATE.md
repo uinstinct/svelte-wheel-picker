@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 5 context gathered
-last_updated: "2026-03-24T14:08:13.401Z"
+status: Ready to execute
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-03-24T14:41:29.011Z"
 progress:
   total_phases: 6
   completed_phases: 4
-  total_plans: 10
-  completed_plans: 10
+  total_plans: 12
+  completed_plans: 11
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both touch and desktop
-**Current focus:** Phase 04 — infinite-loop-mode (complete)
+**Current focus:** Phase 05 — wheelpickerwrapper-and-package
 
 ## Current Position
 
-Phase: 5
-Plan: Not started
+Phase: 05 (wheelpickerwrapper-and-package) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Plan: Not started
 | Phase 03-wheelpicker-core P03 | 30 | 1 tasks | 2 files |
 | Phase 04-infinite-loop-mode P01 | 5 | 2 tasks | 4 files |
 | Phase 04-infinite-loop-mode P02 | 2 | 2 tasks | 2 files |
+| Phase 05-wheelpickerwrapper-and-package P01 | 2m | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -91,6 +92,8 @@ Recent decisions affecting current work:
 - [Phase 04-infinite-loop-mode]: Ghost items carry data-swp-option but never data-swp-selected per D-03
 - [Phase 04-infinite-loop-mode]: Before-ghosts use [...options].reverse() so last item sits directly above real section
 - [Phase 04-infinite-loop-mode]: Keyboard wrap passes extended indices to animateTo; onSnap normalizes via wrapIndex + jumpTo
+- [Phase 05-wheelpickerwrapper-and-package]: WheelPickerWrapperProps excludes children — Svelte 5 injects children as built-in snippet prop to avoid TypeScript conflicts
+- [Phase 05-wheelpickerwrapper-and-package]: Public API trimmed to WheelPicker + WheelPickerWrapper + 5 type exports — hooks and physics constants are internal (D-07/D-08)
 
 ### Pending Todos
 
@@ -105,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-24T14:08:13.384Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-wheelpickerwrapper-and-package/05-CONTEXT.md
+Last session: 2026-03-24T14:41:28.999Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: None
