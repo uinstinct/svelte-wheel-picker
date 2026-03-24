@@ -13,10 +13,12 @@ Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both
 ### Validated
 
 - [x] Infinite loop scrolling mode — Validated in Phase 4: Infinite Loop Mode
+- [x] WheelPickerWrapper component (container for multiple wheels) — Validated in Phase 5: WheelPickerWrapper and Package
+- [x] Zero runtime dependencies — Validated in Phase 5: WheelPickerWrapper and Package
+- [x] Publishable npm package — Validated in Phase 5: WheelPickerWrapper and Package
 
 ### Active
 
-- [ ] WheelPickerWrapper component (container for multiple wheels)
 - [ ] WheelPicker component (individual scrollable wheel)
 - [ ] Touch drag scrolling with inertia
 - [ ] Mouse drag scrolling with inertia
@@ -87,4 +89,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 — Phase 04 complete: Infinite loop mode — wrapIndex utility, ghost item rendering, keyboard wrapping, onSnap normalization*
+*Last updated: 2026-03-24 — Phase 05 complete: WheelPickerWrapper component, barrel export trim, package build validation (svelte-package + publint + SSR safety + clean tarball), zero runtime deps confirmed*
