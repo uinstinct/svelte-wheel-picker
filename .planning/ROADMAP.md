@@ -97,7 +97,7 @@ Plans:
 Plans:
 - [x] 05-01-PLAN.md — WheelPickerWrapper component, types, barrel export trim, demo page
 - [x] 05-02-PLAN.md — Package build validation, SSR safety, tarball verification
-- [ ] 05-03-PLAN.md — Gap closure: tarball test file exclusion and focus routing test
+- [x] 05-03-PLAN.md — Gap closure: tarball test file exclusion and focus routing test
 
 ### Phase 6: shadcn Registry and Demo Site
 **Goal**: Developers can add the component via `shadcn-svelte` CLI and see a working interactive demo
