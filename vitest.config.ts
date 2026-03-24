@@ -15,6 +15,7 @@ export default defineConfig({
 					include: [
 						'src/lib/wheel-physics-utils.test.ts',
 						'src/lib/types.test.ts',
+						'src/lib/__tests__/ssr-safety.test.ts',
 					],
 				},
 			}),
