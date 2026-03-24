@@ -12,7 +12,7 @@ Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Infinite loop scrolling mode — Validated in Phase 4: Infinite Loop Mode
 
 ### Active
 
@@ -23,7 +23,7 @@ Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both
 - [ ] Mouse wheel/scroll support
 - [ ] Full keyboard navigation (arrow keys, home, end)
 - [ ] Type-ahead search
-- [ ] Infinite loop scrolling mode
+- [x] Infinite loop scrolling mode (→ Validated)
 - [ ] Controlled mode (value + onValueChange)
 - [ ] Uncontrolled mode (defaultValue)
 - [ ] Configurable props: visibleCount, dragSensitivity, scrollSensitivity, optionItemHeight
@@ -87,4 +87,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-23 — Phase 03 complete: WheelPicker Svelte 5 component fully built and human-verified — RAF inertia physics, snap, pointer drag, keyboard nav, type-ahead, headless DOM structure with data-swp-* attributes*
+*Last updated: 2026-03-24 — Phase 04 complete: Infinite loop mode — wrapIndex utility, ghost item rendering, keyboard wrapping, onSnap normalization*
