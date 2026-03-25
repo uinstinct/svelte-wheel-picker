@@ -111,7 +111,7 @@ Plans:
 **UI hint**: yes
 
 Plans:
-- [ ] 06-01-PLAN.md — shadcn registry setup (registry.json + build) and demo site hero section
+- [x] 06-01-PLAN.md — shadcn registry setup (registry.json + build) and demo site hero section
 
 ## Progress
 
