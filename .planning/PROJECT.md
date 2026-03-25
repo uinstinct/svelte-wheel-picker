@@ -17,6 +17,11 @@ Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both
 - [x] Zero runtime dependencies — Validated in Phase 5: WheelPickerWrapper and Package
 - [x] Publishable npm package — Validated in Phase 5: WheelPickerWrapper and Package
 
+### Validated (continued)
+
+- [x] shadcn-svelte CLI integration — Validated in Phase 6: shadcn Registry and Demo Site
+- [x] Simple demo site showcasing the component — Validated in Phase 6: shadcn Registry and Demo Site
+
 ### Active
 
 - [ ] WheelPicker component (individual scrollable wheel)
@@ -36,8 +41,6 @@ Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both
 - [ ] Svelte 5 runes-based reactivity
 - [ ] TypeScript throughout
 - [ ] Publishable npm package
-- [ ] shadcn-svelte CLI integration
-- [ ] Simple demo site showcasing the component
 
 ### Out of Scope
 
@@ -89,4 +92,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 — Phase 05 complete: WheelPickerWrapper component, barrel export trim, package build validation (svelte-package + publint + SSR safety + clean tarball), zero runtime deps confirmed*
+*Last updated: 2026-03-25 — Phase 06 complete: shadcn-svelte registry endpoint live (static/r/wheel-picker.json), demo site hero section added with npm + shadcn install commands*
