@@ -28,3 +28,11 @@ Resolved debug sessions. Used by `gsd-debugger` to surface known-pattern hypothe
 - **Files changed:** src/lib/use-wheel-physics.svelte.ts
 ---
 
+## drag-outside-selection-wrong — Wrong item selected when mouse released outside wheel container during drag
+- **Date:** 2026-03-25
+- **Error patterns:** drag outside, wrong selection, random, mouse leaves container, release outside, empty, backward snap, offset overflow, infinite mode, moveDrag, rawIndex
+- **Root cause:** moveDrag() in WheelPhysics applied unconstrained offset updates in infinite mode. The DOM has exactly 3×N items covering rawIndex -N..2N-1. Pointer capture delivers events outside the container, allowing the offset to exceed ghost bounds (e.g., rawIndex=16 past last after-ghost at 13). The visible area becomes empty. On release, endDrag() computed the correct wrapped index but animateTo() snapped 410px backward to the real section, which appeared as a wrong/random selection. Secondary issue: before-ghost rows were rendered with .reverse(), causing visual/selection mismatch in that region.
+- **Fix:** (1) Added offset normalization in moveDrag() using while-loops: when newOffset exceeds afterGhostEnd or beforeGhostEnd, shift by ±loopDistance (N*itemHeight) applied to both newOffset and #dragStartOffset. (2) In endDrag(), compute loopOffset from rawIndex and call animateTo(snapIndex + loopOffset) so the snap animation moves forward in drag direction. (3) Removed .reverse() from before-ghost render in WheelPicker.svelte for visual correctness.
+- **Files changed:** src/lib/use-wheel-physics.svelte.ts, src/lib/WheelPicker.svelte
+---
+
