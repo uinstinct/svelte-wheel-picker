@@ -161,8 +161,31 @@ export class WheelPhysics {
 
 		let newOffset = this.#dragStartOffset + delta;
 
-		// Apply rubber-band resistance at boundaries (skip for infinite mode)
-		if (!this.#infinite) {
+		if (this.#infinite) {
+			// Infinite mode: normalize offset when the drag exceeds the ghost item bounds.
+			// The DOM has 3×N items (before-ghosts + real + after-ghosts), covering rawIndex
+			// -N..2N-1. When the pointer is captured outside the container, the user can drag
+			// past these bounds into empty space. Normalizing by ±N*itemHeight keeps the drag
+			// within the populated DOM region and ensures seamless infinite scroll.
+			//
+			// Applying the same shift to #dragStartOffset keeps future delta computations
+			// consistent so the drag feels continuous across the normalization boundary.
+			const loopDistance = this.#options.length * this.#itemHeight;
+			// After-ghost overflow: newOffset went past the last after-ghost (rawIndex >= 2N)
+			const afterGhostEnd = this.#indexToOffset(2 * this.#options.length);
+			// Before-ghost overflow: newOffset went past the first before-ghost (rawIndex < -N)
+			const beforeGhostEnd = this.#indexToOffset(-this.#options.length - 1);
+
+			while (newOffset < afterGhostEnd) {
+				newOffset += loopDistance;
+				this.#dragStartOffset += loopDistance;
+			}
+			while (newOffset > beforeGhostEnd) {
+				newOffset -= loopDistance;
+				this.#dragStartOffset -= loopDistance;
+			}
+		} else {
+			// Apply rubber-band resistance at boundaries
 			if (newOffset > maxOffset) {
 				newOffset = maxOffset + (newOffset - maxOffset) * RESISTANCE;
 			} else if (newOffset < minOffset) {
@@ -183,28 +206,53 @@ export class WheelPhysics {
 	 * Called on pointerup. Computes velocity and kicks off inertia or direct snap.
 	 */
 	endDrag(): void {
+		console.log('[endDrag] called, isDragging=', this.#isDragging, 'offset=', this.offset);
 		if (!this.#isDragging) return;
 		this.#isDragging = false;
 
 		const velocity = calculateVelocity(this.#yList, this.#itemHeight);
 		const rawIndex = this.#offsetToIndex(this.offset);
+		const N = this.#options.length;
 		const currentIndex = this.#infinite
-			? wrapIndex(rawIndex, this.#options.length)
-			: clampIndex(rawIndex, this.#options.length);
+			? wrapIndex(rawIndex, N)
+			: clampIndex(rawIndex, N);
+
+		console.log('[endDrag] velocity=', velocity, 'rawIndex=', rawIndex, 'currentIndex=', currentIndex, 'infinite=', this.#infinite);
 
 		if (Math.abs(velocity) < 0.5) {
 			// Slow release — snap directly to nearest enabled option
 			const snapIndex = snapToNearestEnabled(currentIndex, this.#options);
-			this.animateTo(snapIndex);
+			console.log('[endDrag] slow path, snapIndex=', snapIndex);
+			if (this.#infinite) {
+				// Preserve ghost-section context so the snap animation continues in the
+				// same direction as the drag rather than jumping backward to real-section.
+				// rawIndex is in [-N, 2N-1] (guaranteed by moveDrag normalization).
+				// Determine which "loop offset" we are in and apply to snapIndex:
+				//   before-ghost (rawIndex < 0): animate to snapIndex - N
+				//   after-ghost  (rawIndex >= N): animate to snapIndex + N
+				//   real section (rawIndex in [0, N-1]): animate to snapIndex directly
+				const loopOffset = rawIndex < 0 ? -N : rawIndex >= N ? N : 0;
+				this.animateTo(snapIndex + loopOffset);
+			} else {
+				this.animateTo(snapIndex);
+			}
 		} else {
 			// Inertia — compute overshoot target
-			const rawTarget = computeSnapTarget(currentIndex, velocity, this.#dragSensitivity);
+			// Use rawIndex (not currentIndex) so the overshoot accounts for the current
+			// ghost-loop position, giving the correct item index after inertia deceleration.
+			const rawTarget = computeSnapTarget(rawIndex, velocity, this.#dragSensitivity);
 			if (this.#infinite) {
-				const wrapped = wrapIndex(rawTarget, this.#options.length);
+				// snapIndex is the nearest enabled item to the overshoot target (in [0, N-1])
+				const wrapped = wrapIndex(rawTarget, N);
 				const snapIndex = snapToNearestEnabled(wrapped, this.#options);
-				this.animateTo(snapIndex);
+				// Animate to the ghost-section position of snapIndex matching the current
+				// loop, so the animation moves in the same direction as the drag.
+				// snapIndex is in [0,N-1]; loopOffset is -N, 0, or +N based on current section.
+				const loopOffset = rawIndex < 0 ? -N : rawIndex >= N ? N : 0;
+				console.log('[endDrag] inertia path, rawTarget=', rawTarget, 'wrapped=', wrapped, 'snapIndex=', snapIndex, 'loopOffset=', loopOffset);
+				this.animateTo(snapIndex + loopOffset);
 			} else {
-				const clamped = clampIndex(rawTarget, this.#options.length);
+				const clamped = clampIndex(rawTarget, N);
 				const snapIndex = snapToNearestEnabled(clamped, this.#options);
 				this.animateTo(snapIndex);
 			}
@@ -257,6 +305,7 @@ export class WheelPhysics {
 	 * Cancels any currently running animation before starting.
 	 */
 	animateTo(targetIndex: number): void {
+		console.log('[animateTo] targetIndex=', targetIndex, 'from offset=', this.offset);
 		this.#cancelRaf();
 		this.#animating = true;
 

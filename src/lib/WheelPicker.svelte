@@ -63,11 +63,13 @@
 		initialIndex,
 		infinite,
 		onSnap: (index: number) => {
+			console.log('[onSnap] index=', index, 'infinite=', infinite, 'offset=', physics.offset);
 			if (infinite) {
 				// D-04: Normalize offset on snap settle
 				const wrappedIndex = wrapIndex(index, options.length);
 				physics.jumpTo(wrappedIndex);
 				const opt = options[wrappedIndex];
+				console.log('[onSnap] wrappedIndex=', wrappedIndex, 'opt=', opt?.value, 'jumpTo offset=', physics.offset);
 				if (opt && !opt.disabled) {
 					state.current = opt.value;
 				}
@@ -185,7 +187,10 @@
 
 	// Pointer event handlers (Pattern 2: Pointer Capture for reliable drag tracking)
 	function onPointerDown(e: PointerEvent) {
-		(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+		console.log('[onPointerDown] type=', e.type, 'currentTarget=', e.currentTarget, 'target=', e.target);
+		const el = e.currentTarget as HTMLElement;
+		el.setPointerCapture(e.pointerId);
+		console.log('[onPointerDown] setPointerCapture called, hasCapture=', el.hasPointerCapture(e.pointerId));
 		physics.startDrag(e.clientY);
 	}
 
@@ -194,6 +199,7 @@
 	}
 
 	function onPointerUp(e: PointerEvent) {
+		console.log('[onPointerUp] type=', e.type, 'currentTarget=', e.currentTarget, 'target=', e.target, 'clientY=', e.clientY);
 		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
 		physics.endDrag();
 	}
@@ -235,8 +241,11 @@
 	<!-- Options container — translated by physics offset -->
 	<div style:transform="translateY({physics.offset}px)">
 		{#if infinite}
-			<!-- Before-ghosts: reversed so options[N-1] appears just above real section (Pitfall 3) -->
-			{#each [...options].reverse() as option}
+			<!-- Before-ghosts: same order as real items so DOM position k shows options[k],
+			     matching #offsetToIndex which maps before-ghost position k to index k mod N.
+			     This ensures Grape (options[N-1]) appears just above the real section, giving
+			     seamless wrap-around when scrolling past the first real item. -->
+			{#each options as option}
 				<div
 					data-swp-option
 					data-swp-disabled={option.disabled ? 'true' : undefined}
