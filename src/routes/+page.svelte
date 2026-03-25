@@ -35,7 +35,82 @@
 
 	let selectedHour = $state('12');
 	let selectedMinute = $state('00');
+
+	// Theme toggle
+	let theme = $state<'light' | 'dark' | 'system'>('system');
+	let mediaQuery: MediaQueryList | null = null;
+
+	function applyTheme(t: 'light' | 'dark' | 'system') {
+		const root = document.documentElement;
+		root.classList.remove('light', 'dark');
+		if (t === 'dark') {
+			root.classList.add('dark');
+		} else if (t === 'light') {
+			root.classList.add('light');
+		} else {
+			// system
+			if (mediaQuery && mediaQuery.matches) {
+				root.classList.add('dark');
+			} else {
+				root.classList.add('light');
+			}
+		}
+	}
+
+	function cycleTheme() {
+		const next: Record<'system' | 'light' | 'dark', 'light' | 'dark' | 'system'> = {
+			system: 'light',
+			light: 'dark',
+			dark: 'system',
+		};
+		theme = next[theme];
+	}
+
+	$effect(() => {
+		if (typeof window === 'undefined') return;
+
+		// Init from localStorage on mount
+		const stored = localStorage.getItem('theme');
+		if (stored === 'light' || stored === 'dark') {
+			theme = stored;
+		} else {
+			theme = 'system';
+		}
+
+		// Set up system media query listener
+		mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		const handleSystemChange = () => {
+			if (theme === 'system') {
+				applyTheme('system');
+			}
+		};
+		mediaQuery.addEventListener('change', handleSystemChange);
+
+		return () => {
+			mediaQuery?.removeEventListener('change', handleSystemChange);
+		};
+	});
+
+	$effect(() => {
+		if (typeof window === 'undefined') return;
+
+		// Persist and apply on every theme change
+		if (theme === 'system') {
+			localStorage.removeItem('theme');
+		} else {
+			localStorage.setItem('theme', theme);
+		}
+		applyTheme(theme);
+	});
+
+	const themeLabel: Record<'light' | 'dark' | 'system', string> = {
+		system: 'Auto',
+		light: 'Light',
+		dark: 'Dark',
+	};
 </script>
+
+<button class="theme-toggle" onclick={cycleTheme}>{themeLabel[theme]}</button>
 
 <main>
 	<section class="hero">
@@ -125,13 +200,20 @@
 		--color-surface: #f4f4f5;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		:global(:root) {
-			--color-bg: #0f0f0f;
-			--color-text: #eeeeee;
-			--color-text-muted: #aaaaaa;
-			--color-surface: #1c1c1e;
-		}
+	:global(:root.light) {
+		color-scheme: light;
+		--color-bg: #ffffff;
+		--color-text: #111111;
+		--color-text-muted: #555555;
+		--color-surface: #f4f4f5;
+	}
+
+	:global(:root.dark) {
+		color-scheme: dark;
+		--color-bg: #0f0f0f;
+		--color-text: #eeeeee;
+		--color-text-muted: #aaaaaa;
+		--color-surface: #1c1c1e;
 	}
 
 	:global(body) {
@@ -140,6 +222,25 @@
 		color: var(--color-text);
 		margin: 0;
 		padding: 32px;
+	}
+
+	.theme-toggle {
+		position: fixed;
+		top: 16px;
+		right: 16px;
+		background: var(--color-surface);
+		border-radius: 999px;
+		padding: 4px 12px;
+		font-size: 12px;
+		border: 1px solid transparent;
+		cursor: pointer;
+		color: var(--color-text-muted);
+		font-family: inherit;
+		z-index: 100;
+	}
+
+	.theme-toggle:hover {
+		border-color: var(--color-text-muted);
 	}
 
 	main {
