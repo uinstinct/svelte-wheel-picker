@@ -1,0 +1,10 @@
+[
+	{
+		"name": "wheel-picker",
+		"title": "Wheel Picker",
+		"type": "registry:component",
+		"description": "iOS-style wheel picker for Svelte 5 with inertia scrolling, infinite loop, and keyboard navigation.",
+		"registryDependencies": [],
+		"relativeUrl": "wheel-picker.json"
+	}
+]
