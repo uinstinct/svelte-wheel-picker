@@ -119,3 +119,12 @@ None — no external service configuration required.
 ---
 *Phase: 06-shadcn-registry-and-demo-site*
 *Completed: 2026-03-25*
+
+## Self-Check: PASSED
+
+- FOUND: registry.json
+- FOUND: static/r/wheel-picker.json
+- FOUND: src/routes/+page.svelte
+- FOUND: 06-01-SUMMARY.md
+- FOUND: commit 0dbd9dd (Task 1)
+- FOUND: commit 3d1d9ce (Task 2)
