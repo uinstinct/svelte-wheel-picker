@@ -104,7 +104,7 @@ export class WheelPhysics {
 		this.#options = opts.options;
 		this.#onSnap = opts.onSnap;
 
-		this.offset = indexToOffset(opts.initialIndex, this.#itemHeight, this.#visibleCount);
+		this.offset = this.#indexToOffset(opts.initialIndex);
 	}
 
 	// ---------------------------------------------------------------------------
@@ -156,12 +156,8 @@ export class WheelPhysics {
 		if (!this.#isDragging) return;
 
 		const delta = clientY - this.#dragStartY;
-		const maxOffset = indexToOffset(0, this.#itemHeight, this.#visibleCount);
-		const minOffset = indexToOffset(
-			this.#options.length - 1,
-			this.#itemHeight,
-			this.#visibleCount
-		);
+		const maxOffset = this.#indexToOffset(0);
+		const minOffset = this.#indexToOffset(this.#options.length - 1);
 
 		let newOffset = this.#dragStartOffset + delta;
 
@@ -191,7 +187,7 @@ export class WheelPhysics {
 		this.#isDragging = false;
 
 		const velocity = calculateVelocity(this.#yList, this.#itemHeight);
-		const rawIndex = offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount);
+		const rawIndex = this.#offsetToIndex(this.offset);
 		const currentIndex = this.#infinite
 			? wrapIndex(rawIndex, this.#options.length)
 			: clampIndex(rawIndex, this.#options.length);
@@ -230,7 +226,7 @@ export class WheelPhysics {
 		if (now - this.#lastWheelTime < 100) return;
 		this.#lastWheelTime = now;
 
-		const rawIndex = offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount);
+		const rawIndex = this.#offsetToIndex(this.offset);
 		const currentIndex = this.#infinite
 			? wrapIndex(rawIndex, this.#options.length)
 			: clampIndex(rawIndex, this.#options.length);
@@ -265,8 +261,8 @@ export class WheelPhysics {
 		this.#animating = true;
 
 		const startOffset = this.offset;
-		const targetOffset = indexToOffset(targetIndex, this.#itemHeight, this.#visibleCount);
-		const distance = Math.abs(targetIndex - offsetToIndex(startOffset, this.#itemHeight, this.#visibleCount));
+		const targetOffset = this.#indexToOffset(targetIndex);
+		const distance = Math.abs(targetIndex - this.#offsetToIndex(startOffset));
 		const durationSec = computeAnimationDuration(distance, this.#scrollSensitivity);
 		const durationMs = durationSec * 1000;
 
@@ -300,7 +296,7 @@ export class WheelPhysics {
 	 * Used to guard against redundant animations when the wheel is already positioned correctly.
 	 */
 	get currentIndex(): number {
-		const raw = offsetToIndex(this.offset, this.#itemHeight, this.#visibleCount);
+		const raw = this.#offsetToIndex(this.offset);
 		return this.#infinite
 			? wrapIndex(raw, this.#options.length)
 			: clampIndex(raw, this.#options.length);
@@ -312,7 +308,7 @@ export class WheelPhysics {
 	 */
 	jumpTo(index: number): void {
 		this.#cancelRaf();
-		this.offset = indexToOffset(index, this.#itemHeight, this.#visibleCount);
+		this.offset = this.#indexToOffset(index);
 	}
 
 	/**
@@ -339,6 +335,28 @@ export class WheelPhysics {
 			this.#rafId = null;
 		}
 		this.#animating = false;
+	}
+
+	/**
+	 * Converts an option index to a translateY offset, accounting for before-ghost
+	 * rows prepended to the DOM container in infinite mode.
+	 *
+	 * In infinite mode the container begins with N = options.length ghost rows, so
+	 * real item[i] sits at DOM position (N + i) * itemHeight. The offset must be
+	 * shifted by -N * itemHeight relative to the non-infinite formula.
+	 */
+	#indexToOffset(index: number): number {
+		const ghostCount = this.#infinite ? this.#options.length : 0;
+		return indexToOffset(index + ghostCount, this.#itemHeight, this.#visibleCount);
+	}
+
+	/**
+	 * Converts a translateY offset back to an option index, accounting for the
+	 * before-ghost prefix in infinite mode (inverse of #indexToOffset).
+	 */
+	#offsetToIndex(offset: number): number {
+		const ghostCount = this.#infinite ? this.#options.length : 0;
+		return offsetToIndex(offset, this.#itemHeight, this.#visibleCount) - ghostCount;
 	}
 }
 
