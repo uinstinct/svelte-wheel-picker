@@ -1,7 +1,8 @@
 ---
 phase: 6
 slug: shadcn-registry-and-demo-site
-status: draft
+status: approved
+reviewed_at: 2026-03-25T00:00:00Z
 shadcn_initialized: false
 preset: none
 created: 2026-03-25
