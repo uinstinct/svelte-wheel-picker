@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
 stopped_at: Completed 06-01-PLAN.md
-last_updated: "2026-03-25T04:07:16.013Z"
+last_updated: "2026-03-25T11:37:28.680Z"
 progress:
   total_phases: 6
   completed_phases: 6
@@ -114,6 +114,12 @@ None yet.
 - Phase 3: `visibleCount` must-be-multiple-of-4 constraint from React source needs validation — may be relaxable
 - Phase 5: Confirm SSR safety — component must not execute browser APIs at module evaluation time
 - Phase 6: shadcn registry `registryDependencies` between `WheelPicker` and `WheelPickerWrapper` must be declared correctly or CLI add fails silently
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260325-ns8 | add dark mode to demo site | 2026-03-25 | e5e7106 | [260325-ns8-add-dark-mode-to-demo-site](./quick/260325-ns8-add-dark-mode-to-demo-site/) |
 
 ## Session Continuity
 
