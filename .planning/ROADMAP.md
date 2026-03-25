@@ -107,8 +107,11 @@ Plans:
   1. Running `npx shadcn-svelte@latest add [registry-url]` copies the component source files into a consumer project and the component renders correctly
   2. The demo site at the root route shows at least two working examples (e.g., time picker, standalone single wheel) using `data-swp-*` CSS targeting for styling
   3. The demo site loads without JavaScript errors and all wheels are interactive on both desktop and a mobile viewport
-**Plans**: TBD
+**Plans**: 1 plan
 **UI hint**: yes
+
+Plans:
+- [ ] 06-01-PLAN.md — shadcn registry setup (registry.json + build) and demo site hero section
 
 ## Progress
 
@@ -122,4 +125,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. WheelPicker Core | 3/3 | Complete   | 2026-03-23 |
 | 4. Infinite Loop Mode | 2/2 | Complete | 2026-03-24 |
 | 5. WheelPickerWrapper and Package | 2/3 | In Progress|  |
-| 6. shadcn Registry and Demo Site | 0/TBD | Not started | - |
+| 6. shadcn Registry and Demo Site | 0/1 | Not started | - |
