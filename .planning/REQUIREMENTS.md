@@ -40,8 +40,8 @@
 - [x] **DIST-01**: TypeScript throughout with full type exports
 - [x] **DIST-02**: Zero runtime dependencies
 - [x] **DIST-03**: Publishable npm package with proper exports/types/svelte fields
-- [ ] **DIST-04**: shadcn-svelte CLI integration (registry.json + built files)
-- [ ] **DIST-05**: Simple demo site showcasing component usage
+- [x] **DIST-04**: shadcn-svelte CLI integration (registry.json + built files)
+- [x] **DIST-05**: Simple demo site showcasing component usage
 
 ## v2 Requirements
 
@@ -92,8 +92,8 @@
 | DIST-01 | Phase 2 | Complete |
 | DIST-02 | Phase 5 | Complete |
 | DIST-03 | Phase 5 | Complete |
-| DIST-04 | Phase 6 | Pending |
-| DIST-05 | Phase 6 | Pending |
+| DIST-04 | Phase 6 | Complete |
+| DIST-05 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total
