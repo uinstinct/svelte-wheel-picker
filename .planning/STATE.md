@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed 06-01-PLAN.md
-last_updated: "2026-03-25T11:37:28.680Z"
+stopped_at: Completed 07-02-PLAN.md — Task 3 human-verify approved. Phase 7 fully complete.
+last_updated: "2026-03-25T12:38:40.063Z"
 progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 14
-  completed_plans: 14
+  total_phases: 7
+  completed_phases: 7
+  total_plans: 16
+  completed_plans: 16
 ---
 
 # Project State
@@ -19,11 +19,11 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both touch and desktop
-**Current focus:** Phase 06 — shadcn-registry-and-demo-site
+**Current focus:** Phase 07 — rotating-drum-cylinder-list-style-picker-with-3d-perspective-items-farther-from-center-appear-smaller-and-compressed-vertically
 
 ## Current Position
 
-Phase: 06
+Phase: 07
 Plan: Not started
 
 ## Performance Metrics
@@ -60,6 +60,8 @@ Plan: Not started
 | Phase 05-wheelpickerwrapper-and-package P02 | 7 | 1 tasks | 3 files |
 | Phase 05-wheelpickerwrapper-and-package P03 | 10 | 2 tasks | 4 files |
 | Phase 06-shadcn-registry-and-demo-site P01 | 2 | 2 tasks | 4 files |
+| Phase 07-rotating-drum-cylinder-list-style-picker-with-3d-perspective-items-farther-from-center-appear-smaller-and-compressed-vertically PP01 | 3 | 2 tasks | 3 files |
+| Phase 07 P02 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -103,6 +105,13 @@ Recent decisions affecting current work:
 - [Phase 05-wheelpickerwrapper-and-package]: Use @vitest/browser-playwright/context for userEvent import (direct dep); @vitest/browser/context is only transitive and not resolved by tsc
 - [Phase 06-shadcn-registry-and-demo-site]: shadcn-svelte v1.2.3 requires registryDependencies field as empty array even when no dependencies exist — schema validation fails if field is absent
 - [Phase 06-shadcn-registry-and-demo-site]: Single registry item bundles all 7 source files — no separate items for WheelPicker vs WheelPickerWrapper, no registryDependencies needed
+- [Phase 07]: cylindricalScaleY uses cosine projection: dist=slotIndex+offset/itemHeight-floor(vc/2), angle=dist*PI/vc, scaleY=max(MIN_CYLINDRICAL_SCALE, cos(angle))
+- [Phase 07]: Test case for cylindricalScaleY clamping uses slotIndex=5 (dist=3, cos negative) not slotIndex=100 (cosine oscillates, does not monotonically decrease)
+- [Phase 07]: scale=undefined when cylindrical=false omits style:transform and style:opacity from DOM (flat mode byte-for-byte preservation)
+
+### Roadmap Evolution
+
+- Phase 7 added: rotating drum cylinder list style picker with 3D perspective — items farther from center appear smaller and compressed vertically
 
 ### Pending Todos
 
@@ -123,6 +132,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T04:03:59.474Z
-Stopped at: Completed 06-01-PLAN.md
+Last session: 2026-03-25T12:34:04.098Z
+Stopped at: Completed 07-02-PLAN.md — Task 3 human-verify approved. Phase 7 fully complete.
 Resume file: None

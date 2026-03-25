@@ -54,6 +54,8 @@ export interface WheelPickerProps<T extends string | number = string> {
 	scrollSensitivity?: number;
 	/** Enable infinite loop scrolling (wraps at both ends). Default: false. */
 	infinite?: boolean;
+	/** Enable rotating drum/cylinder visual style with faux-3D scaleY compression. Default: false. */
+	cylindrical?: boolean;
 }
 
 /**

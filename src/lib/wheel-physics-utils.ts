@@ -33,6 +33,9 @@ export const DEFAULT_VISIBLE_COUNT = 5;
 /** Deceleration constant used in snap-back calculations. */
 export const SNAP_BACK_DECELERATION = 10;
 
+/** Minimum scaleY for cylindrical mode to prevent items collapsing to zero height. */
+export const MIN_CYLINDRICAL_SCALE = 0.1;
+
 // ---------------------------------------------------------------------------
 // Pure physics functions
 // ---------------------------------------------------------------------------
@@ -201,4 +204,33 @@ export function computeSnapTarget(
 export function computeAnimationDuration(distance: number, scrollSensitivity: number): number {
 	const raw = Math.sqrt(Math.abs(distance) / scrollSensitivity);
 	return Math.max(0.1, Math.min(0.6, raw));
+}
+
+/**
+ * Computes per-item scaleY (and opacity) for cylindrical drum mode.
+ *
+ * Derived from the cosine projection of a virtual cylinder: an item at angle
+ * theta from front-face has projected height cos(theta) * fullHeight.
+ * Maps floor(visibleCount/2) slots from center to PI/2, auto-scaling with visibleCount.
+ *
+ * slotIndex assignments:
+ *   - Non-infinite real item i:    slotIndex = i
+ *   - Infinite before-ghost g:     slotIndex = g - options.length
+ *   - Infinite after-ghost j:      slotIndex = options.length + j
+ *
+ * @param slotIndex - The item's position in the combined DOM list
+ * @param offset    - Current physics.offset (translateY px)
+ * @param itemHeight - Height of each option row in pixels
+ * @param visibleCount - Number of visible rows (must be odd)
+ * @returns scaleY in range [MIN_CYLINDRICAL_SCALE, 1.0]
+ */
+export function cylindricalScaleY(
+	slotIndex: number,
+	offset: number,
+	itemHeight: number,
+	visibleCount: number
+): number {
+	const dist = slotIndex + offset / itemHeight - Math.floor(visibleCount / 2);
+	const angle = (dist * Math.PI) / visibleCount;
+	return Math.max(MIN_CYLINDRICAL_SCALE, Math.cos(angle));
 }

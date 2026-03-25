@@ -35,6 +35,7 @@
 
 	let selectedHour = $state('12');
 	let selectedMinute = $state('00');
+	let selectedCylindrical = $state('cherry');
 
 	// Theme toggle
 	let theme = $state<'light' | 'dark' | 'system'>('system');
@@ -115,10 +116,15 @@
 <main>
 	<section class="hero">
 		<h1>svelte-wheel-picker</h1>
-		<p class="hero-description">iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation.</p>
+		<p class="hero-description">
+			iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard
+			navigation.
+		</p>
 		<div class="install-block">
 			<pre><code>npm install @uinstinct/svelte-wheel-picker</code></pre>
-			<pre><code>npx shadcn-svelte@latest add https://svelte-wheel-picker.vercel.app/r/wheel-picker.json</code></pre>
+			<pre><code
+					>npx shadcn-svelte@latest add https://svelte-wheel-picker.vercel.app/r/wheel-picker.json</code
+				></pre>
 		</div>
 		<p class="install-note">(URL shown after deployment — update before publishing)</p>
 	</section>
@@ -177,16 +183,36 @@
 				<WheelPicker
 					options={hourOptions}
 					value={selectedHour}
-					onValueChange={(v) => { selectedHour = v; }}
+					onValueChange={(v) => {
+						selectedHour = v;
+					}}
 					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 				/>
 				<WheelPicker
 					options={minuteOptions}
 					value={selectedMinute}
-					onValueChange={(v) => { selectedMinute = v; }}
+					onValueChange={(v) => {
+						selectedMinute = v;
+					}}
 					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 				/>
 			</WheelPickerWrapper>
+		</div>
+	</section>
+
+	<section>
+		<h2>Drum / Cylinder</h2>
+		<p>Selected: {selectedCylindrical}</p>
+		<div class="wheel-container">
+			<WheelPicker
+				options={fruitOptions}
+				value={selectedCylindrical}
+				onValueChange={(v) => {
+					selectedCylindrical = v;
+				}}
+				cylindrical={true}
+				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
+			/>
 		</div>
 	</section>
 </main>
@@ -217,7 +243,10 @@
 	}
 
 	:global(body) {
-		font-family: system-ui, -apple-system, sans-serif;
+		font-family:
+			system-ui,
+			-apple-system,
+			sans-serif;
 		background: var(--color-bg);
 		color: var(--color-text);
 		margin: 0;

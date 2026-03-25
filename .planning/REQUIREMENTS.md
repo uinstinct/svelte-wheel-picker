@@ -55,6 +55,13 @@
 - **A11Y-01**: Full ARIA listbox pattern (aria-activedescendant, aria-selected, roles)
 - **A11Y-02**: Screen reader announcements on value change
 
+### Cylindrical Drum Mode (Phase 7)
+
+- [x] **DRUM-01**: Pure `cylindricalScaleY` function that computes per-item vertical scale factor from cosine projection of a virtual cylinder, clamped to `MIN_CYLINDRICAL_SCALE` (0.1)
+- [x] **DRUM-02**: `cylindrical?: boolean` optional prop on `WheelPickerProps` interface (default `false`)
+- [x] **DRUM-03**: When `cylindrical={true}`, all three `{#each}` blocks (before-ghosts, real items, after-ghosts) apply per-item `scaleY` transform and opacity from `cylindricalScaleY`; when `false`, rendering is identical to pre-Phase-7 behavior
+- [x] **DRUM-04**: Demo page "Drum / Cylinder" section showing a working cylindrical wheel with existing CSS classes and `data-swp-cylindrical` attribute on wrapper
+
 ## Out of Scope
 
 | Feature | Reason |
@@ -94,12 +101,17 @@
 | DIST-03 | Phase 5 | Complete |
 | DIST-04 | Phase 6 | Complete |
 | DIST-05 | Phase 6 | Complete |
+| DRUM-01 | Phase 7 | Complete |
+| DRUM-02 | Phase 7 | Complete |
+| DRUM-03 | Phase 7 | Complete |
+| DRUM-04 | Phase 7 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total
 - Mapped to phases: 23
 - Unmapped: 0 ✓
+- v2/Phase 7 requirements: 4 total (DRUM-01 through DRUM-04)
 
 ---
 *Requirements defined: 2026-03-23*
-*Last updated: 2026-03-23 after roadmap creation*
+*Last updated: 2026-03-25 after Phase 7 planning*
