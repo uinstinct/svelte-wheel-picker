@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 6 context gathered (discuss mode)
-last_updated: "2026-03-25T03:40:10.343Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-03-25T04:03:59.488Z"
 progress:
   total_phases: 6
-  completed_phases: 5
-  total_plans: 13
-  completed_plans: 13
+  completed_phases: 6
+  total_plans: 14
+  completed_plans: 14
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both touch and desktop
-**Current focus:** Phase 05 — wheelpickerwrapper-and-package
+**Current focus:** Phase 06 — shadcn-registry-and-demo-site
 
 ## Current Position
 
-Phase: 6
-Plan: Not started
+Phase: 06 (shadcn-registry-and-demo-site) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Plan: Not started
 | Phase 05-wheelpickerwrapper-and-package P01 | 2m | 2 tasks | 6 files |
 | Phase 05-wheelpickerwrapper-and-package P02 | 7 | 1 tasks | 3 files |
 | Phase 05-wheelpickerwrapper-and-package P03 | 10 | 2 tasks | 4 files |
+| Phase 06-shadcn-registry-and-demo-site P01 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -100,6 +101,8 @@ Recent decisions affecting current work:
 - [Phase 05-wheelpickerwrapper-and-package]: .npmignore added to exclude compiled test artifacts from npm tarball (svelte-package compiles all src/lib/ including tests)
 - [Phase 05-wheelpickerwrapper-and-package]: Post-compile cleanup in package script (not .npmignore) is the authoritative mechanism for excluding test artifacts from tarball
 - [Phase 05-wheelpickerwrapper-and-package]: Use @vitest/browser-playwright/context for userEvent import (direct dep); @vitest/browser/context is only transitive and not resolved by tsc
+- [Phase 06-shadcn-registry-and-demo-site]: shadcn-svelte v1.2.3 requires registryDependencies field as empty array even when no dependencies exist — schema validation fails if field is absent
+- [Phase 06-shadcn-registry-and-demo-site]: Single registry item bundles all 7 source files — no separate items for WheelPicker vs WheelPickerWrapper, no registryDependencies needed
 
 ### Pending Todos
 
@@ -114,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T03:40:10.331Z
-Stopped at: Phase 6 context gathered (discuss mode)
-Resume file: .planning/phases/06-shadcn-registry-and-demo-site/06-CONTEXT.md
+Last session: 2026-03-25T04:03:59.474Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: None
