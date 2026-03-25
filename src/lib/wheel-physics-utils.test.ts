@@ -16,6 +16,8 @@ import {
 	DEFAULT_ITEM_HEIGHT,
 	DEFAULT_VISIBLE_COUNT,
 	SNAP_BACK_DECELERATION,
+	cylindricalScaleY,
+	MIN_CYLINDRICAL_SCALE,
 } from './wheel-physics-utils.js';
 
 describe('easeOutCubic', () => {
@@ -288,5 +290,41 @@ describe('constants', () => {
 
 	it('SNAP_BACK_DECELERATION is 10', () => {
 		expect(SNAP_BACK_DECELERATION).toBe(10);
+	});
+});
+
+describe('cylindricalScaleY', () => {
+	it('center item (dist=0) returns 1.0', () => {
+		// slotIndex=0, offset=60 (indexToOffset(0,30,5)=60), itemHeight=30, vc=5
+		// dist = 0 + 60/30 - floor(5/2) = 0 + 2 - 2 = 0
+		expect(cylindricalScaleY(0, 60, 30, 5)).toBeCloseTo(1.0, 5);
+	});
+
+	it('one slot from center returns cos(PI/visibleCount)', () => {
+		// slotIndex=1, offset=60, dist = 1 + 2 - 2 = 1
+		// angle = 1 * PI/5, cos(PI/5) ≈ 0.80902
+		expect(cylindricalScaleY(1, 60, 30, 5)).toBeCloseTo(Math.cos(Math.PI / 5), 5);
+	});
+
+	it('symmetric: dist=-1 equals dist=+1', () => {
+		// slotIndex=-1, offset=60, dist = -1 + 2 - 2 = -1
+		const above = cylindricalScaleY(-1, 60, 30, 5);
+		const below = cylindricalScaleY(1, 60, 30, 5);
+		expect(above).toBeCloseTo(below, 10);
+	});
+
+	it('clamps to MIN_CYLINDRICAL_SCALE for extreme distances', () => {
+		// slotIndex=5, offset=0, vc=5: dist = 5 + 0 - 2 = 3
+		// angle = 3*PI/5 ≈ 1.885 rad, cos(1.885) ≈ -0.309 → clamped to MIN_CYLINDRICAL_SCALE
+		expect(cylindricalScaleY(5, 0, 30, 5)).toBe(MIN_CYLINDRICAL_SCALE);
+	});
+
+	it('works with different visibleCount values', () => {
+		// vc=7, slotIndex=3, offset=0: dist = 3 + 0/30 - 3 = 0
+		expect(cylindricalScaleY(3, 0, 30, 7)).toBeCloseTo(1.0, 5);
+	});
+
+	it('MIN_CYLINDRICAL_SCALE is 0.1', () => {
+		expect(MIN_CYLINDRICAL_SCALE).toBe(0.1);
 	});
 });

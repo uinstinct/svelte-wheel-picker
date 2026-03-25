@@ -21,6 +21,7 @@ Pixel-perfect, buttery-smooth wheel picker interaction that feels native on both
 
 - [x] shadcn-svelte CLI integration — Validated in Phase 6: shadcn Registry and Demo Site
 - [x] Simple demo site showcasing the component — Validated in Phase 6: shadcn Registry and Demo Site
+- [x] Cylindrical drum/3D perspective picker — Validated in Phase 7: Cylindrical Drum Picker
 
 ### Active
 
@@ -92,4 +93,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-25 — Phase 06 complete: shadcn-svelte registry endpoint live (static/r/wheel-picker.json), demo site hero section added with npm + shadcn install commands*
+*Last updated: 2026-03-25 — Phase 07 complete: cylindrical drum picker implemented — cylindricalScaleY cosine projection function, cylindrical prop, all WheelPicker item blocks wired with vertical compression and opacity falloff, demo section added*

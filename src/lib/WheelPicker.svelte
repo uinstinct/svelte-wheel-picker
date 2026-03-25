@@ -9,6 +9,7 @@
 		DEFAULT_ITEM_HEIGHT,
 		DEFAULT_DRAG_SENSITIVITY,
 		DEFAULT_SCROLL_SENSITIVITY,
+		cylindricalScaleY,
 	} from './wheel-physics-utils.js';
 	import { wrapIndex } from './wheel-physics-utils.js';
 
@@ -23,13 +24,14 @@
 		dragSensitivity = DEFAULT_DRAG_SENSITIVITY,
 		scrollSensitivity = DEFAULT_SCROLL_SENSITIVITY,
 		infinite = false,
+		cylindrical = false,
 	}: WheelPickerProps = $props();
 
 	// D-07: visibleCount must be odd — warn and round up if even
 	const visibleCount = $derived.by(() => {
 		if (rawVisibleCount % 2 === 0) {
 			console.warn(
-				`[WheelPicker] visibleCount must be an odd number. Received ${rawVisibleCount}, rounding up to ${rawVisibleCount + 1}.`
+				`[WheelPicker] visibleCount must be an odd number. Received ${rawVisibleCount}, rounding up to ${rawVisibleCount + 1}.`,
 			);
 			return rawVisibleCount + 1;
 		}
@@ -69,7 +71,14 @@
 				const wrappedIndex = wrapIndex(index, options.length);
 				physics.jumpTo(wrappedIndex);
 				const opt = options[wrappedIndex];
-				console.log('[onSnap] wrappedIndex=', wrappedIndex, 'opt=', opt?.value, 'jumpTo offset=', physics.offset);
+				console.log(
+					'[onSnap] wrappedIndex=',
+					wrappedIndex,
+					'opt=',
+					opt?.value,
+					'jumpTo offset=',
+					physics.offset,
+				);
 				if (opt && !opt.disabled) {
 					state.current = opt.value;
 				}
@@ -187,10 +196,20 @@
 
 	// Pointer event handlers (Pattern 2: Pointer Capture for reliable drag tracking)
 	function onPointerDown(e: PointerEvent) {
-		console.log('[onPointerDown] type=', e.type, 'currentTarget=', e.currentTarget, 'target=', e.target);
+		console.log(
+			'[onPointerDown] type=',
+			e.type,
+			'currentTarget=',
+			e.currentTarget,
+			'target=',
+			e.target,
+		);
 		const el = e.currentTarget as HTMLElement;
 		el.setPointerCapture(e.pointerId);
-		console.log('[onPointerDown] setPointerCapture called, hasCapture=', el.hasPointerCapture(e.pointerId));
+		console.log(
+			'[onPointerDown] setPointerCapture called, hasCapture=',
+			el.hasPointerCapture(e.pointerId),
+		);
 		physics.startDrag(e.clientY);
 	}
 
@@ -199,7 +218,16 @@
 	}
 
 	function onPointerUp(e: PointerEvent) {
-		console.log('[onPointerUp] type=', e.type, 'currentTarget=', e.currentTarget, 'target=', e.target, 'clientY=', e.clientY);
+		console.log(
+			'[onPointerUp] type=',
+			e.type,
+			'currentTarget=',
+			e.currentTarget,
+			'target=',
+			e.target,
+			'clientY=',
+			e.clientY,
+		);
 		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
 		physics.endDrag();
 	}
@@ -213,6 +241,7 @@
 
 <div
 	data-swp-wrapper
+	data-swp-cylindrical={cylindrical ? 'true' : undefined}
 	class={classNames?.wrapper ?? undefined}
 	style:height="{visibleCount * optionItemHeight}px"
 	style:overflow="hidden"
@@ -241,11 +270,11 @@
 	<!-- Options container — translated by physics offset -->
 	<div style:transform="translateY({physics.offset}px)">
 		{#if infinite}
-			<!-- Before-ghosts: same order as real items so DOM position k shows options[k],
-			     matching #offsetToIndex which maps before-ghost position k to index k mod N.
-			     This ensures Grape (options[N-1]) appears just above the real section, giving
-			     seamless wrap-around when scrolling past the first real item. -->
-			{#each options as option}
+			<!-- Before-ghosts: reversed so options[N-1] appears just above real section (Pitfall 3) -->
+			{#each [...options].reverse() as option, g}
+				{@const scale = cylindrical
+					? cylindricalScaleY(g - options.length, physics.offset, optionItemHeight, visibleCount)
+					: undefined}
 				<div
 					data-swp-option
 					data-swp-disabled={option.disabled ? 'true' : undefined}
@@ -254,6 +283,8 @@
 					style:display="flex"
 					style:align-items="center"
 					style:justify-content="center"
+					style:transform={scale !== undefined ? `scaleY(${scale})` : undefined}
+					style:opacity={scale}
 					role="option"
 					aria-selected={false}
 				>
@@ -266,6 +297,9 @@
 
 		<!-- Real items section -->
 		{#each options as option, i}
+			{@const scale = cylindrical
+				? cylindricalScaleY(i, physics.offset, optionItemHeight, visibleCount)
+				: undefined}
 			<div
 				data-swp-option
 				data-swp-selected={selectedIndex === i ? 'true' : undefined}
@@ -275,6 +309,8 @@
 				style:display="flex"
 				style:align-items="center"
 				style:justify-content="center"
+				style:transform={scale !== undefined ? `scaleY(${scale})` : undefined}
+				style:opacity={scale}
 				role="option"
 				aria-selected={selectedIndex === i}
 			>
@@ -286,7 +322,10 @@
 
 		{#if infinite}
 			<!-- After-ghosts: same order as real items -->
-			{#each options as option}
+			{#each options as option, j}
+				{@const scale = cylindrical
+					? cylindricalScaleY(options.length + j, physics.offset, optionItemHeight, visibleCount)
+					: undefined}
 				<div
 					data-swp-option
 					data-swp-disabled={option.disabled ? 'true' : undefined}
@@ -295,6 +334,8 @@
 					style:display="flex"
 					style:align-items="center"
 					style:justify-content="center"
+					style:transform={scale !== undefined ? `scaleY(${scale})` : undefined}
+					style:opacity={scale}
 					role="option"
 					aria-selected={false}
 				>

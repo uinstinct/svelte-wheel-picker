@@ -116,7 +116,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -126,3 +126,18 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 4. Infinite Loop Mode | 2/2 | Complete | 2026-03-24 |
 | 5. WheelPickerWrapper and Package | 2/3 | In Progress|  |
 | 6. shadcn Registry and Demo Site | 0/1 | Not started | - |
+
+### Phase 7: Rotating Drum / Cylinder Picker
+**Goal**: WheelPicker gains a `cylindrical` boolean prop that applies faux-3D scaleY compression and opacity falloff per item, creating an iOS-native drum illusion without CSS 3D transforms
+**Requirements**: DRUM-01, DRUM-02, DRUM-03, DRUM-04
+**Depends on:** Phase 6
+**Success Criteria** (what must be TRUE):
+  1. When `cylindrical={true}`, items farther from the center selection row appear vertically compressed (scaleY) and faded (opacity), creating a rotating drum illusion
+  2. When `cylindrical={false}` (the default), the wheel is byte-for-byte identical to its pre-Phase-7 rendering
+  3. The cylindrical effect works correctly with infinite mode — ghost items receive the same transforms with visual continuity at wrap boundaries
+  4. The demo page shows a "Drum / Cylinder" section demonstrating the effect
+**Plans**: 2 plans
+
+Plans:
+- [x] 07-01-PLAN.md — cylindricalScaleY pure function (TDD), MIN_CYLINDRICAL_SCALE constant, cylindrical prop type
+- [x] 07-02-PLAN.md — WheelPicker template wiring (3 each blocks), demo section, visual checkpoint
