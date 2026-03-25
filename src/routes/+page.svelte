@@ -38,7 +38,15 @@
 </script>
 
 <main>
-	<h1>Wheel Picker</h1>
+	<section class="hero">
+		<h1>svelte-wheel-picker</h1>
+		<p class="hero-description">iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation.</p>
+		<div class="install-block">
+			<pre><code>npm install @uinstinct/svelte-wheel-picker</code></pre>
+			<pre><code>npx shadcn-svelte@latest add https://svelte-wheel-picker.vercel.app/r/wheel-picker.json</code></pre>
+		</div>
+		<p class="install-note">(URL shown after deployment — update before publishing)</p>
+	</section>
 
 	<section>
 		<h2>Single Wheel</h2>
@@ -140,10 +148,51 @@
 	}
 
 	h1 {
-		font-size: 20px;
+		font-size: 28px;
 		font-weight: 600;
 		line-height: 1.2;
+		margin-bottom: 16px;
+	}
+
+	.hero {
+		padding: 48px 0;
 		margin-bottom: 24px;
+	}
+
+	.hero-description {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 1.5;
+		color: var(--color-text-muted);
+		margin-bottom: 16px;
+	}
+
+	.install-block {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-bottom: 8px;
+	}
+
+	.install-block pre {
+		background: var(--color-surface);
+		border-radius: 6px;
+		padding: 8px 12px;
+		overflow-x: auto;
+		margin: 0;
+	}
+
+	.install-block code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 14px;
+		color: var(--color-text-muted);
+	}
+
+	.install-note {
+		font-size: 12px;
+		font-style: italic;
+		color: var(--color-text-muted);
+		margin-bottom: 0;
 	}
 
 	h2 {
