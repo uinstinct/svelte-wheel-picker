@@ -20,3 +20,11 @@ Resolved debug sessions. Used by `gsd-debugger` to surface known-pattern hypothe
 - **Files changed:** src/lib/WheelPicker.svelte, src/lib/use-controllable-state.svelte.ts, src/lib/wheel-physics-utils.ts, src/lib/wheel-physics-utils.test.ts, src/lib/use-wheel-physics.svelte.ts
 ---
 
+## drag-selection-mismatch — Dragging wheel selects wrong item due to ghost row offset not applied in physics calculations
+- **Date:** 2026-03-25
+- **Error patterns:** drag, selected option, wrong item, mismatch, cherry, elderberry, centered, visual center, offset, ghost, infinite, indexToOffset, offsetToIndex
+- **Root cause:** In infinite mode, WheelPicker prepends N before-ghost rows to the options container DOM. The indexToOffset and offsetToIndex functions in wheel-physics-utils.ts do not account for this, computing offsets as if real items start at the container top. This shifts visual centering by N*itemHeight, causing a misalignment of N items between what's visually centered and what's selected.
+- **Fix:** Added private #indexToOffset and #offsetToIndex wrapper methods in WheelPhysics that apply a ghost correction (N * itemHeight) when infinite=true, and replaced all 7 direct utility call sites in the class with these wrappers.
+- **Files changed:** src/lib/use-wheel-physics.svelte.ts
+---
+
