@@ -1,9 +1,10 @@
-# NPM_TOKEN setup:
-# 1. Go to npmjs.com → Access Tokens → Generate New Token (Automation type)
-# 2. Add the token as a GitHub secret named NPM_TOKEN in repo Settings → Secrets
+# NPM_TOKEN setup (one-time human action):
+# 1. Go to npmjs.com → your avatar → Access Tokens → Generate New Token (Automation type)
+# 2. Go to GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+#    Name: NPM_TOKEN  Value: the token from step 1
 #
-# First publish must be done manually: pnpm publish --access public
-# After that, this workflow handles all subsequent releases.
+# No manual first publish needed — publishConfig.access: "public" in package.json
+# handles scoped package access automatically. CI publishes on first run.
 #
 # OIDC upgrade path (no long-lived tokens):
 # Once the package exists on npm, configure a Trusted Publisher on npmjs.com
@@ -43,6 +44,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Publish
-        run: pnpm publish --no-git-checks
+        run: pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
