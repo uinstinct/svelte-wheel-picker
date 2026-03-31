@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260331-qg5-PLAN.md — version bump now goes to releases/v* branch not main
-last_updated: "2026-03-31T13:35:48.412Z"
-last_activity: "2026-03-31 - Completed quick task 260331-pv9: add README.md and LICENSE to npm files array"
+stopped_at: Completed quick-260331-qnz-PLAN.md — release workflow now uses single releases branch not releases/v* per release
+last_updated: "2026-03-31T14:00:00.000Z"
+last_activity: "2026-03-31 - Completed quick task 260331-qnz: fix release workflow to push version bump to single releases branch"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -142,6 +142,7 @@ None yet.
 | 260331-pv9 | add README.md and LICENSE to npm files array | 2026-03-31 | 4b140dd | [260331-pv9-i-am-not-getting-the-readme-md-visible-o](./quick/260331-pv9-i-am-not-getting-the-readme-md-visible-o/) |
 | 260331-qah | fully remove Vercel deployment, add Netlify via GitHub Actions | 2026-03-31 | 6d1ebd2 | [260331-qah-fully-remove-vercel-deployment-via-githu](./quick/260331-qah-fully-remove-vercel-deployment-via-githu/) |
 | 260331-qg5 | instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action | 2026-03-31 | 0fdb559 | [260331-qg5-instead-of-publishing-and-releasing-on-t](./quick/260331-qg5-instead-of-publishing-and-releasing-on-t/) |
+| 260331-qnz | fix release workflow to push version bump to single releases branch not releases/v{version} per release | 2026-03-31 | 3f12729 | [260331-qnz-fix-the-release-workflow-to-push-the-ver](./quick/260331-qnz-fix-the-release-workflow-to-push-the-ver/) |
 
 ## Session Continuity
 
