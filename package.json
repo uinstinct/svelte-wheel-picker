@@ -19,6 +19,9 @@
     "dist"
   ],
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "svelte": "^5.0.0"
   },
