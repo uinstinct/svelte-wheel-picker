@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Checkpoint quick-260331-qah Task 3 — awaiting Netlify site creation and secrets setup
-last_updated: "2026-03-31T19:06:00.000Z"
-last_activity: "2026-03-31 - Quick task 260331-qah: replaced Vercel with Netlify (adapter-static + deploy workflow), awaiting human-verify checkpoint"
+stopped_at: Completed quick-260331-qg5-PLAN.md — version bump now goes to releases/v* branch not main
+last_updated: "2026-03-31T13:35:48.412Z"
+last_activity: "2026-03-31 - Completed quick task 260331-pv9: add README.md and LICENSE to npm files array"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -144,7 +144,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-31T13:10:55.225Z
+Last session: 2026-03-31T13:35:48.401Z
 Last activity: 2026-03-31 - Completed quick task 260331-pv9: add README.md and LICENSE to npm files array
-Stopped at: Completed quick-260331-pv9-PLAN.md — added README.md and LICENSE to npm files array
+Stopped at: Completed quick-260331-qg5-PLAN.md — version bump now goes to releases/v* branch not main
 Resume file: None
