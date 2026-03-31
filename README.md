@@ -1,4 +1,4 @@
-# @uinstinct/svelte-wheel-picker
+# svelte-wheel-picker 🖱️
 
 [![npm version](https://img.shields.io/npm/v/@uinstinct/svelte-wheel-picker)](https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker)
 [![license](https://img.shields.io/npm/l/@uinstinct/svelte-wheel-picker)](https://github.com/uinstinct/svelte-wheel-picker/blob/main/LICENSE)
