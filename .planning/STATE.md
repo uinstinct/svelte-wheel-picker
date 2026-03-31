@@ -146,6 +146,7 @@ None yet.
 | 260331-qpt | replace Vercel URL with Netlify URL across README, registry.json, and demo page | 2026-03-31 | 01ecc48 | [260331-qpt-the-new-deployed-url-is-https-svelte-whe](./quick/260331-qpt-the-new-deployed-url-is-https-svelte-whe/) |
 | 260331-qxr | fix release workflow to read current version from git tag not package.json | 2026-03-31 | 9e00d1b | [260331-qxr-fix-release-workflow-read-current-versio](./quick/260331-qxr-fix-release-workflow-read-current-versio/) |
 | 260331-qvi | fix registry.json not accessible at /registry.json on Netlify | 2026-03-31 | 55ecc15 | [260331-qvi-fix-registry-json-not-accessible-at-regi](./quick/260331-qvi-fix-registry-json-not-accessible-at-regi/) |
+| 260331-rsh | link GitHub repo with the npm package | 2026-03-31 | 6bb3973 | [260331-rsh-link-github-repo-with-the-npm-package](./quick/260331-rsh-link-github-repo-with-the-npm-package/) |
 
 ## Session Continuity
 
