@@ -34,11 +34,17 @@ jobs:
             echo "type=patch" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Read current version
+      - name: Read current version from latest git tag
         id: current
         run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          TAG_VERSION=$(git tag --sort=-v:refname | grep '^v' | head -1 | sed 's/^v//')
+          if [ -z "$TAG_VERSION" ]; then
+            TAG_VERSION=$(node -p "require('./package.json').version")
+            echo "No git tags found, falling back to package.json: $TAG_VERSION"
+          else
+            echo "Latest git tag version: $TAG_VERSION"
+          fi
+          echo "version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Bump version
         id: newver
