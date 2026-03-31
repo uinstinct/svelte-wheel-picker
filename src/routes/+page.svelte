@@ -123,7 +123,7 @@
 		<div class="install-block">
 			<pre><code>npm install @uinstinct/svelte-wheel-picker</code></pre>
 			<pre><code
-					>npx shadcn-svelte@latest add https://svelte-wheel-picker.vercel.app/r/wheel-picker.json</code
+					>npx shadcn-svelte@latest add https://svelte-wheel-spinner.netlify.app/r/wheel-picker.json</code
 				></pre>
 		</div>
 		</section>
