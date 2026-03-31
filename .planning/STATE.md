@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260331-p5j-PLAN.md — added vercel.json to disable GitHub integration auto-deploys
-last_updated: "2026-03-31T12:40:37.332Z"
+stopped_at: Completed quick-260331-pv9-PLAN.md — added README.md and LICENSE to npm files array
+last_updated: "2026-03-31T13:10:55.238Z"
 last_activity: "2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch"
 progress:
   total_phases: 7
@@ -137,10 +137,11 @@ None yet.
 | 260331-ong | auto patch release on push to main, manual major via workflow_dispatch | 2026-03-31 | 9d0944c | [260331-ong-auto-patch-release-on-push-to-main-and-m](./quick/260331-ong-auto-patch-release-on-push-to-main-and-m/) |
 | 260331-owu | make sure my readme is visible in npmjs.com | 2026-03-31 | 9a6a506 | [260331-owu-make-sure-my-readme-is-visible-in-npmjs-](./quick/260331-owu-make-sure-my-readme-is-visible-in-npmjs-/) |
 | 260331-p5j | fix Vercel deployment GitHub Action error (git-author team check) | 2026-03-31 | 8324411 | [260331-p5j-fix-vercel-deployment-github-action-erro](./quick/260331-p5j-fix-vercel-deployment-github-action-erro/) |
+| 260331-pv9 | add README.md and LICENSE to npm files array | 2026-03-31 | 4b140dd | [260331-pv9-i-am-not-getting-the-readme-md-visible-o](./quick/260331-pv9-i-am-not-getting-the-readme-md-visible-o/) |
 
 ## Session Continuity
 
-Last session: 2026-03-31T12:40:37.321Z
+Last session: 2026-03-31T13:10:55.225Z
 Last activity: 2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch
-Stopped at: Completed quick-260331-p5j-PLAN.md — added vercel.json to disable GitHub integration auto-deploys
+Stopped at: Completed quick-260331-pv9-PLAN.md — added README.md and LICENSE to npm files array
 Resume file: None
