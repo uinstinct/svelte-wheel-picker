@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260331-qpt-PLAN.md — all URLs updated from svelte-wheel-picker.vercel.app to svelte-wheel-spinner.netlify.app
-last_updated: "2026-03-31T14:10:00.000Z"
-last_activity: "2026-03-31 - Completed quick task 260331-qpt: replace Vercel URL with Netlify URL across README, registry.json, and demo page"
+stopped_at: Completed quick-260331-qxr-PLAN.md — release workflow reads version from latest git tag not package.json
+last_updated: "2026-03-31T14:20:00.000Z"
+last_activity: "2026-03-31 - Completed quick task 260331-qxr: fix release workflow to read current version from git tag with package.json fallback"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -144,6 +144,7 @@ None yet.
 | 260331-qg5 | instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action | 2026-03-31 | 0fdb559 | [260331-qg5-instead-of-publishing-and-releasing-on-t](./quick/260331-qg5-instead-of-publishing-and-releasing-on-t/) |
 | 260331-qnz | fix release workflow to push version bump to single releases branch not releases/v{version} per release | 2026-03-31 | 3f12729 | [260331-qnz-fix-the-release-workflow-to-push-the-ver](./quick/260331-qnz-fix-the-release-workflow-to-push-the-ver/) |
 | 260331-qpt | replace Vercel URL with Netlify URL across README, registry.json, and demo page | 2026-03-31 | 01ecc48 | [260331-qpt-the-new-deployed-url-is-https-svelte-whe](./quick/260331-qpt-the-new-deployed-url-is-https-svelte-whe/) |
+| 260331-qxr | fix release workflow to read current version from git tag not package.json | 2026-03-31 | 9e00d1b | [260331-qxr-fix-release-workflow-read-current-versio](./quick/260331-qxr-fix-release-workflow-read-current-versio/) |
 | 260331-qvi | fix registry.json not accessible at /registry.json on Netlify | 2026-03-31 | 55ecc15 | [260331-qvi-fix-registry-json-not-accessible-at-regi](./quick/260331-qvi-fix-registry-json-not-accessible-at-regi/) |
 
 ## Session Continuity
