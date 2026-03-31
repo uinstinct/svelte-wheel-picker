@@ -141,10 +141,11 @@ None yet.
 | 260331-p5j | fix Vercel deployment GitHub Action error (git-author team check) | 2026-03-31 | 8324411 | [260331-p5j-fix-vercel-deployment-github-action-erro](./quick/260331-p5j-fix-vercel-deployment-github-action-erro/) |
 | 260331-pv9 | add README.md and LICENSE to npm files array | 2026-03-31 | 4b140dd | [260331-pv9-i-am-not-getting-the-readme-md-visible-o](./quick/260331-pv9-i-am-not-getting-the-readme-md-visible-o/) |
 | 260331-qah | fully remove Vercel deployment, add Netlify via GitHub Actions | 2026-03-31 | 6d1ebd2 | [260331-qah-fully-remove-vercel-deployment-via-githu](./quick/260331-qah-fully-remove-vercel-deployment-via-githu/) |
+| 260331-qg5 | instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action | 2026-03-31 | 0fdb559 | [260331-qg5-instead-of-publishing-and-releasing-on-t](./quick/260331-qg5-instead-of-publishing-and-releasing-on-t/) |
 
 ## Session Continuity
 
 Last session: 2026-03-31T13:35:48.401Z
-Last activity: 2026-03-31 - Completed quick task 260331-pv9: add README.md and LICENSE to npm files array
+Last activity: 2026-03-31 - Completed quick task 260331-qg5: instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action
 Stopped at: Completed quick-260331-qg5-PLAN.md — version bump now goes to releases/v* branch not main
 Resume file: None
