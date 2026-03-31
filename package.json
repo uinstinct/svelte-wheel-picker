@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@sveltejs/adapter-vercel": "^6.3.3",
+    "@sveltejs/adapter-static": "3.0.10",
     "@sveltejs/kit": "2.55.0",
     "@sveltejs/package": "2.5.7",
     "@sveltejs/vite-plugin-svelte": "7.0.0",
