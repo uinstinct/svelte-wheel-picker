@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260331-pv9-PLAN.md — added README.md and LICENSE to npm files array
-last_updated: "2026-03-31T13:10:55.238Z"
-last_activity: "2026-03-31 - Completed quick task 260331-pv9: add README.md and LICENSE to npm files array"
+stopped_at: Checkpoint quick-260331-qah Task 3 — awaiting Netlify site creation and secrets setup
+last_updated: "2026-03-31T19:06:00.000Z"
+last_activity: "2026-03-31 - Quick task 260331-qah: replaced Vercel with Netlify (adapter-static + deploy workflow), awaiting human-verify checkpoint"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -109,6 +109,8 @@ Recent decisions affecting current work:
 - [Phase 07]: cylindricalScaleY uses cosine projection: dist=slotIndex+offset/itemHeight-floor(vc/2), angle=dist*PI/vc, scaleY=max(MIN_CYLINDRICAL_SCALE, cos(angle))
 - [Phase 07]: Test case for cylindricalScaleY clamping uses slotIndex=5 (dist=3, cos negative) not slotIndex=100 (cosine oscillates, does not monotonically decrease)
 - [Phase 07]: scale=undefined when cylindrical=false omits style:transform and style:opacity from DOM (flat mode byte-for-byte preservation)
+- [quick-260331-qah]: Switched from adapter-vercel to adapter-static; requires src/routes/+layout.ts with prerender=true for build to succeed
+- [quick-260331-qah]: Deployment moved from Vercel to Netlify via nwtgck/actions-netlify@v3; needs NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets
 
 ### Roadmap Evolution
 
@@ -138,6 +140,7 @@ None yet.
 | 260331-owu | make sure my readme is visible in npmjs.com | 2026-03-31 | 9a6a506 | [260331-owu-make-sure-my-readme-is-visible-in-npmjs-](./quick/260331-owu-make-sure-my-readme-is-visible-in-npmjs-/) |
 | 260331-p5j | fix Vercel deployment GitHub Action error (git-author team check) | 2026-03-31 | 8324411 | [260331-p5j-fix-vercel-deployment-github-action-erro](./quick/260331-p5j-fix-vercel-deployment-github-action-erro/) |
 | 260331-pv9 | add README.md and LICENSE to npm files array | 2026-03-31 | 4b140dd | [260331-pv9-i-am-not-getting-the-readme-md-visible-o](./quick/260331-pv9-i-am-not-getting-the-readme-md-visible-o/) |
+| 260331-qah | fully remove Vercel deployment, add Netlify via GitHub Actions | 2026-03-31 | 6d1ebd2 | [260331-qah-fully-remove-vercel-deployment-via-githu](./quick/260331-qah-fully-remove-vercel-deployment-via-githu/) |
 
 ## Session Continuity
 
