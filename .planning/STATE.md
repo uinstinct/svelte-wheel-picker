@@ -150,6 +150,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-31T19:25:00.000Z
-Last activity: 2026-03-31 - Completed quick task 260331-qvi: fix registry.json not accessible at /registry.json on Netlify
+Last activity: 2026-03-31 - Completed quick task 260331-qxr: fix release workflow to read current version from git tag not package.json
 Stopped at: Completed quick-260331-qvi-PLAN.md — static/registry.json added so adapter-static serves it at /registry.json
 Resume file: None
