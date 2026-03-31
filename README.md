@@ -211,7 +211,9 @@ This copies the component source directly into your project under `src/lib/compo
 
 | Prop | Type | Description |
 |------|------|-------------|
-| `classNames` | `{ group?: string }` | Per-element CSS class overrides for the wrapper group container. |
+| `classNames` | `WheelPickerWrapperClassNames` | Per-element CSS class overrides for the wrapper group container. |
+
+**`WheelPickerWrapperClassNames`**: `{ group?: string }` — optional CSS class for the outer group container div.
 
 ## Styling
 
