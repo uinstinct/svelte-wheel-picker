@@ -4,6 +4,14 @@
 	"type": "module",
 	"description": "iOS-style wheel picker for Svelte 5 with inertia scrolling, infinite loop, and keyboard navigation",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/uinstinct/svelte-wheel-picker.git"
+	},
+	"bugs": {
+		"url": "https://github.com/uinstinct/svelte-wheel-picker/issues"
+	},
+	"homepage": "https://svelte-wheel-picker.netlify.app",
 	"engines": {
 		"node": ">=18"
 	},
