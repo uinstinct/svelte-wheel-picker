@@ -8,3 +8,4 @@ build/
 !.env.example
 *.local
 .DS_Store
+.vercel
