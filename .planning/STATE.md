@@ -133,10 +133,11 @@ None yet.
 | 260331-idz | create a readme | 2026-03-31 | 004f0c9 | [260331-idz-create-a-readme](./quick/260331-idz-create-a-readme/) |
 | 260331-ja8 | add a GitHub Action to publish to npm | 2026-03-31 | ee27aa3 | [260331-ja8-add-a-github-action-to-publish-to-npm](./quick/260331-ja8-add-a-github-action-to-publish-to-npm/) |
 | 260331-jcm | add shadcn registry to site so it can be installed via CLI | 2026-03-31 | c9b7963 | [260331-jcm-add-shadcn-registry-to-site-so-it-can-be](./quick/260331-jcm-add-shadcn-registry-to-site-so-it-can-be/) |
+| 260331-ong | auto patch release on push to main, manual major via workflow_dispatch | 2026-03-31 | 9d0944c | [260331-ong-auto-patch-release-on-push-to-main-and-m](./quick/260331-ong-auto-patch-release-on-push-to-main-and-m/) |
 
 ## Session Continuity
 
-Last session: 2026-03-31T14:05:00.000Z
-Last activity: 2026-03-31 - Completed quick task 260331-jcm: add shadcn registry to site so it can be installed via CLI
-Stopped at: Completed 260331-jcm-PLAN.md — shadcn registry activated
+Last session: 2026-03-31T12:17:00.000Z
+Last activity: 2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch
+Stopped at: Completed 260331-ong-PLAN.md — automated release workflow added
 Resume file: None
