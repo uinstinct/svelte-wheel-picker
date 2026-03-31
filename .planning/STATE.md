@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260331-owu-PLAN.md — publish.yml misleading comment fixed and --access public added
-last_updated: "2026-03-31T12:37:30.155Z"
-last_activity: "2026-03-31 - Completed quick task 260331-owu: make sure my readme is visible in npmjs.com"
+stopped_at: Completed quick-260331-p5j-PLAN.md — added vercel.json to disable GitHub integration auto-deploys
+last_updated: "2026-03-31T12:40:37.332Z"
+last_activity: "2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -136,10 +136,11 @@ None yet.
 | 260331-jcm | add shadcn registry to site so it can be installed via CLI | 2026-03-31 | c9b7963 | [260331-jcm-add-shadcn-registry-to-site-so-it-can-be](./quick/260331-jcm-add-shadcn-registry-to-site-so-it-can-be/) |
 | 260331-ong | auto patch release on push to main, manual major via workflow_dispatch | 2026-03-31 | 9d0944c | [260331-ong-auto-patch-release-on-push-to-main-and-m](./quick/260331-ong-auto-patch-release-on-push-to-main-and-m/) |
 | 260331-owu | make sure my readme is visible in npmjs.com | 2026-03-31 | 9a6a506 | [260331-owu-make-sure-my-readme-is-visible-in-npmjs-](./quick/260331-owu-make-sure-my-readme-is-visible-in-npmjs-/) |
+| 260331-p5j | fix Vercel deployment GitHub Action error (git-author team check) | 2026-03-31 | 8324411 | [260331-p5j-fix-vercel-deployment-github-action-erro](./quick/260331-p5j-fix-vercel-deployment-github-action-erro/) |
 
 ## Session Continuity
 
-Last session: 2026-03-31T12:37:30.143Z
+Last session: 2026-03-31T12:40:37.321Z
 Last activity: 2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch
-Stopped at: Completed quick-260331-owu-PLAN.md — publish.yml misleading comment fixed and --access public added
+Stopped at: Completed quick-260331-p5j-PLAN.md — added vercel.json to disable GitHub integration auto-deploys
 Resume file: None
