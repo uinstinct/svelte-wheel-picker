@@ -144,10 +144,11 @@ None yet.
 | 260331-qg5 | instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action | 2026-03-31 | 0fdb559 | [260331-qg5-instead-of-publishing-and-releasing-on-t](./quick/260331-qg5-instead-of-publishing-and-releasing-on-t/) |
 | 260331-qnz | fix release workflow to push version bump to single releases branch not releases/v{version} per release | 2026-03-31 | 3f12729 | [260331-qnz-fix-the-release-workflow-to-push-the-ver](./quick/260331-qnz-fix-the-release-workflow-to-push-the-ver/) |
 | 260331-qpt | replace Vercel URL with Netlify URL across README, registry.json, and demo page | 2026-03-31 | 01ecc48 | [260331-qpt-the-new-deployed-url-is-https-svelte-whe](./quick/260331-qpt-the-new-deployed-url-is-https-svelte-whe/) |
+| 260331-qvi | fix registry.json not accessible at /registry.json on Netlify | 2026-03-31 | 55ecc15 | [260331-qvi-fix-registry-json-not-accessible-at-regi](./quick/260331-qvi-fix-registry-json-not-accessible-at-regi/) |
 
 ## Session Continuity
 
-Last session: 2026-03-31T13:35:48.401Z
-Last activity: 2026-03-31 - Completed quick task 260331-qpt: the new deployed url is https://svelte-wheel-spinner.netlify.app/ change relevant links everywhere
-Stopped at: Completed quick-260331-qnz-PLAN.md — release workflow now uses single releases branch not releases/v* per release
+Last session: 2026-03-31T19:25:00.000Z
+Last activity: 2026-03-31 - Completed quick task 260331-qvi: fix registry.json not accessible at /registry.json on Netlify
+Stopped at: Completed quick-260331-qvi-PLAN.md — static/registry.json added so adapter-static serves it at /registry.json
 Resume file: None
