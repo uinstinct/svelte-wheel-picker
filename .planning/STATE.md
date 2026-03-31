@@ -3,8 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed 260331-jcm-PLAN.md — shadcn registry activated
-last_updated: "2026-03-31T14:05:00.000Z"
+stopped_at: Completed quick-260331-owu-PLAN.md — publish.yml misleading comment fixed and --access public added
+last_updated: "2026-03-31T12:37:30.155Z"
+last_activity: "2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -137,7 +138,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-31T12:17:00.000Z
+Last session: 2026-03-31T12:37:30.143Z
 Last activity: 2026-03-31 - Completed quick task 260331-ong: auto patch release on push to main, manual major via workflow_dispatch
-Stopped at: Completed 260331-ong-PLAN.md — automated release workflow added
+Stopped at: Completed quick-260331-owu-PLAN.md — publish.yml misleading comment fixed and --access public added
 Resume file: None
