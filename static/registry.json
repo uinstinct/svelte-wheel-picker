@@ -1,0 +1,23 @@
+{
+  "$schema": "https://shadcn-svelte.com/schema/registry.json",
+  "name": "@uinstinct/svelte-wheel-picker",
+  "homepage": "https://svelte-wheel-spinner.netlify.app",
+  "items": [
+    {
+      "name": "wheel-picker",
+      "type": "registry:component",
+      "title": "Wheel Picker",
+      "description": "iOS-style wheel picker for Svelte 5 with inertia scrolling, infinite loop, and keyboard navigation.",
+      "registryDependencies": [],
+      "files": [
+        { "path": "src/lib/WheelPicker.svelte", "type": "registry:component" },
+        { "path": "src/lib/WheelPickerWrapper.svelte", "type": "registry:component" },
+        { "path": "src/lib/types.ts", "type": "registry:lib" },
+        { "path": "src/lib/use-wheel-physics.svelte.ts", "type": "registry:lib" },
+        { "path": "src/lib/use-controllable-state.svelte.ts", "type": "registry:lib" },
+        { "path": "src/lib/use-typeahead-search.svelte.ts", "type": "registry:lib" },
+        { "path": "src/lib/wheel-physics-utils.ts", "type": "registry:lib" }
+      ]
+    }
+  ]
+}
