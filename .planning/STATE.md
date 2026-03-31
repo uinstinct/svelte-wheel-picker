@@ -143,11 +143,11 @@ None yet.
 | 260331-qah | fully remove Vercel deployment, add Netlify via GitHub Actions | 2026-03-31 | 6d1ebd2 | [260331-qah-fully-remove-vercel-deployment-via-githu](./quick/260331-qah-fully-remove-vercel-deployment-via-githu/) |
 | 260331-qg5 | instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action | 2026-03-31 | 0fdb559 | [260331-qg5-instead-of-publishing-and-releasing-on-t](./quick/260331-qg5-instead-of-publishing-and-releasing-on-t/) |
 | 260331-qnz | fix release workflow to push version bump to single releases branch not releases/v{version} per release | 2026-03-31 | 3f12729 | [260331-qnz-fix-the-release-workflow-to-push-the-ver](./quick/260331-qnz-fix-the-release-workflow-to-push-the-ver/) |
-| 260331-qpt | replace Vercel URL with Netlify URL across README, registry.json, and demo page | 2026-03-31 | 70405ce | [260331-qpt-the-new-deployed-url-is-https-svelte-whe](./quick/260331-qpt-the-new-deployed-url-is-https-svelte-whe/) |
+| 260331-qpt | replace Vercel URL with Netlify URL across README, registry.json, and demo page | 2026-03-31 | 01ecc48 | [260331-qpt-the-new-deployed-url-is-https-svelte-whe](./quick/260331-qpt-the-new-deployed-url-is-https-svelte-whe/) |
 
 ## Session Continuity
 
 Last session: 2026-03-31T13:35:48.401Z
-Last activity: 2026-03-31 - Completed quick task 260331-qnz: fix release workflow to push version bump to single releases branch not releases/v{version} per release
+Last activity: 2026-03-31 - Completed quick task 260331-qpt: the new deployed url is https://svelte-wheel-spinner.netlify.app/ change relevant links everywhere
 Stopped at: Completed quick-260331-qnz-PLAN.md — release workflow now uses single releases branch not releases/v* per release
 Resume file: None
