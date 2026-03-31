@@ -1,0 +1,48 @@
+# NPM_TOKEN setup:
+# 1. Go to npmjs.com → Access Tokens → Generate New Token (Automation type)
+# 2. Add the token as a GitHub secret named NPM_TOKEN in repo Settings → Secrets
+#
+# First publish must be done manually: pnpm publish --access public
+# After that, this workflow handles all subsequent releases.
+#
+# OIDC upgrade path (no long-lived tokens):
+# Once the package exists on npm, configure a Trusted Publisher on npmjs.com
+# (package → Settings → Publishing → Trusted Publishers), then replace
+# NODE_AUTH_TOKEN with id-token: write permission + NPM_CONFIG_PROVENANCE=true.
+
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+permissions: {}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish
+        run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
