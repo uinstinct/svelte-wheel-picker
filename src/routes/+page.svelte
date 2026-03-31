@@ -126,8 +126,7 @@
 					>npx shadcn-svelte@latest add https://svelte-wheel-picker.vercel.app/r/wheel-picker.json</code
 				></pre>
 		</div>
-		<p class="install-note">(URL shown after deployment — update before publishing)</p>
-	</section>
+		</section>
 
 	<section>
 		<h2>Single Wheel</h2>
@@ -316,13 +315,6 @@
 		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: 14px;
 		color: var(--color-text-muted);
-	}
-
-	.install-note {
-		font-size: 12px;
-		font-style: italic;
-		color: var(--color-text-muted);
-		margin-bottom: 0;
 	}
 
 	h2 {
