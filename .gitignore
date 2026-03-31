@@ -9,3 +9,4 @@ build/
 *.local
 .DS_Store
 .vercel
+.claude/worktrees
