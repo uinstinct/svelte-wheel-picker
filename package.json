@@ -1,6 +1,6 @@
 {
   "name": "@uinstinct/svelte-wheel-picker",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "description": "iOS-style wheel picker for Svelte 5 with inertia scrolling, infinite loop, and keyboard navigation",
   "license": "MIT",
