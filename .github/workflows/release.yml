@@ -61,20 +61,18 @@ jobs:
 
       - name: Commit and push version bump to release branch
         run: |
-          BRANCH="releases/v${{ steps.newver.outputs.version }}"
-          git checkout -b "$BRANCH"
+          git checkout -b releases
           git add package.json
           git commit -m "chore: bump version to ${{ steps.newver.outputs.version }}"
-          git push origin "$BRANCH"
+          git push origin releases --force
 
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BRANCH="releases/v${{ steps.newver.outputs.version }}"
           gh release create "v${{ steps.newver.outputs.version }}" \
             --title "v${{ steps.newver.outputs.version }}" \
-            --target "$BRANCH" \
+            --target releases \
             --generate-notes
 
   publish:
