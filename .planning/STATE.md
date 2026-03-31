@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed 260331-idz-PLAN.md — README written
-last_updated: "2026-03-31T07:49:07.545Z"
+stopped_at: Completed 260331-jcm-PLAN.md — shadcn registry activated
+last_updated: "2026-03-31T14:05:00.000Z"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -132,10 +132,11 @@ None yet.
 | 260331-icr | add GitHub Action to deploy the website to Vercel | 2026-03-31 | d3784d3 | [260331-icr-add-a-github-action-to-deploy-the-websit](./quick/260331-icr-add-a-github-action-to-deploy-the-websit/) |
 | 260331-idz | create a readme | 2026-03-31 | 004f0c9 | [260331-idz-create-a-readme](./quick/260331-idz-create-a-readme/) |
 | 260331-ja8 | add a GitHub Action to publish to npm | 2026-03-31 | ee27aa3 | [260331-ja8-add-a-github-action-to-publish-to-npm](./quick/260331-ja8-add-a-github-action-to-publish-to-npm/) |
+| 260331-jcm | add shadcn registry to site so it can be installed via CLI | 2026-03-31 | c9b7963 | [260331-jcm-add-shadcn-registry-to-site-so-it-can-be](./quick/260331-jcm-add-shadcn-registry-to-site-so-it-can-be/) |
 
 ## Session Continuity
 
-Last session: 2026-03-31T08:10:00.000Z
-Last activity: 2026-03-31 - Completed quick task 260331-ja8: add a GitHub Action to publish to npm
-Stopped at: Completed 260331-ja8-PLAN.md — npm publish workflow created
+Last session: 2026-03-31T14:05:00.000Z
+Last activity: 2026-03-31 - Completed quick task 260331-jcm: add shadcn registry to site so it can be installed via CLI
+Stopped at: Completed 260331-jcm-PLAN.md — shadcn registry activated
 Resume file: None
