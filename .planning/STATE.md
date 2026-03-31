@@ -147,6 +147,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-31T13:35:48.401Z
-Last activity: 2026-03-31 - Completed quick task 260331-qg5: instead of publishing and releasing on the main branch, push to a separate branch so that the main branch is not git commited by github actions. this happens on push github action
-Stopped at: Completed quick-260331-qg5-PLAN.md — version bump now goes to releases/v* branch not main
+Last activity: 2026-03-31 - Completed quick task 260331-qnz: fix release workflow to push version bump to single releases branch not releases/v{version} per release
+Stopped at: Completed quick-260331-qnz-PLAN.md — release workflow now uses single releases branch not releases/v* per release
 Resume file: None
