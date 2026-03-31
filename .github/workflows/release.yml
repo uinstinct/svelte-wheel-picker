@@ -11,6 +11,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.newver.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,18 +59,22 @@ jobs:
           "
           echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Commit and push version bump
+      - name: Commit and push version bump to release branch
         run: |
+          BRANCH="releases/v${{ steps.newver.outputs.version }}"
+          git checkout -b "$BRANCH"
           git add package.json
-          git commit -m "chore: bump version to ${{ steps.newver.outputs.version }} [skip ci]"
-          git push
+          git commit -m "chore: bump version to ${{ steps.newver.outputs.version }}"
+          git push origin "$BRANCH"
 
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          BRANCH="releases/v${{ steps.newver.outputs.version }}"
           gh release create "v${{ steps.newver.outputs.version }}" \
             --title "v${{ steps.newver.outputs.version }}" \
+            --target "$BRANCH" \
             --generate-notes
 
   publish:
@@ -80,7 +86,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: v${{ needs.release.outputs.version }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
