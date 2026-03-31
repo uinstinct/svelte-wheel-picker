@@ -1,32 +1,34 @@
 ---
-phase: quick
-plan: 260331-owu
+phase: quick-260331-owu
+plan: 01
 type: execute
 wave: 1
 depends_on: []
-files_modified: []
-autonomous: false
-requirements: []
+files_modified:
+  - .github/workflows/publish.yml
+autonomous: true
+requirements: [QUICK-260331-owu]
 must_haves:
   truths:
-    - "https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker loads and shows the README"
-    - "npm view @uinstinct/svelte-wheel-picker returns package metadata (not 404)"
+    - "publish.yml no longer contains the misleading 'first publish must be done manually' comment"
+    - "publish command includes --access public for explicit scoped package access"
+    - "README appears on npmjs.com after CI publishes the package"
   artifacts:
-    - path: "README.md"
-      provides: "Package readme — already correct, always bundled by npm"
+    - path: ".github/workflows/publish.yml"
+      provides: "Corrected publish workflow with accurate comment and --access public flag"
   key_links:
-    - from: "README.md"
-      to: "npmjs.com package page"
-      via: "npm publish tarball (always included regardless of files field)"
-      pattern: "README.md"
+    - from: "release.yml"
+      to: "publish.yml"
+      via: "release published event trigger"
+      pattern: "on:\\s+release:\\s+types: \\[published\\]"
 ---
 
 <objective>
-Publish @uinstinct/svelte-wheel-picker to npmjs.com so the README is visible.
+Fix the misleading comment in publish.yml and add --access public to the publish command so the automated CI publish chain works correctly for a scoped npm package on its very first run.
 
-Purpose: The README is already correctly configured and confirmed in the tarball via `npm pack --dry-run`. The package simply has not been published yet — npmjs.com displays the README from the tarball automatically after the first publish.
+Purpose: The package has never been published. Once NPM_TOKEN is added as a GitHub secret (one human action), pushing to main must trigger a successful publish without any additional manual steps. The current workflow comment says "First publish must be done manually" — this is wrong because publishConfig.access: "public" in package.json already handles scoped package access for CI.
 
-Output: Package live on npmjs.com with README visible.
+Output: Updated publish.yml with accurate comment and belt-and-suspenders --access public flag. README will appear on npmjs.com automatically after CI publishes.
 </objective>
 
 <execution_context>
@@ -36,81 +38,109 @@ Output: Package live on npmjs.com with README visible.
 
 <context>
 @.planning/STATE.md
+@.github/workflows/publish.yml
+@package.json
 
-Research finding: `npm view @uinstinct/svelte-wheel-picker` returns 404 — package not yet on npm.
-Research finding: `npm pack --dry-run` confirms README.md (8.3 kB) IS included in the tarball.
-Research finding: npm always bundles README.md regardless of the `files` field in package.json.
-Research finding: `publishConfig.access: "public"` is already set — scoped package will publish publicly.
-
-Workflow note: .github/workflows/publish.yml explicitly states the FIRST publish must be done
-manually (`pnpm publish --access public`) because the package doesn't exist yet on npm.
-Subsequent releases are handled automatically by the release.yml → publish.yml workflow chain.
+Research confirmed:
+- README.md IS in the tarball (npm pack --dry-run output, 8.3 kB)
+- npm always bundles README.md regardless of the `files` field — no package.json changes needed
+- publishConfig.access: "public" is already set — CI can publish a scoped package without manual first-publish
+- The misleading comment in publish.yml is the only actionable item
 </context>
 
 <tasks>
 
 <task type="auto">
-  <name>Task 1: Build and publish the package to npm</name>
-  <files>dist/ (generated, not committed)</files>
+  <name>Task 1: Fix publish.yml — accurate comment and --access public flag</name>
+  <files>.github/workflows/publish.yml</files>
   <action>
-Run the following commands from the project root. You must be authenticated to npm as the @uinstinct scope owner.
+    Rewrite the comment block at the top of the file (lines 1-12) and update the publish command.
 
-Step 1 — Verify npm authentication:
-```
-npm whoami
-```
-Expected: `uinstinct` (or the account that owns the @uinstinct scope). If not authenticated, the user must run `npm login` first.
+    Replace the entire comment block that currently reads:
+    ```
+    # NPM_TOKEN setup:
+    # 1. Go to npmjs.com → Access Tokens → Generate New Token (Automation type)
+    # 2. Add the token as a GitHub secret named NPM_TOKEN in repo Settings → Secrets
+    #
+    # First publish must be done manually: pnpm publish --access public
+    # After that, this workflow handles all subsequent releases.
+    #
+    # OIDC upgrade path (no long-lived tokens):
+    # Once the package exists on npm, configure a Trusted Publisher on npmjs.com
+    # (package → Settings → Publishing → Trusted Publishers), then replace
+    # NODE_AUTH_TOKEN with id-token: write permission + NPM_CONFIG_PROVENANCE=true.
+    ```
 
-Step 2 — Dry-run to confirm README is in tarball (verification before publish):
-```
-npm pack --dry-run
-```
-Confirm `README.md` appears in the file list.
+    With this corrected version:
+    ```
+    # NPM_TOKEN setup (one-time human action):
+    # 1. Go to npmjs.com → your avatar → Access Tokens → Generate New Token (Automation type)
+    # 2. Go to GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+    #    Name: NPM_TOKEN  Value: the token from step 1
+    #
+    # No manual first publish needed — publishConfig.access: "public" in package.json
+    # handles scoped package access automatically. CI publishes on first run.
+    #
+    # OIDC upgrade path (no long-lived tokens):
+    # Once the package exists on npm, configure a Trusted Publisher on npmjs.com
+    # (package → Settings → Publishing → Trusted Publishers), then replace
+    # NODE_AUTH_TOKEN with id-token: write permission + NPM_CONFIG_PROVENANCE=true.
+    ```
 
-Step 3 — Build and publish:
-```
-pnpm publish --access public --no-git-checks
-```
-The `prepack` script runs `pnpm run package` automatically, which calls `svelte-package` then `publint`.
+    Also update the Publish step's run line from:
+    ```yaml
+        run: pnpm publish --no-git-checks
+    ```
+    to:
+    ```yaml
+        run: pnpm publish --no-git-checks --access public
+    ```
 
-Do NOT use `npm publish` — use `pnpm publish` to match the workflow and trigger the prepack script correctly.
-
-After publish succeeds, npm returns the tarball URL. Note the version published (should be 0.1.0).
+    The --access public flag is belt-and-suspenders alongside publishConfig.access: "public" in
+    package.json. Both together make intent explicit and guarantee scoped package visibility.
+    Do not change anything else in the file.
   </action>
   <verify>
-    <automated>npm view @uinstinct/svelte-wheel-picker version</automated>
+    <automated>grep -c "must be done manually" .github/workflows/publish.yml</automated>
   </verify>
-  <done>Command returns `0.1.0` (or current version from package.json) without error. Package exists on registry.</done>
-</task>
-
-<task type="checkpoint:human-verify" gate="blocking">
-  <what-built>Published @uinstinct/svelte-wheel-picker@0.1.0 to npmjs.com</what-built>
-  <how-to-verify>
-1. Visit https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker in your browser
-2. Confirm the page loads (not 404)
-3. Confirm the README content is visible on the page (Features section, Installation section, examples, etc.)
-4. npmjs.com may take up to 60-90 seconds to index — if README shows "No readme", wait 1-2 minutes and refresh
-
-CLI verification (optional):
-```
-npm view @uinstinct/svelte-wheel-picker readme | head -10
-```
-Should return the first lines of README.md content.
-  </how-to-verify>
-  <resume-signal>Type "approved" when README is visible on npmjs.com, or describe any issues</resume-signal>
+  <done>
+    grep returns 0 (the misleading line is gone).
+    grep finds "--access public" on the publish run line.
+    The comment block accurately states no manual publish is needed — only NPM_TOKEN in secrets.
+  </done>
 </task>
 
 </tasks>
 
 <verification>
-- `npm view @uinstinct/svelte-wheel-picker` returns package metadata (not 404)
-- https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker shows README content
-- No changes were needed to README.md, package.json, or .npmignore — configuration was already correct
+grep -c "must be done manually" .github/workflows/publish.yml   # must return 0
+grep -c "\-\-access public" .github/workflows/publish.yml       # must return 1
 </verification>
 
 <success_criteria>
-README.md content is visible on the @uinstinct/svelte-wheel-picker npmjs.com page. The automated release workflow (release.yml → publish.yml) handles all future releases without manual intervention.
+- publish.yml comment is accurate: CI handles all publishes including the very first one
+- publish command has --access public for explicit scoped package access
+- User knows the single required action: add NPM_TOKEN to GitHub repo secrets, then push to main
 </success_criteria>
+
+<user_action_required>
+After this plan executes, one human action remains before the README appears on npmjs.com:
+
+Add your npm automation token as a GitHub secret named NPM_TOKEN:
+
+1. Visit https://www.npmjs.com → avatar menu → Access Tokens → Generate New Token
+2. Select type: Automation (bypasses 2FA for CI)
+3. Copy the token
+4. Visit your GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+5. Name: NPM_TOKEN — Value: the token from step 3 — click Add secret
+
+Then push anything to main (or let the next commit trigger it). The chain runs:
+  push to main → release.yml bumps version + creates GitHub release
+  → publish.yml fires on release published event → publishes to npm
+
+The README will appear on https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker
+within ~60 seconds of the publish completing.
+</user_action_required>
 
 <output>
 After completion, create `.planning/quick/260331-owu-make-sure-my-readme-is-visible-in-npmjs-/260331-owu-SUMMARY.md`
