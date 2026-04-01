@@ -126,7 +126,11 @@
 					>npx shadcn-svelte@latest add https://svelte-wheel-spinner.netlify.app/r/wheel-picker.json</code
 				></pre>
 		</div>
-		</section>
+		<div class="hero-links">
+			<a href="https://github.com/uinstinct/svelte-wheel-picker" target="_blank" rel="noopener noreferrer">GitHub</a>
+			<a href="https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker" target="_blank" rel="noopener noreferrer">npm</a>
+		</div>
+	</section>
 
 	<section>
 		<h2>Single Wheel</h2>
@@ -301,6 +305,23 @@
 		flex-direction: column;
 		gap: 8px;
 		margin-bottom: 8px;
+	}
+
+	.hero-links {
+		display: flex;
+		gap: 16px;
+		margin-top: 8px;
+	}
+
+	.hero-links a {
+		font-size: 14px;
+		color: var(--color-text-muted);
+		text-decoration: none;
+	}
+
+	.hero-links a:hover {
+		color: var(--color-text);
+		text-decoration: underline;
 	}
 
 	.install-block pre {
