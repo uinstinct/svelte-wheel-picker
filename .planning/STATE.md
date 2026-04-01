@@ -155,6 +155,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-01T08:05:51.008Z
-Last activity: 2026-04-01 - Completed quick task 260401-i8a: Fix TypeScript compilation target to preserve Svelte 5 $state() runes in dist output
+Last activity: 2026-04-01 - Completed quick task 260401-itg: add the github and npm link in the demo site
 Stopped at: Completed quick-260401-itg-PLAN.md — GitHub and npm links added to demo hero
 Resume file: None
