@@ -246,6 +246,8 @@
 	style:height="{visibleCount * optionItemHeight}px"
 	style:overflow="hidden"
 	style:position="relative"
+	style:touch-action="none"
+	style:user-select="none"
 	tabindex="0"
 	role="listbox"
 	onpointerdown={onPointerDown}
