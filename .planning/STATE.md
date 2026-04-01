@@ -154,6 +154,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-01T07:42:05.316Z
-Last activity: 2026-04-01 - Completed quick task 260401-f0u: Fix TS target, generic type erasure, and missing sideEffects in package
+Last activity: 2026-04-01 - Completed quick task 260401-i8a: Fix TypeScript compilation target to preserve Svelte 5 $state() runes in dist output
 Stopped at: Completed quick-260401-i8a-PLAN.md — explicit TS target esnext added to tsconfig.json
 Resume file: None
