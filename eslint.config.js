@@ -30,6 +30,6 @@ export default [
 		},
 	},
 	{
-		ignores: ['build/', 'dist/', '.svelte-kit/', 'node_modules/', '.claude/', '.playwright/'],
+		ignores: ['build/', 'dist/', '.svelte-kit/', 'node_modules/', '.claude/', '.playwright/', '.vercel/'],
 	},
 ];
