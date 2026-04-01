@@ -366,7 +366,6 @@
 		width: 200px;
 		cursor: grab;
 		user-select: none;
-		touch-action: none;
 	}
 
 	:global([data-swp-wrapper].wheel:active) {
