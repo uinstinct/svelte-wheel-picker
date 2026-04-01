@@ -130,8 +130,8 @@ None yet.
 
 ### Quick Tasks Completed
 
-| # | Description | Date | Commit | Directory |
-|---|-------------|------|--------|-----------|
+| # | Description | Date | Commit | Status | Directory |
+|---|-------------|------|--------|--------|-----------|
 | 260325-ns8 | add dark mode to demo site | 2026-03-25 | e5e7106 | [260325-ns8-add-dark-mode-to-demo-site](./quick/260325-ns8-add-dark-mode-to-demo-site/) |
 | 260331-icr | add GitHub Action to deploy the website to Vercel | 2026-03-31 | d3784d3 | [260331-icr-add-a-github-action-to-deploy-the-websit](./quick/260331-icr-add-a-github-action-to-deploy-the-websit/) |
 | 260331-idz | create a readme | 2026-03-31 | 004f0c9 | [260331-idz-create-a-readme](./quick/260331-idz-create-a-readme/) |
@@ -147,11 +147,12 @@ None yet.
 | 260331-qpt | replace Vercel URL with Netlify URL across README, registry.json, and demo page | 2026-03-31 | 01ecc48 | [260331-qpt-the-new-deployed-url-is-https-svelte-whe](./quick/260331-qpt-the-new-deployed-url-is-https-svelte-whe/) |
 | 260331-qxr | fix release workflow to read current version from git tag not package.json | 2026-03-31 | 9e00d1b | [260331-qxr-fix-release-workflow-read-current-versio](./quick/260331-qxr-fix-release-workflow-read-current-versio/) |
 | 260331-qvi | fix registry.json not accessible at /registry.json on Netlify | 2026-03-31 | 55ecc15 | [260331-qvi-fix-registry-json-not-accessible-at-regi](./quick/260331-qvi-fix-registry-json-not-accessible-at-regi/) |
-| 260331-rsh | link GitHub repo with the npm package | 2026-03-31 | 6bb3973 | [260331-rsh-link-github-repo-with-the-npm-package](./quick/260331-rsh-link-github-repo-with-the-npm-package/) |
+| 260331-rsh | link GitHub repo with the npm package | 2026-03-31 | 6bb3973 | | [260331-rsh-link-github-repo-with-the-npm-package](./quick/260331-rsh-link-github-repo-with-the-npm-package/) |
+| 260401-f0u | Fix TS target, generic type erasure, and missing sideEffects in package | 2026-04-01 | dd4a464 | Verified | [260401-f0u-fix-ts-target-generic-type-erasure-and-m](./quick/260401-f0u-fix-ts-target-generic-type-erasure-and-m/) |
 
 ## Session Continuity
 
 Last session: 2026-04-01T05:25:12.121Z
-Last activity: 2026-03-31 - Completed quick task 260331-rsh: link github repo with the npm package
+Last activity: 2026-04-01 - Completed quick task 260401-f0u: Fix TS target, generic type erasure, and missing sideEffects in package
 Stopped at: Completed quick-260401-f0u-PLAN.md — WheelPicker generic T now preserved in dist types
 Resume file: None
