@@ -155,10 +155,11 @@ None yet.
 | 260401-mci | add a github actions to build and test the package | 2026-04-01 | 53535fe | | [260401-mci-add-a-github-actions-to-build-and-test-t](./quick/260401-mci-add-a-github-actions-to-build-and-test-t/) |
 | 260401-mog | Fix CI failure: add playwright as direct devDependency | 2026-04-01 | cf2e048 | | [260401-mog-fix-ci-failure-add-playwright-as-direct-](./quick/260401-mog-fix-ci-failure-add-playwright-as-direct-/) |
 | 260401-mtf | Fix CI lint failure: each-key + svelte.ts parse errors | 2026-04-01 | f030909 | | [260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p](./quick/260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p/) |
+| 260401-mv0 | Replace text links with GitHub/npm SVG icons in demo site | 2026-04-01 | faa8928 | | [260401-mv0-in-the-demo-site-i-want-icons-for-github](./quick/260401-mv0-in-the-demo-site-i-want-icons-for-github/) |
 
 ## Session Continuity
 
 Last session: 2026-04-01T10:55:43.108Z
-Last activity: 2026-04-01 - Completed quick task 260401-mtf: Fix CI lint failure: each-key + svelte.ts parse errors
+Last activity: 2026-04-01 - Completed quick task 260401-mv0: Replace text links with GitHub/npm SVG icons in demo site
 Stopped at: Completed quick-260401-mv0 — SVG icon links in demo hero committed
 Resume file: None
