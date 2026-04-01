@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" generics="T extends string | number">
 	import { untrack } from 'svelte';
 	import type { WheelPickerProps } from './types.js';
 	import { WheelPhysics } from './use-wheel-physics.svelte.js';
@@ -25,7 +25,7 @@
 		scrollSensitivity = DEFAULT_SCROLL_SENSITIVITY,
 		infinite = false,
 		cylindrical = false,
-	}: WheelPickerProps = $props();
+	}: WheelPickerProps<T> = $props();
 
 	// D-07: visibleCount must be odd — warn and round up if even
 	const visibleCount = $derived.by(() => {
