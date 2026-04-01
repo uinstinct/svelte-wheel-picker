@@ -153,10 +153,11 @@ None yet.
 | 260401-i8a | Fix TypeScript compilation target to preserve native class fields | 2026-04-01 | 0734b7f | Completed | [260401-i8a-fix-typescript-compilation-target-to-pre](./quick/260401-i8a-fix-typescript-compilation-target-to-pre/) |
 | 260401-itg | Add GitHub and npm links to demo hero section | 2026-04-01 | e488794 | Completed | [260401-itg-add-the-github-and-npm-link-in-the-demo-](./quick/260401-itg-add-the-github-and-npm-link-in-the-demo-/) |
 | 260401-mci | add a github actions to build and test the package | 2026-04-01 | 53535fe | | [260401-mci-add-a-github-actions-to-build-and-test-t](./quick/260401-mci-add-a-github-actions-to-build-and-test-t/) |
+| 260401-mog | Fix CI failure: add playwright as direct devDependency | 2026-04-01 | cf2e048 | | [260401-mog-fix-ci-failure-add-playwright-as-direct-](./quick/260401-mog-fix-ci-failure-add-playwright-as-direct-/) |
 
 ## Session Continuity
 
 Last session: 2026-04-01T10:52:39.219Z
-Last activity: 2026-04-01 - Completed quick task 260401-mci: add a github actions to build and test the package
+Last activity: 2026-04-01 - Completed quick task 260401-mog: Fix CI failure: add playwright as direct devDependency
 Stopped at: Completed quick-260401-mog-PLAN.md — playwright direct devDependency fix committed
 Resume file: None
