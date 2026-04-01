@@ -155,7 +155,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T08:05:51.008Z
-Last activity: 2026-04-01 - Completed quick task 260401-itg: add the github and npm link in the demo site
-Stopped at: Completed quick-260401-itg-PLAN.md — GitHub and npm links added to demo hero
+Last session: 2026-04-01T10:37:50.739Z
+Last activity: 2026-04-01 - Completed quick task 260401-mej: fix mobile touch scrolling in wheel picker
+Stopped at: Completed quick-260401-mej-PLAN.md — mobile touch scrolling fix
 Resume file: None
