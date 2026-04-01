@@ -31,31 +31,39 @@ test.describe('Mobile Touch Scrolling', () => {
 	});
 
 	test('pointer drag on wheel picker changes selected value', async ({ page }) => {
-		// The Single Wheel section shows "Selected: cherry" initially
 		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).locator('p');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page.locator('[data-swp-wrapper]').first();
 		await wrapper.waitFor({ state: 'visible' });
+		await wrapper.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(300);
+
 		const box = await wrapper.boundingBox();
 		if (!box) throw new Error('Could not get bounding box of wheel picker wrapper');
 
 		const cx = box.x + box.width / 2;
-		const cy = box.y + box.height / 2;
+		const startY = box.y + box.height / 2;
 
-		// Drag down 150px over 20 steps to scroll the picker upward (reveals earlier items)
-		await page.mouse.move(cx, cy);
+		// Drag upward 200px to scroll the picker downward (reveals later items)
+		await page.mouse.move(cx, startY);
 		await page.mouse.down();
-		await page.mouse.move(cx, cy + 150, { steps: 20 });
+		for (let i = 1; i <= 20; i++) {
+			await page.mouse.move(cx, startY - (200 * i) / 20);
+			await page.waitForTimeout(16);
+		}
 		await page.mouse.up();
 
-		// Wait for selection to change from "cherry"
-		await expect(selectedText).not.toContainText('cherry', { timeout: 3000 });
+		// Wait for inertia animation to settle and selection to change
+		await expect(selectedText).not.toContainText('cherry', { timeout: 5000 });
 	});
 
 	test('page does not scroll when dragging on wheel picker', async ({ page }) => {
 		const wrapper = page.locator('[data-swp-wrapper]').first();
 		await wrapper.waitFor({ state: 'visible' });
+		await wrapper.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(300);
+
 		const box = await wrapper.boundingBox();
 		if (!box) throw new Error('Could not get bounding box of wheel picker wrapper');
 
@@ -66,7 +74,10 @@ test.describe('Mobile Touch Scrolling', () => {
 
 		await page.mouse.move(cx, cy);
 		await page.mouse.down();
-		await page.mouse.move(cx, cy + 150, { steps: 20 });
+		for (let i = 1; i <= 20; i++) {
+			await page.mouse.move(cx, cy + (150 * i) / 20);
+			await page.waitForTimeout(16);
+		}
 		await page.mouse.up();
 
 		// Small settle time for any scroll animations
