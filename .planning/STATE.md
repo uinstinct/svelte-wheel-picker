@@ -159,10 +159,11 @@ None yet.
 | 260401-mtf | Fix CI lint failure: each-key + svelte.ts parse errors | 2026-04-01 | f030909 | Completed | [260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p](./quick/260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p/) |
 | 260401-mv0 | Replace text links with GitHub/npm SVG icons in demo site | 2026-04-01 | faa8928 | Completed | [260401-mv0-in-the-demo-site-i-want-icons-for-github](./quick/260401-mv0-in-the-demo-site-i-want-icons-for-github/) |
 | 260401-n57 | Fetch npm version from releases branch, add sticky navbar | 2026-04-01 | 541723f | Completed | [260401-n57-fetch-npm-version-from-releases-branch-a](./quick/260401-n57-fetch-npm-version-from-releases-branch-a/) |
+| 260401-nc6 | Add GitHub Actions workflow badges to README | 2026-04-01 | 74619a4 | Completed | [260401-nc6-add-badges-for-all-github-actions-in-the](./quick/260401-nc6-add-badges-for-all-github-actions-in-the/) |
 
 ## Session Continuity
 
-Last session: 2026-04-01T16:30:00.000Z
-Last activity: 2026-04-01 - Completed quick task 260401-mni: add e2e tests for mobile touch scrolling
-Stopped at: Completed quick-260401-mni-PLAN.md — e2e tests for mobile touch scrolling
+Last session: 2026-04-01T16:35:00.000Z
+Last activity: 2026-04-01 - Completed quick task 260401-nc6: add GitHub Actions workflow badges to README
+Stopped at: Completed quick-260401-nc6-PLAN.md — add badges for all GitHub Actions
 Resume file: None
