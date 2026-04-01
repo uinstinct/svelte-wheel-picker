@@ -42,6 +42,7 @@
 		"prepack": "npm run package",
 		"test": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest run",
 		"test:watch": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest",
+		"test:e2e": "PLAYWRIGHT_BROWSERS_PATH=.playwright npx playwright test --config=playwright.config.ts",
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"registry:build": "shadcn-svelte registry build"
