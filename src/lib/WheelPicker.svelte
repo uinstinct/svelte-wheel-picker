@@ -273,7 +273,7 @@
 	<div style:transform="translateY({physics.offset}px)">
 		{#if infinite}
 			<!-- Before-ghosts: reversed so options[N-1] appears just above real section (Pitfall 3) -->
-			{#each [...options].reverse() as option, g}
+			{#each [...options].reverse() as option, g (option.value)}
 				{@const scale = cylindrical
 					? cylindricalScaleY(g - options.length, physics.offset, optionItemHeight, visibleCount)
 					: undefined}
@@ -298,7 +298,7 @@
 		{/if}
 
 		<!-- Real items section -->
-		{#each options as option, i}
+		{#each options as option, i (option.value)}
 			{@const scale = cylindrical
 				? cylindricalScaleY(i, physics.offset, optionItemHeight, visibleCount)
 				: undefined}
@@ -324,7 +324,7 @@
 
 		{#if infinite}
 			<!-- After-ghosts: same order as real items -->
-			{#each options as option, j}
+			{#each options as option, j (option.value)}
 				{@const scale = cylindrical
 					? cylindricalScaleY(options.length + j, physics.offset, optionItemHeight, visibleCount)
 					: undefined}

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render } from 'vitest-browser-svelte';
-import { userEvent } from '@vitest/browser-playwright/context';
+import { userEvent } from 'vitest/browser';
 import FocusRoutingFixture from './FocusRoutingFixture.svelte';
 
 describe('Focus routing between wheels', () => {

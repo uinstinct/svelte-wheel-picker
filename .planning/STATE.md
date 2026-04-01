@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260401-mej-PLAN.md — mobile touch scrolling fix
-last_updated: "2026-04-01T16:15:00.000Z"
-last_activity: "2026-04-01 - Completed quick task 260401-mej: fix mobile touch scrolling in wheel picker"
+stopped_at: Completed quick-260401-mni-PLAN.md — e2e tests for mobile touch scrolling
+last_updated: "2026-04-01T16:30:00.000Z"
+last_activity: "2026-04-01 - Completed quick task 260401-mni: add e2e tests for mobile touch scrolling"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -112,6 +112,7 @@ Recent decisions affecting current work:
 - [quick-260331-qah]: Switched from adapter-vercel to adapter-static; requires src/routes/+layout.ts with prerender=true for build to succeed
 - [quick-260331-qah]: Deployment moved from Vercel to Netlify via nwtgck/actions-netlify@v3; needs NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets
 - [Phase quick-260401-f0u]: Svelte 5 generics attribute on <script> tag is required to preserve generic T through svelte-package type generation; without it, T defaults to the interface default type
+- [Phase quick-260401-mog]: playwright added as direct devDependency at 1.58.2 — pnpm exec cannot resolve binaries from transitive peer deps in CI
 
 ### Roadmap Evolution
 
@@ -151,8 +152,13 @@ None yet.
 | 260401-f0u | Fix TS target, generic type erasure, and missing sideEffects in package | 2026-04-01 | dd4a464 | Verified | [260401-f0u-fix-ts-target-generic-type-erasure-and-m](./quick/260401-f0u-fix-ts-target-generic-type-erasure-and-m/) |
 | 260401-i8a | Fix TypeScript compilation target to preserve native class fields | 2026-04-01 | 0734b7f | Completed | [260401-i8a-fix-typescript-compilation-target-to-pre](./quick/260401-i8a-fix-typescript-compilation-target-to-pre/) |
 | 260401-itg | Add GitHub and npm links to demo hero section | 2026-04-01 | e488794 | Completed | [260401-itg-add-the-github-and-npm-link-in-the-demo-](./quick/260401-itg-add-the-github-and-npm-link-in-the-demo-/) |
+| 260401-mci | add a github actions to build and test the package | 2026-04-01 | 53535fe | Completed | [260401-mci-add-a-github-actions-to-build-and-test-t](./quick/260401-mci-add-a-github-actions-to-build-and-test-t/) |
 | 260401-mej | Fix mobile touch scrolling in wheel picker | 2026-04-01 | 3fe8d4c | Completed | [260401-mej-fix-mobile-touch-scrolling-wheel-picker-](./quick/260401-mej-fix-mobile-touch-scrolling-wheel-picker-/) |
+| 260401-mog | Fix CI failure: add playwright as direct devDependency | 2026-04-01 | cf2e048 | Completed | [260401-mog-fix-ci-failure-add-playwright-as-direct-](./quick/260401-mog-fix-ci-failure-add-playwright-as-direct-/) |
 | 260401-mni | Add e2e tests for mobile touch scrolling | 2026-04-01 | 5d94dcc | Completed | [260401-mni-add-e2e-tests-for-mobile-touch-scrolling](./quick/260401-mni-add-e2e-tests-for-mobile-touch-scrolling/) |
+| 260401-mtf | Fix CI lint failure: each-key + svelte.ts parse errors | 2026-04-01 | f030909 | Completed | [260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p](./quick/260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p/) |
+| 260401-mv0 | Replace text links with GitHub/npm SVG icons in demo site | 2026-04-01 | faa8928 | Completed | [260401-mv0-in-the-demo-site-i-want-icons-for-github](./quick/260401-mv0-in-the-demo-site-i-want-icons-for-github/) |
+| 260401-n57 | Fetch npm version from releases branch, add sticky navbar | 2026-04-01 | 541723f | Completed | [260401-n57-fetch-npm-version-from-releases-branch-a](./quick/260401-n57-fetch-npm-version-from-releases-branch-a/) |
 
 ## Session Continuity
 
