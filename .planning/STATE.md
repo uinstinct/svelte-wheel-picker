@@ -156,10 +156,11 @@ None yet.
 | 260401-mog | Fix CI failure: add playwright as direct devDependency | 2026-04-01 | cf2e048 | | [260401-mog-fix-ci-failure-add-playwright-as-direct-](./quick/260401-mog-fix-ci-failure-add-playwright-as-direct-/) |
 | 260401-mtf | Fix CI lint failure: each-key + svelte.ts parse errors | 2026-04-01 | f030909 | | [260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p](./quick/260401-mtf-fix-ci-lint-failure-each-key-svelte-ts-p/) |
 | 260401-mv0 | Replace text links with GitHub/npm SVG icons in demo site | 2026-04-01 | faa8928 | | [260401-mv0-in-the-demo-site-i-want-icons-for-github](./quick/260401-mv0-in-the-demo-site-i-want-icons-for-github/) |
+| 260401-n57 | Fetch npm version from releases branch, add sticky navbar | 2026-04-01 | 541723f | Completed | [260401-n57-fetch-npm-version-from-releases-branch-a](./quick/260401-n57-fetch-npm-version-from-releases-branch-a/) |
 
 ## Session Continuity
 
-Last session: 2026-04-01T10:55:43.108Z
-Last activity: 2026-04-01 - Completed quick task 260401-mv0: Replace text links with GitHub/npm SVG icons in demo site
-Stopped at: Completed quick-260401-mv0 — SVG icon links in demo hero committed
+Last session: 2026-04-01T11:15:00.000Z
+Last activity: 2026-04-01 - Completed quick task 260401-n57: Fetch npm version from releases branch, add sticky navbar
+Stopped at: Completed quick-260401-n57 — sticky navbar with dynamic version committed
 Resume file: None
