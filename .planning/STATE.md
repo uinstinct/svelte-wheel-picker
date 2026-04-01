@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260401-itg-PLAN.md — GitHub and npm links added to demo hero
-last_updated: "2026-04-01T08:05:51.018Z"
-last_activity: "2026-04-01 - Completed quick task 260401-i8a: Fix TypeScript compilation target to preserve Svelte 5 $state() runes in dist output"
+stopped_at: Completed quick-260401-mci-PLAN.md — CI workflow added
+last_updated: "2026-04-01T10:39:51.494Z"
+last_activity: "2026-04-01 - Completed quick task 260401-itg: add the github and npm link in the demo site"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -154,7 +154,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T08:05:51.008Z
+Last session: 2026-04-01T10:39:51.483Z
 Last activity: 2026-04-01 - Completed quick task 260401-itg: add the github and npm link in the demo site
-Stopped at: Completed quick-260401-itg-PLAN.md — GitHub and npm links added to demo hero
+Stopped at: Completed quick-260401-mci-PLAN.md — CI workflow added
 Resume file: None
