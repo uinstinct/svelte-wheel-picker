@@ -107,4 +107,22 @@ describe('WheelPicker DOM structure', () => {
 		const wrapper = container.querySelector('[data-swp-wrapper]') as HTMLElement;
 		expect(wrapper.style.height).toBe('150px');
 	});
+
+	test('wrapper has touch-action: none for mobile scrolling', async () => {
+		const { container } = await render(WheelPicker, {
+			options: testOptions,
+			defaultValue: 'c',
+		});
+		const wrapper = container.querySelector('[data-swp-wrapper]') as HTMLElement;
+		expect(wrapper.style.touchAction).toBe('none');
+	});
+
+	test('wrapper has user-select: none to prevent selection during drag', async () => {
+		const { container } = await render(WheelPicker, {
+			options: testOptions,
+			defaultValue: 'c',
+		});
+		const wrapper = container.querySelector('[data-swp-wrapper]') as HTMLElement;
+		expect(wrapper.style.userSelect).toBe('none');
+	});
 });
