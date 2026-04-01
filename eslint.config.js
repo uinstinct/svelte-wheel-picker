@@ -21,6 +21,15 @@ export default [
 		},
 	},
 	{
+		files: ['**/*.svelte.ts'],
+		languageOptions: {
+			parser: svelte.parser,
+			parserOptions: {
+				parser: ts.parser,
+			},
+		},
+	},
+	{
 		ignores: ['build/', 'dist/', '.svelte-kit/', 'node_modules/', '.claude/', '.playwright/'],
 	},
 ];
