@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260401-mci-PLAN.md — CI workflow added
-last_updated: "2026-04-01T10:39:51.494Z"
-last_activity: "2026-04-01 - Completed quick task 260401-itg: add the github and npm link in the demo site"
+stopped_at: Completed quick-260401-mog-PLAN.md — playwright direct devDependency fix committed
+last_updated: "2026-04-01T10:52:42.742Z"
+last_activity: "2026-04-01 - Completed quick task 260401-mci: add a github actions to build and test the package"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -112,6 +112,7 @@ Recent decisions affecting current work:
 - [quick-260331-qah]: Switched from adapter-vercel to adapter-static; requires src/routes/+layout.ts with prerender=true for build to succeed
 - [quick-260331-qah]: Deployment moved from Vercel to Netlify via nwtgck/actions-netlify@v3; needs NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets
 - [Phase quick-260401-f0u]: Svelte 5 generics attribute on <script> tag is required to preserve generic T through svelte-package type generation; without it, T defaults to the interface default type
+- [Phase quick-260401-mog]: playwright added as direct devDependency at 1.58.2 — pnpm exec cannot resolve binaries from transitive peer deps in CI
 
 ### Roadmap Evolution
 
@@ -155,7 +156,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T10:39:51.483Z
+Last session: 2026-04-01T10:52:39.219Z
 Last activity: 2026-04-01 - Completed quick task 260401-mci: add a github actions to build and test the package
-Stopped at: Completed quick-260401-mci-PLAN.md — CI workflow added
+Stopped at: Completed quick-260401-mog-PLAN.md — playwright direct devDependency fix committed
 Resume file: None
