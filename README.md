@@ -1,5 +1,8 @@
 # svelte-wheel-picker 🖱️
 
+[![CI](https://github.com/uinstinct/svelte-wheel-picker/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/uinstinct/svelte-wheel-picker/actions/workflows/ci.yml)
+[![Deploy to Netlify](https://github.com/uinstinct/svelte-wheel-picker/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/uinstinct/svelte-wheel-picker/actions/workflows/deploy.yml)
+[![Release](https://github.com/uinstinct/svelte-wheel-picker/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/uinstinct/svelte-wheel-picker/actions/workflows/release.yml)
 [![npm version](https://img.shields.io/npm/v/@uinstinct/svelte-wheel-picker)](https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker)
 [![license](https://img.shields.io/npm/l/@uinstinct/svelte-wheel-picker)](https://github.com/uinstinct/svelte-wheel-picker/blob/main/LICENSE)
 

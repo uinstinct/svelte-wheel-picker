@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260401-mni-PLAN.md — e2e tests for mobile touch scrolling
-last_updated: "2026-04-01T16:30:00.000Z"
-last_activity: "2026-04-01 - Completed quick task 260401-mni: add e2e tests for mobile touch scrolling"
+stopped_at: Completed quick-260401-nc6-PLAN.md — add badges for all GitHub Actions
+last_updated: "2026-04-01T16:35:00.000Z"
+last_activity: "2026-04-01 - Completed quick task 260401-nc6: add GitHub Actions workflow badges to README"
 progress:
   total_phases: 7
   completed_phases: 7
