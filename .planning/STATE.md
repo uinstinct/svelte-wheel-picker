@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260331-qxr-PLAN.md — release workflow reads version from latest git tag not package.json
-last_updated: "2026-03-31T14:20:00.000Z"
-last_activity: "2026-03-31 - Completed quick task 260331-qxr: fix release workflow to read current version from git tag with package.json fallback"
+stopped_at: Completed quick-260401-f0u-PLAN.md — WheelPicker generic T now preserved in dist types
+last_updated: "2026-04-01T05:25:15.598Z"
+last_activity: "2026-03-31 - Completed quick task 260331-rsh: link github repo with the npm package"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -111,6 +111,7 @@ Recent decisions affecting current work:
 - [Phase 07]: scale=undefined when cylindrical=false omits style:transform and style:opacity from DOM (flat mode byte-for-byte preservation)
 - [quick-260331-qah]: Switched from adapter-vercel to adapter-static; requires src/routes/+layout.ts with prerender=true for build to succeed
 - [quick-260331-qah]: Deployment moved from Vercel to Netlify via nwtgck/actions-netlify@v3; needs NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets
+- [Phase quick-260401-f0u]: Svelte 5 generics attribute on <script> tag is required to preserve generic T through svelte-package type generation; without it, T defaults to the interface default type
 
 ### Roadmap Evolution
 
@@ -150,7 +151,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-31T19:25:00.000Z
+Last session: 2026-04-01T05:25:12.121Z
 Last activity: 2026-03-31 - Completed quick task 260331-rsh: link github repo with the npm package
-Stopped at: Completed quick-260331-qvi-PLAN.md — static/registry.json added so adapter-static serves it at /registry.json
+Stopped at: Completed quick-260401-f0u-PLAN.md — WheelPicker generic T now preserved in dist types
 Resume file: None
