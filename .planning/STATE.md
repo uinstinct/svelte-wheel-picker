@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260401-f0u-PLAN.md — WheelPicker generic T now preserved in dist types
-last_updated: "2026-04-01T05:25:15.598Z"
-last_activity: "2026-03-31 - Completed quick task 260331-rsh: link github repo with the npm package"
+stopped_at: Completed quick-260401-i8a-PLAN.md — explicit TS target esnext added to tsconfig.json
+last_updated: "2026-04-01T07:42:05.328Z"
+last_activity: "2026-04-01 - Completed quick task 260401-f0u: Fix TS target, generic type erasure, and missing sideEffects in package"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -149,10 +149,11 @@ None yet.
 | 260331-qvi | fix registry.json not accessible at /registry.json on Netlify | 2026-03-31 | 55ecc15 | [260331-qvi-fix-registry-json-not-accessible-at-regi](./quick/260331-qvi-fix-registry-json-not-accessible-at-regi/) |
 | 260331-rsh | link GitHub repo with the npm package | 2026-03-31 | 6bb3973 | | [260331-rsh-link-github-repo-with-the-npm-package](./quick/260331-rsh-link-github-repo-with-the-npm-package/) |
 | 260401-f0u | Fix TS target, generic type erasure, and missing sideEffects in package | 2026-04-01 | dd4a464 | Verified | [260401-f0u-fix-ts-target-generic-type-erasure-and-m](./quick/260401-f0u-fix-ts-target-generic-type-erasure-and-m/) |
+| 260401-i8a | Fix TypeScript compilation target to preserve native class fields | 2026-04-01 | 0734b7f | Completed | [260401-i8a-fix-typescript-compilation-target-to-pre](./quick/260401-i8a-fix-typescript-compilation-target-to-pre/) |
 
 ## Session Continuity
 
-Last session: 2026-04-01T05:25:12.121Z
+Last session: 2026-04-01T07:42:05.316Z
 Last activity: 2026-04-01 - Completed quick task 260401-f0u: Fix TS target, generic type erasure, and missing sideEffects in package
-Stopped at: Completed quick-260401-f0u-PLAN.md — WheelPicker generic T now preserved in dist types
+Stopped at: Completed quick-260401-i8a-PLAN.md — explicit TS target esnext added to tsconfig.json
 Resume file: None
