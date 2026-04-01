@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260401-itg-PLAN.md — GitHub and npm links added to demo hero
-last_updated: "2026-04-01T08:05:51.018Z"
-last_activity: "2026-04-01 - Completed quick task 260401-i8a: Fix TypeScript compilation target to preserve Svelte 5 $state() runes in dist output"
+stopped_at: Completed quick-260401-mej-PLAN.md — mobile touch scrolling fix
+last_updated: "2026-04-01T16:15:00.000Z"
+last_activity: "2026-04-01 - Completed quick task 260401-mej: fix mobile touch scrolling in wheel picker"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -151,6 +151,7 @@ None yet.
 | 260401-f0u | Fix TS target, generic type erasure, and missing sideEffects in package | 2026-04-01 | dd4a464 | Verified | [260401-f0u-fix-ts-target-generic-type-erasure-and-m](./quick/260401-f0u-fix-ts-target-generic-type-erasure-and-m/) |
 | 260401-i8a | Fix TypeScript compilation target to preserve native class fields | 2026-04-01 | 0734b7f | Completed | [260401-i8a-fix-typescript-compilation-target-to-pre](./quick/260401-i8a-fix-typescript-compilation-target-to-pre/) |
 | 260401-itg | Add GitHub and npm links to demo hero section | 2026-04-01 | e488794 | Completed | [260401-itg-add-the-github-and-npm-link-in-the-demo-](./quick/260401-itg-add-the-github-and-npm-link-in-the-demo-/) |
+| 260401-mej | Fix mobile touch scrolling in wheel picker | 2026-04-01 | 3fe8d4c | Completed | [260401-mej-fix-mobile-touch-scrolling-wheel-picker-](./quick/260401-mej-fix-mobile-touch-scrolling-wheel-picker-/) |
 
 ## Session Continuity
 
