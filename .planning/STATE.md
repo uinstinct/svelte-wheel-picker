@@ -167,6 +167,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-02T09:01:00.000Z
-Last activity: 2026-04-02 - Completed quick task 260402-ccj: fix ease-out scrolling physics (velocity-aware animation duration)
+Last activity: 2026-04-02 - Completed quick task 260402-d8h: fix scroll sensitivity not changing visibly in wheel picker
 Stopped at: Completed quick-260402-ccj-PLAN.md — fix ease-out scrolling physics wheel picker
 Resume file: None
