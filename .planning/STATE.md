@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260402-ccj-PLAN.md — fix ease-out scrolling physics wheel picker
-last_updated: "2026-04-02T09:01:00.000Z"
-last_activity: "2026-04-02 - Completed quick task 260402-ccj: fix ease-out scrolling physics (velocity-aware animation duration)"
+stopped_at: Completed quick-260402-d8h-PLAN.md — fix scroll sensitivity not changing at runtime
+last_updated: "2026-04-02T09:15:00.000Z"
+last_activity: "2026-04-02 - Completed quick task 260402-d8h: fix scroll sensitivity reactivity via $effect + physics.update()"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -161,6 +161,7 @@ None yet.
 | 260401-n57 | Fetch npm version from releases branch, add sticky navbar | 2026-04-01 | 541723f | Completed | [260401-n57-fetch-npm-version-from-releases-branch-a](./quick/260401-n57-fetch-npm-version-from-releases-branch-a/) |
 | 260401-nc6 | Add GitHub Actions workflow badges to README | 2026-04-01 | 74619a4 | Completed | [260401-nc6-add-badges-for-all-github-actions-in-the](./quick/260401-nc6-add-badges-for-all-github-actions-in-the/) |
 | 260402-ccj | Fix ease-out scrolling physics wheel picker | 2026-04-02 | a88d8c1 | Completed | [260402-ccj-fix-ease-out-scrolling-physics-wheel-pic](./quick/260402-ccj-fix-ease-out-scrolling-physics-wheel-pic/) |
+| 260402-d8h | Fix scroll sensitivity not changing at runtime | 2026-04-02 | 343644b | Completed | [260402-d8h-fix-scroll-sensitivity-not-changing-visi](./quick/260402-d8h-fix-scroll-sensitivity-not-changing-visi/) |
 
 ## Session Continuity
 
