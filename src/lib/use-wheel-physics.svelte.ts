@@ -206,7 +206,6 @@ export class WheelPhysics {
 	 * Called on pointerup. Computes velocity and kicks off inertia or direct snap.
 	 */
 	endDrag(): void {
-		console.log('[endDrag] called, isDragging=', this.#isDragging, 'offset=', this.offset);
 		if (!this.#isDragging) return;
 		this.#isDragging = false;
 
@@ -217,12 +216,9 @@ export class WheelPhysics {
 			? wrapIndex(rawIndex, N)
 			: clampIndex(rawIndex, N);
 
-		console.log('[endDrag] velocity=', velocity, 'rawIndex=', rawIndex, 'currentIndex=', currentIndex, 'infinite=', this.#infinite);
-
 		if (Math.abs(velocity) < 0.5) {
 			// Slow release — snap directly to nearest enabled option
 			const snapIndex = snapToNearestEnabled(currentIndex, this.#options);
-			console.log('[endDrag] slow path, snapIndex=', snapIndex);
 			if (this.#infinite) {
 				// Preserve ghost-section context so the snap animation continues in the
 				// same direction as the drag rather than jumping backward to real-section.
@@ -249,12 +245,11 @@ export class WheelPhysics {
 				// loop, so the animation moves in the same direction as the drag.
 				// snapIndex is in [0,N-1]; loopOffset is -N, 0, or +N based on current section.
 				const loopOffset = rawIndex < 0 ? -N : rawIndex >= N ? N : 0;
-				console.log('[endDrag] inertia path, rawTarget=', rawTarget, 'wrapped=', wrapped, 'snapIndex=', snapIndex, 'loopOffset=', loopOffset);
-				this.animateTo(snapIndex + loopOffset);
+				this.animateTo(snapIndex + loopOffset, velocity);
 			} else {
 				const clamped = clampIndex(rawTarget, N);
 				const snapIndex = snapToNearestEnabled(clamped, this.#options);
-				this.animateTo(snapIndex);
+				this.animateTo(snapIndex, velocity);
 			}
 		}
 	}
@@ -302,17 +297,20 @@ export class WheelPhysics {
 	 * Animates the offset to the position corresponding to targetIndex.
 	 * Uses easeOutCubic easing. Calls onSnap when complete.
 	 *
+	 * When `velocity` is provided (inertia flick), duration is computed from
+	 * velocity for natural deceleration proportional to flick speed. Without
+	 * velocity (keyboard, wheel, slow release), duration is distance-based.
+	 *
 	 * Cancels any currently running animation before starting.
 	 */
-	animateTo(targetIndex: number): void {
-		console.log('[animateTo] targetIndex=', targetIndex, 'from offset=', this.offset);
+	animateTo(targetIndex: number, velocity?: number): void {
 		this.#cancelRaf();
 		this.#animating = true;
 
 		const startOffset = this.offset;
 		const targetOffset = this.#indexToOffset(targetIndex);
 		const distance = Math.abs(targetIndex - this.#offsetToIndex(startOffset));
-		const durationSec = computeAnimationDuration(distance, this.#scrollSensitivity);
+		const durationSec = computeAnimationDuration(distance, this.#scrollSensitivity, velocity);
 		const durationMs = durationSec * 1000;
 
 		const startTime = performance.now();
