@@ -194,14 +194,34 @@ export function computeSnapTarget(
 /**
  * Computes the duration of a snap animation in seconds.
  *
- * Formula: `Math.sqrt(|distance| / scrollSensitivity)`
- * Clamped to [0.1, 0.6] seconds.
+ * When `velocity` is provided and |velocity| >= 0.5 (inertia flick), uses the
+ * kinematic formula: `|velocity| / (scrollSensitivity * 6)`, clamped to [0.1, 1.2].
+ * This matches the React reference's velocity-based duration model, producing
+ * natural deceleration where faster flicks get proportionally longer animations.
+ *
+ * When `velocity` is undefined or < 0.5 (keyboard, wheel, slow release), falls
+ * back to the distance-based formula: `Math.sqrt(|distance| / scrollSensitivity)`,
+ * clamped to [0.1, 0.6] — unchanged from the original implementation.
  *
  * @param distance - Distance in index steps to travel
  * @param scrollSensitivity - Scroll sensitivity (affects duration)
+ * @param velocity - Optional scroll velocity in items/second (from inertia flick)
  * @returns Animation duration in seconds
  */
-export function computeAnimationDuration(distance: number, scrollSensitivity: number): number {
+export function computeAnimationDuration(
+	distance: number,
+	scrollSensitivity: number,
+	velocity?: number
+): number {
+	if (velocity !== undefined && Math.abs(velocity) >= 0.5) {
+		// Velocity-based duration: time proportional to flick speed.
+		// deceleration = scrollSensitivity * 6 produces duration=1.0s at v=30
+		// (MAX_VELOCITY) with scrollSensitivity=5, a reasonable maximum.
+		const deceleration = scrollSensitivity * 6;
+		const raw = Math.abs(velocity) / deceleration;
+		return Math.max(0.1, Math.min(1.2, raw));
+	}
+	// Distance-based fallback (keyboard, wheel events, slow releases)
 	const raw = Math.sqrt(Math.abs(distance) / scrollSensitivity);
 	return Math.max(0.1, Math.min(0.6, raw));
 }
