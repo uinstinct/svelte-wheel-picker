@@ -39,11 +39,14 @@
 	});
 
 	// Controlled/uncontrolled state management
-	const state = useControllableState({
-		value,
-		defaultValue,
-		onChange: onValueChange,
-	});
+	// untrack: constructor only needs initial values; effects below handle reactive updates
+	const state = untrack(() =>
+		useControllableState({
+			value,
+			defaultValue,
+			onChange: onValueChange,
+		}),
+	);
 
 	// Derive the currently selected index
 	const selectedIndex = $derived(options.findIndex((o) => o.value === state.current));
@@ -55,40 +58,51 @@
 		return first >= 0 ? first : 0;
 	});
 
-	// Instantiate the physics engine
-	const physics = new WheelPhysics({
-		itemHeight: optionItemHeight,
-		visibleCount: visibleCount,
-		dragSensitivity,
-		scrollSensitivity,
-		options,
-		initialIndex,
-		infinite,
-		onSnap: (index: number) => {
-			console.log('[onSnap] index=', index, 'infinite=', infinite, 'offset=', physics.offset);
-			if (infinite) {
-				// D-04: Normalize offset on snap settle
-				const wrappedIndex = wrapIndex(index, options.length);
-				physics.jumpTo(wrappedIndex);
-				const opt = options[wrappedIndex];
-				console.log(
-					'[onSnap] wrappedIndex=',
-					wrappedIndex,
-					'opt=',
-					opt?.value,
-					'jumpTo offset=',
-					physics.offset,
-				);
-				if (opt && !opt.disabled) {
-					state.current = opt.value;
-				}
-			} else {
-				const opt = options[index];
-				if (opt && !opt.disabled) {
-					state.current = opt.value;
-				}
+	// Named snap handler — extracted to allow $effect to reference it reactively
+	function handleSnap(index: number) {
+		if (infinite) {
+			// D-04: Normalize offset on snap settle
+			const wrappedIndex = wrapIndex(index, options.length);
+			physics.jumpTo(wrappedIndex);
+			const opt = options[wrappedIndex];
+			if (opt && !opt.disabled) {
+				state.current = opt.value;
 			}
-		},
+		} else {
+			const opt = options[index];
+			if (opt && !opt.disabled) {
+				state.current = opt.value;
+			}
+		}
+	}
+
+	// Instantiate the physics engine
+	// untrack: constructor only needs initial values; $effect below syncs all prop changes
+	const physics = untrack(
+		() =>
+			new WheelPhysics({
+				itemHeight: optionItemHeight,
+				visibleCount: visibleCount,
+				dragSensitivity,
+				scrollSensitivity,
+				options,
+				initialIndex,
+				infinite,
+				onSnap: handleSnap,
+			}),
+	);
+
+	// Sync prop changes to physics engine — fixes state_referenced_locally warnings
+	$effect(() => {
+		physics.update({
+			itemHeight: optionItemHeight,
+			visibleCount,
+			dragSensitivity,
+			scrollSensitivity,
+			infinite,
+			options,
+			onSnap: handleSnap,
+		});
 	});
 
 	// Typeahead search instance
@@ -196,20 +210,8 @@
 
 	// Pointer event handlers (Pattern 2: Pointer Capture for reliable drag tracking)
 	function onPointerDown(e: PointerEvent) {
-		console.log(
-			'[onPointerDown] type=',
-			e.type,
-			'currentTarget=',
-			e.currentTarget,
-			'target=',
-			e.target,
-		);
 		const el = e.currentTarget as HTMLElement;
 		el.setPointerCapture(e.pointerId);
-		console.log(
-			'[onPointerDown] setPointerCapture called, hasCapture=',
-			el.hasPointerCapture(e.pointerId),
-		);
 		physics.startDrag(e.clientY);
 	}
 
@@ -218,16 +220,6 @@
 	}
 
 	function onPointerUp(e: PointerEvent) {
-		console.log(
-			'[onPointerUp] type=',
-			e.type,
-			'currentTarget=',
-			e.currentTarget,
-			'target=',
-			e.target,
-			'clientY=',
-			e.clientY,
-		);
 		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
 		physics.endDrag();
 	}
