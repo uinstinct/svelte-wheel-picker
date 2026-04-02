@@ -4,8 +4,12 @@ export default defineConfig({
 	testDir: './e2e',
 	timeout: 30000,
 	retries: 0,
+	workers: 2,
 	use: {
 		baseURL: 'http://localhost:4173',
+		launchOptions: {
+			channel: 'chromium',
+		},
 	},
 	projects: [
 		{
