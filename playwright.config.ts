@@ -14,6 +14,12 @@ export default defineConfig({
 				...devices['Pixel 5'],
 			},
 		},
+		{
+			name: 'desktop-chrome',
+			use: {
+				...devices['Desktop Chrome'],
+			},
+		},
 	],
 	webServer: {
 		command: 'npx vite dev --port 4173',
