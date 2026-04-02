@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260402-d6r-PLAN.md — fix state_referenced_locally warnings and silent git stderr
-last_updated: "2026-04-02T09:35:00.000Z"
-last_activity: "2026-04-02 - Completed quick task 260402-d6r: suppress state_referenced_locally warnings via untrack + $effect, remove console.logs, silence git stderr"
+stopped_at: Completed quick-260402-dh6-PLAN.md — fix mouse wheel scroll speed
+last_updated: "2026-04-02T04:18:59.442Z"
+last_activity: "2026-04-02 - Completed quick task 260402-d8h: fix scroll sensitivity not changing visibly in wheel picker"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -113,6 +113,7 @@ Recent decisions affecting current work:
 - [quick-260331-qah]: Deployment moved from Vercel to Netlify via nwtgck/actions-netlify@v3; needs NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets
 - [Phase quick-260401-f0u]: Svelte 5 generics attribute on <script> tag is required to preserve generic T through svelte-package type generation; without it, T defaults to the interface default type
 - [Phase quick-260401-mog]: playwright added as direct devDependency at 1.58.2 — pnpm exec cannot resolve binaries from transitive peer deps in CI
+- [Phase quick-260402-dh6]: handleWheel: replaced 100ms debounce + direction-only with deltaY-proportional multi-item movement; cancelRaf() provides sufficient rate control without a time guard
 
 ### Roadmap Evolution
 
@@ -166,7 +167,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-02T09:01:00.000Z
+Last session: 2026-04-02T04:18:55.482Z
 Last activity: 2026-04-02 - Completed quick task 260402-d8h: fix scroll sensitivity not changing visibly in wheel picker
-Stopped at: Completed quick-260402-ccj-PLAN.md — fix ease-out scrolling physics wheel picker
+Stopped at: Completed quick-260402-dh6-PLAN.md — fix mouse wheel scroll speed
 Resume file: None
