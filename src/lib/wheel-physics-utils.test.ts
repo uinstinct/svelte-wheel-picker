@@ -252,7 +252,7 @@ describe('computeAnimationDuration', () => {
 		expect(computeAnimationDuration(1, 100)).toBeGreaterThanOrEqual(0.1);
 	});
 
-	it('returns at most 0.6 seconds', () => {
+	it('returns at most 0.6 seconds (distance-only path)', () => {
 		expect(computeAnimationDuration(1000000, 1)).toBeLessThanOrEqual(0.6);
 	});
 
@@ -260,6 +260,65 @@ describe('computeAnimationDuration', () => {
 		const short = computeAnimationDuration(1, 5);
 		const long = computeAnimationDuration(100, 5);
 		expect(long).toBeGreaterThanOrEqual(short);
+	});
+
+	it('when velocity < 0.5, falls through to distance-based path', () => {
+		// velocity=0.4 should behave identically to no-velocity call
+		const withoutVelocity = computeAnimationDuration(3, 5);
+		const withLowVelocity = computeAnimationDuration(3, 5, 0.4);
+		expect(withLowVelocity).toBeCloseTo(withoutVelocity, 10);
+	});
+
+	it('when velocity is undefined, behavior is identical to distance-based', () => {
+		const withoutVelocity = computeAnimationDuration(5, 5);
+		const withUndefined = computeAnimationDuration(5, 5, undefined);
+		expect(withUndefined).toBeCloseTo(withoutVelocity, 10);
+	});
+});
+
+describe('computeAnimationDuration (velocity-aware)', () => {
+	it('faster flick gets longer duration than slower flick', () => {
+		// slow: velocity=3, fast: velocity=15, same scrollSensitivity=5
+		const slow = computeAnimationDuration(3, 5, 3);
+		const fast = computeAnimationDuration(10, 5, 15);
+		expect(fast).toBeGreaterThan(slow);
+	});
+
+	it('velocity-aware duration is capped at 1.2s max', () => {
+		// Extremely high velocity — should be capped at 1.2s
+		const result = computeAnimationDuration(100, 5, 1000);
+		expect(result).toBeLessThanOrEqual(1.2);
+	});
+
+	it('velocity-aware duration has minimum 0.1s', () => {
+		// Very low velocity just above threshold
+		const result = computeAnimationDuration(1, 5, 0.5);
+		expect(result).toBeGreaterThanOrEqual(0.1);
+	});
+
+	it('at typical velocities with scrollSensitivity=5, durations are in reasonable range', () => {
+		// scrollSensitivity=5, deceleration = 5*6 = 30
+		// v=5: 5/30 ≈ 0.167s
+		// v=10: 10/30 ≈ 0.333s
+		// v=20: 20/30 ≈ 0.667s
+		const v5 = computeAnimationDuration(0, 5, 5);
+		const v10 = computeAnimationDuration(0, 5, 10);
+		const v20 = computeAnimationDuration(0, 5, 20);
+		expect(v5).toBeGreaterThanOrEqual(0.1);
+		expect(v5).toBeLessThanOrEqual(1.2);
+		expect(v10).toBeGreaterThanOrEqual(0.1);
+		expect(v10).toBeLessThanOrEqual(1.2);
+		expect(v20).toBeGreaterThanOrEqual(0.1);
+		expect(v20).toBeLessThanOrEqual(1.2);
+		// Monotonically increasing with velocity
+		expect(v10).toBeGreaterThan(v5);
+		expect(v20).toBeGreaterThan(v10);
+	});
+
+	it('velocity-aware duration exceeds 0.6s distance ceiling for fast flicks', () => {
+		// v=20, scrollSensitivity=5: 20/30 ≈ 0.667s — should exceed distance-only 0.6 ceiling
+		const result = computeAnimationDuration(10, 5, 20);
+		expect(result).toBeGreaterThan(0.6);
 	});
 });
 
