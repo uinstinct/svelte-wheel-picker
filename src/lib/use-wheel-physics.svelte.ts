@@ -76,9 +76,6 @@ export class WheelPhysics {
 	/** Recent pointer positions for velocity calculation: [clientY, timestamp][] */
 	#yList: Array<[number, number]> = [];
 
-	/** Timestamp of the last wheel event (100ms debounce guard) */
-	#lastWheelTime = -Infinity;
-
 	/** True while a snap or inertia animation is running */
 	#animating = false;
 
@@ -259,31 +256,38 @@ export class WheelPhysics {
 	// ---------------------------------------------------------------------------
 
 	/**
-	 * Called on wheel event. Debounced at 100ms to prevent rapid-fire scroll events.
+	 * Called on wheel event. Moves proportionally to deltaY magnitude.
 	 *
-	 * deltaY > 0: scroll down → move to next item (higher index)
-	 * deltaY < 0: scroll up → move to previous item (lower index)
+	 * deltaY > 0: scroll down → move to next item(s) (higher index)
+	 * deltaY < 0: scroll up → move to previous item(s) (lower index)
+	 *
+	 * A typical mouse wheel notch sends deltaY ~100-150px. Dividing by itemHeight
+	 * gives a proportional item count, so scrolling feels natural and fast.
+	 * The in-flight animation is cancelled before computing the new target so
+	 * rapid wheel events feel snappy (each event immediately updates the target).
 	 */
 	handleWheel(deltaY: number): void {
-		const now = performance.now();
-		if (now - this.#lastWheelTime < 100) return;
-		this.#lastWheelTime = now;
+		// Cancel any in-flight animation so rapid scrolling feels immediate
+		this.#cancelRaf();
+
+		// Calculate number of items to move based on deltaY magnitude.
+		// A typical mouse wheel notch sends deltaY ~100-150px.
+		// Divide by itemHeight to get proportional item count, minimum 1.
+		const itemsToMove = Math.max(1, Math.round(Math.abs(deltaY) / this.#itemHeight));
+		const direction = deltaY > 0 ? 1 : -1;
+		const steps = itemsToMove * direction;
 
 		const rawIndex = this.#offsetToIndex(this.offset);
-		const currentIndex = this.#infinite
-			? wrapIndex(rawIndex, this.#options.length)
-			: clampIndex(rawIndex, this.#options.length);
-
-		// deltaY > 0 = scroll down = move to next item (increment index)
-		const direction = deltaY > 0 ? 1 : -1;
+		const N = this.#options.length;
+		const currentIndex = this.#infinite ? wrapIndex(rawIndex, N) : clampIndex(rawIndex, N);
 
 		if (this.#infinite) {
-			const next = currentIndex + direction;
-			const wrapped = wrapIndex(next, this.#options.length);
+			const next = currentIndex + steps;
+			const wrapped = wrapIndex(next, N);
 			const snapIndex = snapToNearestEnabled(wrapped, this.#options);
 			this.animateTo(snapIndex);
 		} else {
-			const targetIndex = clampIndex(currentIndex + direction, this.#options.length);
+			const targetIndex = clampIndex(currentIndex + steps, N);
 			const snapIndex = snapToNearestEnabled(targetIndex, this.#options);
 			this.animateTo(snapIndex);
 		}
