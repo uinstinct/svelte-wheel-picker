@@ -5,7 +5,7 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async () => {
 	let version: string;
 	try {
-		const raw = execSync('git show releases:package.json', { encoding: 'utf-8' });
+		const raw = execSync('git show releases:package.json', { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] });
 		version = JSON.parse(raw).version;
 	} catch {
 		// Fallback: local package.json (dev mode or no releases branch yet)
