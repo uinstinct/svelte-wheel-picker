@@ -117,7 +117,72 @@
 		light: 'Light',
 		dark: 'Dark',
 	};
+
+	const jsonLdSchema = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'SoftwareApplication',
+				name: 'svelte-wheel-picker',
+				description:
+					'iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies.',
+				url: 'https://svelte-wheel-spinner.netlify.app/',
+				applicationCategory: 'DeveloperApplication',
+				operatingSystem: 'Any',
+				offers: {
+					'@type': 'Offer',
+					price: '0',
+					priceCurrency: 'USD',
+				},
+				license: 'https://opensource.org/licenses/MIT',
+				programmingLanguage: ['TypeScript', 'Svelte'],
+				author: {
+					'@type': 'Person',
+					name: 'uinstinct',
+					url: 'https://github.com/uinstinct',
+				},
+				codeRepository: 'https://github.com/uinstinct/svelte-wheel-picker',
+				installUrl: 'https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker',
+			},
+			{
+				'@type': 'WebSite',
+				name: 'svelte-wheel-picker',
+				url: 'https://svelte-wheel-spinner.netlify.app/',
+			},
+			{
+				'@type': 'WebPage',
+				name: 'svelte-wheel-picker — iOS-style Wheel Picker for Svelte 5',
+				description:
+					'iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies.',
+				url: 'https://svelte-wheel-spinner.netlify.app/',
+				isPartOf: {
+					'@type': 'WebSite',
+					name: 'svelte-wheel-picker',
+					url: 'https://svelte-wheel-spinner.netlify.app/',
+				},
+			},
+		],
+	};
 </script>
+
+<svelte:head>
+	<title>svelte-wheel-picker — iOS-style Wheel Picker for Svelte 5</title>
+	<meta
+		name="description"
+		content="iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies. npm install @uinstinct/svelte-wheel-picker"
+	/>
+	<link rel="canonical" href="https://svelte-wheel-spinner.netlify.app/" />
+	<meta property="og:title" content="svelte-wheel-picker — iOS-style Wheel Picker for Svelte 5" />
+	<meta
+		property="og:description"
+		content="iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies. npm install @uinstinct/svelte-wheel-picker"
+	/>
+	<meta property="og:url" content="https://svelte-wheel-spinner.netlify.app/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="svelte-wheel-picker" />
+	<meta name="twitter:card" content="summary" />
+	{@html `<script type="application/ld+json">${JSON.stringify(jsonLdSchema)}</script>`}
+</svelte:head>
 
 <nav class="navbar">
 	<span class="navbar-title">svelte-wheel-picker</span>
