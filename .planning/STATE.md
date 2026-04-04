@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Milestone complete
-stopped_at: Completed quick-260404-ltk-PLAN.md — add sensitivity sliders to demo site
-last_updated: "2026-04-04T10:16:15.410Z"
-last_activity: "2026-04-02 - Completed quick task 260402-djm: Add E2E tests for keyboard navigation, mouse wheel scrolling, and touch gestures"
+stopped_at: Completed quick-260404-mn7-PLAN.md — fix critical SEO issues
+last_updated: "2026-04-04T10:52:12.350Z"
+last_activity: "2026-04-04 - Completed quick task 260404-ltk: add a slider in the demo site for adjusting the scroll and drag sensitivity"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -114,6 +114,7 @@ Recent decisions affecting current work:
 - [Phase quick-260401-f0u]: Svelte 5 generics attribute on <script> tag is required to preserve generic T through svelte-package type generation; without it, T defaults to the interface default type
 - [Phase quick-260401-mog]: playwright added as direct devDependency at 1.58.2 — pnpm exec cannot resolve binaries from transitive peer deps in CI
 - [Phase quick-260402-dh6]: handleWheel: replaced 100ms debounce + direction-only with deltaY-proportional multi-item movement; cancelRaf() provides sufficient rate control without a time guard
+- [Phase quick-260404-mn7]: JSON-LD rendered via {@html} pattern to prevent Svelte from escaping script tag content
 
 ### Roadmap Evolution
 
@@ -170,7 +171,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-04T10:16:15.398Z
+Last session: 2026-04-04T10:52:07.534Z
 Last activity: 2026-04-04 - Completed quick task 260404-ltk: add a slider in the demo site for adjusting the scroll and drag sensitivity
-Stopped at: Completed quick-260404-ltk-PLAN.md — add sensitivity sliders to demo site
+Stopped at: Completed quick-260404-mn7-PLAN.md — fix critical SEO issues
 Resume file: None
