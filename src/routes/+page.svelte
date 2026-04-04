@@ -172,6 +172,9 @@
 			},
 		],
 	};
+
+	const jsonLdHtml =
+		'<script type="application/ld+json">' + JSON.stringify(jsonLdSchema) + '</scr' + 'ipt>';
 </script>
 
 <svelte:head>
@@ -197,7 +200,8 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content="https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
 	<meta name="twitter:image:alt" content="Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background" />
-	{@html `<script type="application/ld+json">${JSON.stringify(jsonLdSchema)}</script>`}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- JSON-LD must be injected as raw HTML -->
+	{@html jsonLdHtml}
 </svelte:head>
 
 <nav class="navbar">
