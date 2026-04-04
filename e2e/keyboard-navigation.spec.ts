@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-// Helper to focus the wheel picker via Tab key (avoids pointer capture issues with click/focus)
+// Helper to focus the wheel picker (avoids pointer capture issues with click/focus)
 async function focusWheel(page: import('@playwright/test').Page, sectionText: string) {
 	const wrapper = page
 		.locator('section')
@@ -10,14 +10,12 @@ async function focusWheel(page: import('@playwright/test').Page, sectionText: st
 	await wrapper.scrollIntoViewIfNeeded();
 	// Use dispatchEvent to set focus without triggering pointer capture
 	await wrapper.evaluate((el) => el.focus());
-	// Verify focus landed
-	const focused = await wrapper.evaluate((el) => document.activeElement === el);
-	if (!focused) {
-		// Fallback: click on the selection overlay (pointer-events: none) area won't trigger drag
-		// Instead, press Tab until we reach it
-		await wrapper.click({ position: { x: 5, y: 5 }, force: true });
-	}
-	await page.waitForTimeout(200);
+	// Poll until focus has actually landed on the wrapper — avoids fixed-timeout race condition
+	await page.waitForFunction(
+		(el) => document.activeElement === el,
+		await wrapper.elementHandle(),
+		{ timeout: 2000 },
+	);
 }
 
 test.describe('Keyboard Navigation', () => {

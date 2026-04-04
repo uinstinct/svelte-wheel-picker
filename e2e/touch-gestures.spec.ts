@@ -56,21 +56,22 @@ test.describe('Touch Gestures', () => {
 		const cx = box.x + box.width / 2;
 		const startY = box.y + box.height / 2;
 
-		// Drag downward 150px to scroll picker backward (reveals earlier items)
+		// Drag downward 200px to scroll picker backward (reveals earlier items).
+		// 200px provides enough displacement to reliably clear rubber-band resistance
+		// (RESISTANCE=0.3) when cherry is near the list start with only 2 items before it.
 		await page.mouse.move(cx, startY);
 		await page.mouse.down();
-		for (let i = 1; i <= 10; i++) {
-			await page.mouse.move(cx, startY + 15 * i);
+		for (let i = 1; i <= 20; i++) {
+			await page.mouse.move(cx, startY + 10 * i);
 			await page.waitForTimeout(16);
 		}
 		await page.mouse.up();
 
-		// Wait for inertia animation to settle
-		await page.waitForTimeout(2000);
+		// Poll until selection changes — avoids fixed timeout race condition
+		await expect(selectedText).not.toContainText('cherry', { timeout: 3000 });
 
 		// Should have moved backward from cherry — expect banana or apple
 		const selected = await selectedText.textContent();
-		expect(selected).not.toContain('cherry');
 		const movedBackward = selected?.includes('banana') || selected?.includes('apple');
 		expect(movedBackward).toBe(true);
 	});
