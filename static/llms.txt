@@ -1,0 +1,59 @@
+# @uinstinct/svelte-wheel-picker
+
+> iOS-style wheel picker for Svelte 5 with smooth inertia scrolling, infinite loop support, keyboard navigation, and cylindrical 3D effect.
+
+## Features
+
+- Svelte 5 runes-based reactivity ($state, $derived, $effect)
+- Smooth inertia scrolling with spring physics
+- Infinite loop mode
+- Cylindrical/drum 3D visual effect
+- Full keyboard navigation (arrow keys, Home/End, type-ahead search)
+- Controlled and uncontrolled modes
+- Disabled options support
+- WheelPickerWrapper for multi-wheel layouts (time picker, date picker)
+- Headless/unstyled with data attributes for CSS targeting
+- Zero runtime dependencies
+- TypeScript types included
+- SSR safe
+
+## Installation
+
+npm:
+
+    npm install @uinstinct/svelte-wheel-picker
+
+shadcn-svelte CLI:
+
+    npx shadcn-svelte@latest add https://svelte-wheel-spinner.netlify.app/r/wheel-picker.json
+
+## Quick Start
+
+```svelte
+<script lang="ts">
+  import { WheelPicker } from '@uinstinct/svelte-wheel-picker';
+
+  const fruits = [
+    { value: 'apple', label: 'Apple' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'cherry', label: 'Cherry' },
+    { value: 'date', label: 'Date' },
+    { value: 'fig', label: 'Fig' },
+  ];
+
+  let selected = $state('cherry');
+</script>
+
+<WheelPicker
+  options={fruits}
+  value={selected}
+  onValueChange={(v) => { selected = v; }}
+/>
+```
+
+## Links
+
+- Demo: https://svelte-wheel-spinner.netlify.app
+- npm: https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker
+- GitHub: https://github.com/uinstinct/svelte-wheel-picker
+- License: MIT
