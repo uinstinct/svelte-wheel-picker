@@ -39,6 +39,7 @@
 	let selectedHour = $state('12');
 	let selectedMinute = $state('00');
 	let selectedCylindrical = $state('cherry');
+	let selectedSensitivity = $state('cherry');
 
 	// Sensitivity controls
 	let dragSens = $state(3);
@@ -180,18 +181,6 @@
 		</div>
 	</section>
 
-	<section class="controls-section">
-		<h2>Sensitivity</h2>
-		<div class="slider-row">
-			<label for="drag-sens">Drag: {dragSens}</label>
-			<input id="drag-sens" type="range" min="1" max="20" step="1" bind:value={dragSens} />
-		</div>
-		<div class="slider-row">
-			<label for="scroll-sens">Scroll: {scrollSens}</label>
-			<input id="scroll-sens" type="range" min="1" max="20" step="1" bind:value={scrollSens} />
-		</div>
-	</section>
-
 	<section>
 		<h2>Single Wheel</h2>
 		<p>Selected: {selectedFruit}</p>
@@ -202,8 +191,6 @@
 				onValueChange={(v) => {
 					selectedFruit = v;
 				}}
-				dragSensitivity={dragSens}
-				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -219,8 +206,6 @@
 				onValueChange={(v) => {
 					selectedDisabled = v;
 				}}
-				dragSensitivity={dragSens}
-				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -237,8 +222,6 @@
 					selectedInfinite = v;
 				}}
 				infinite={true}
-				dragSensitivity={dragSens}
-				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -255,8 +238,6 @@
 					onValueChange={(v) => {
 						selectedHour = v;
 					}}
-					dragSensitivity={dragSens}
-					scrollSensitivity={scrollSens}
 					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 				/>
 				<WheelPicker
@@ -265,8 +246,6 @@
 					onValueChange={(v) => {
 						selectedMinute = v;
 					}}
-					dragSensitivity={dragSens}
-					scrollSensitivity={scrollSens}
 					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 				/>
 			</WheelPickerWrapper>
@@ -284,6 +263,31 @@
 					selectedCylindrical = v;
 				}}
 				cylindrical={true}
+				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
+			/>
+		</div>
+	</section>
+
+	<section>
+		<h2>Sensitivity</h2>
+		<p>Selected: {selectedSensitivity}</p>
+		<div class="controls-section">
+			<div class="slider-row">
+				<label for="drag-sens">Drag: {dragSens}</label>
+				<input id="drag-sens" type="range" min="1" max="20" step="1" bind:value={dragSens} />
+			</div>
+			<div class="slider-row">
+				<label for="scroll-sens">Scroll: {scrollSens}</label>
+				<input id="scroll-sens" type="range" min="1" max="20" step="1" bind:value={scrollSens} />
+			</div>
+		</div>
+		<div class="wheel-container">
+			<WheelPicker
+				options={fruitOptions}
+				value={selectedSensitivity}
+				onValueChange={(v) => {
+					selectedSensitivity = v;
+				}}
 				dragSensitivity={dragSens}
 				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
