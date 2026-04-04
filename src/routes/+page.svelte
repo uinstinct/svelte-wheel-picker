@@ -161,6 +161,15 @@
 					url: 'https://svelte-wheel-spinner.netlify.app/',
 				},
 			},
+			{
+				'@type': 'ImageObject',
+				contentUrl:
+					'https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp',
+				description:
+					'Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background',
+				width: 1200,
+				height: 630,
+			},
 		],
 	};
 </script>
@@ -180,7 +189,14 @@
 	<meta property="og:url" content="https://svelte-wheel-spinner.netlify.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="svelte-wheel-picker" />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:image" content="https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
+	<meta name="twitter:image:alt" content="Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background" />
 	{@html `<script type="application/ld+json">${JSON.stringify(jsonLdSchema)}</script>`}
 </svelte:head>
 
