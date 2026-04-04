@@ -209,9 +209,13 @@
 	}
 
 	// Pointer event handlers (Pattern 2: Pointer Capture for reliable drag tracking)
+	// Mouse does not use pointer capture so that pointerleave fires when cursor exits.
+	// Touch/pen still get pointer capture for uninterrupted cross-boundary tracking.
 	function onPointerDown(e: PointerEvent) {
 		const el = e.currentTarget as HTMLElement;
-		el.setPointerCapture(e.pointerId);
+		if (e.pointerType !== 'mouse') {
+			el.setPointerCapture(e.pointerId);
+		}
 		physics.startDrag(e.clientY);
 	}
 
@@ -220,8 +224,20 @@
 	}
 
 	function onPointerUp(e: PointerEvent) {
-		(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+		const el = e.currentTarget as HTMLElement;
+		if (el.hasPointerCapture(e.pointerId)) {
+			el.releasePointerCapture(e.pointerId);
+		}
 		physics.endDrag();
+	}
+
+	// End mouse drag when cursor leaves the component boundary.
+	// endDrag() has an isDragging guard so double-calls (pointerleave + pointerup) are no-ops.
+	// Touch/pen already use pointer capture so pointerleave is never fired for them.
+	function onPointerLeave(e: PointerEvent) {
+		if (e.pointerType === 'mouse') {
+			physics.endDrag();
+		}
 	}
 
 	// Wheel/trackpad scroll handler — one item per scroll event
@@ -246,6 +262,7 @@
 	onpointermove={onPointerMove}
 	onpointerup={onPointerUp}
 	onpointercancel={onPointerUp}
+	onpointerleave={onPointerLeave}
 	onwheel={onWheel}
 	onkeydown={handleKeydown}
 >
