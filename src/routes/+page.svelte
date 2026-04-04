@@ -40,6 +40,10 @@
 	let selectedMinute = $state('00');
 	let selectedCylindrical = $state('cherry');
 
+	// Sensitivity controls
+	let dragSens = $state(3);
+	let scrollSens = $state(5);
+
 	// Theme toggle
 	let theme = $state<'light' | 'dark' | 'system'>('system');
 	let mediaQuery: MediaQueryList | null = null;
@@ -176,6 +180,18 @@
 		</div>
 	</section>
 
+	<section class="controls-section">
+		<h2>Sensitivity</h2>
+		<div class="slider-row">
+			<label for="drag-sens">Drag: {dragSens}</label>
+			<input id="drag-sens" type="range" min="1" max="20" step="1" bind:value={dragSens} />
+		</div>
+		<div class="slider-row">
+			<label for="scroll-sens">Scroll: {scrollSens}</label>
+			<input id="scroll-sens" type="range" min="1" max="20" step="1" bind:value={scrollSens} />
+		</div>
+	</section>
+
 	<section>
 		<h2>Single Wheel</h2>
 		<p>Selected: {selectedFruit}</p>
@@ -186,6 +202,8 @@
 				onValueChange={(v) => {
 					selectedFruit = v;
 				}}
+				dragSensitivity={dragSens}
+				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -201,6 +219,8 @@
 				onValueChange={(v) => {
 					selectedDisabled = v;
 				}}
+				dragSensitivity={dragSens}
+				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -217,6 +237,8 @@
 					selectedInfinite = v;
 				}}
 				infinite={true}
+				dragSensitivity={dragSens}
+				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -233,6 +255,8 @@
 					onValueChange={(v) => {
 						selectedHour = v;
 					}}
+					dragSensitivity={dragSens}
+					scrollSensitivity={scrollSens}
 					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 				/>
 				<WheelPicker
@@ -241,6 +265,8 @@
 					onValueChange={(v) => {
 						selectedMinute = v;
 					}}
+					dragSensitivity={dragSens}
+					scrollSensitivity={scrollSens}
 					classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 				/>
 			</WheelPickerWrapper>
@@ -258,6 +284,8 @@
 					selectedCylindrical = v;
 				}}
 				cylindrical={true}
+				dragSensitivity={dragSens}
+				scrollSensitivity={scrollSens}
 				classNames={{ wrapper: 'wheel', selection: 'wheel-selection', option: 'wheel-option' }}
 			/>
 		</div>
@@ -473,5 +501,40 @@
 		display: flex;
 		flex-direction: row;
 		align-items: stretch;
+	}
+
+	.controls-section {
+		margin-bottom: 24px;
+		background: var(--color-surface);
+		border-radius: 8px;
+		padding: 16px;
+	}
+
+	.controls-section h2 {
+		margin-bottom: 12px;
+	}
+
+	.slider-row {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 8px;
+	}
+
+	.slider-row:last-child {
+		margin-bottom: 0;
+	}
+
+	.slider-row label {
+		font-size: 14px;
+		font-weight: 500;
+		min-width: 90px;
+		color: var(--color-text);
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	}
+
+	.slider-row input[type='range'] {
+		flex: 1;
+		accent-color: rgb(59, 130, 246);
 	}
 </style>
