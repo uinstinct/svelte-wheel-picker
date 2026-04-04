@@ -86,8 +86,8 @@ test.describe('Mouse Drag Leave Behavior', () => {
 		// Wait for snap animation to settle
 		await page.waitForTimeout(600);
 
-		// Record the snapped value
-		const snappedValue = await selectedText.textContent();
+		// Wait for snap to settle before re-entering
+		await selectedText.textContent();
 
 		// Move back inside and press down again — this is a new drag, not a continuation
 		await page.mouse.move(cx, startY);
