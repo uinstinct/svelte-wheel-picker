@@ -6,10 +6,7 @@ test.describe('Touch Gestures', () => {
 	});
 
 	test('touch drag up changes selection forward', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page
@@ -42,10 +39,7 @@ test.describe('Touch Gestures', () => {
 	});
 
 	test('touch drag down changes selection backward', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page
@@ -82,10 +76,7 @@ test.describe('Touch Gestures', () => {
 	});
 
 	test('quick flick gesture triggers inertia', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page

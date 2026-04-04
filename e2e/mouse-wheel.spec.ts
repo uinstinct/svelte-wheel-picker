@@ -4,7 +4,7 @@ test.describe('Mouse Wheel Scrolling', () => {
 	test('mouse wheel scroll moves multiple items per scroll event', async ({ page }) => {
 		await page.goto('/');
 
-		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page
@@ -40,7 +40,7 @@ test.describe('Mouse Wheel Scrolling', () => {
 	test('single wheel notch scrolls exactly one item with low deltaY', async ({ page }) => {
 		await page.goto('/');
 
-		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page
