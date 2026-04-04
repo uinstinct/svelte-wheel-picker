@@ -235,8 +235,21 @@
 	<section class="hero">
 		<h1>svelte-wheel-picker</h1>
 		<p class="hero-description">
-			iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard
-			navigation.
+			svelte-wheel-picker is an iOS-style wheel picker component built exclusively for Svelte 5.
+			It delivers the same buttery-smooth scrolling experience found on native mobile interfaces,
+			powered by spring-based inertia physics that decelerate naturally when you release a drag
+			or flick. The component supports infinite loop scrolling, a cylindrical 3D drum effect that
+			compresses items farther from the center using cosine projection, and full keyboard
+			navigation including arrow keys, Home and End jumps, and type-ahead character search.
+		</p>
+		<p class="hero-description">
+			Designed as a headless and completely unstyled building block, svelte-wheel-picker ships
+			zero runtime dependencies and zero CSS. Every DOM element exposes data attributes so you
+			can target them with your own stylesheet or utility classes. It works as a standard npm
+			package or through the shadcn-svelte CLI, which copies the source directly into your
+			project. Use it to build date pickers, time selectors, option menus, slot-machine
+			interfaces, or any input where a scrollable drum of choices feels more natural than a
+			dropdown.
 		</p>
 		<div class="install-block">
 			<pre><code>npm install @uinstinct/svelte-wheel-picker</code></pre>
@@ -246,8 +259,32 @@
 		</div>
 	</section>
 
+	<section class="features-section">
+		<h2>Features</h2>
+		<ul class="features-list">
+			<li>Svelte 5 runes-based reactivity</li>
+			<li>Smooth inertia scrolling with spring physics</li>
+			<li>Infinite loop mode</li>
+			<li>Cylindrical/drum 3D visual effect</li>
+			<li>Full keyboard navigation with type-ahead search</li>
+			<li>Controlled and uncontrolled modes</li>
+			<li>Disabled options support</li>
+			<li>WheelPickerWrapper for multi-wheel layouts</li>
+			<li>Headless/unstyled with data attributes for CSS targeting</li>
+			<li>Zero runtime dependencies</li>
+			<li>TypeScript types included</li>
+			<li>SSR safe</li>
+		</ul>
+	</section>
+
 	<section>
 		<h2>Single Wheel</h2>
+		<p class="section-description">
+			The basic wheel picker renders a scrollable list of options with one item highlighted in
+			the center. Drag with your mouse or finger, use the scroll wheel, or press arrow keys to
+			navigate. The selection snaps to the nearest option with a smooth spring animation. This is
+			the foundational building block — most use cases start here.
+		</p>
 		<p>Selected: {selectedFruit}</p>
 		<div class="wheel-container">
 			<WheelPicker
@@ -263,6 +300,11 @@
 
 	<section>
 		<h2>Disabled Options</h2>
+		<p class="section-description">
+			Mark individual options as disabled to prevent selection. Disabled items appear dimmed and
+			are automatically skipped during keyboard navigation and scroll snapping. Use this for
+			unavailable choices, sold-out items, or options that require a prerequisite.
+		</p>
 		<p>Selected: {selectedDisabled}</p>
 		<div class="wheel-container">
 			<WheelPicker
@@ -278,6 +320,12 @@
 
 	<section>
 		<h2>Infinite Loop</h2>
+		<p class="section-description">
+			Enable infinite scrolling so the list wraps seamlessly from the last option back to the
+			first and vice versa. The picker clones ghost items above and below the real options, then
+			silently repositions when crossing the boundary. Ideal for cyclical values like hours,
+			months, or days of the week.
+		</p>
 		<p>Selected: {selectedInfinite}</p>
 		<div class="wheel-container">
 			<WheelPicker
@@ -294,6 +342,12 @@
 
 	<section>
 		<h2>Two Wheels</h2>
+		<p class="section-description">
+			Combine multiple WheelPicker components inside a WheelPickerWrapper to create compound
+			selectors. Each wheel operates independently with its own value and options while the
+			wrapper aligns them in a horizontal row. Build time pickers, date selectors, or any
+			multi-field input.
+		</p>
 		<p>Hour: {selectedHour} — Minute: {selectedMinute}</p>
 		<div class="wheel-container">
 			<WheelPickerWrapper classNames={{ group: 'time-picker-group' }}>
@@ -319,6 +373,11 @@
 
 	<section>
 		<h2>Drum / Cylinder</h2>
+		<p class="section-description">
+			Enable the cylindrical prop for a rotating drum visual effect that mimics a physical picker
+			wheel. Options farther from the center appear compressed vertically using a cosine
+			projection, creating a convincing 3D perspective without any WebGL or canvas rendering.
+		</p>
 		<p>Selected: {selectedCylindrical}</p>
 		<div class="wheel-container">
 			<WheelPicker
@@ -335,6 +394,12 @@
 
 	<section>
 		<h2>Sensitivity</h2>
+		<p class="section-description">
+			Fine-tune how the picker responds to user input with the dragSensitivity and
+			scrollSensitivity props. Higher drag sensitivity amplifies pointer movement for faster
+			traversal. Higher scroll sensitivity increases the distance traveled per scroll wheel tick.
+			Adjust these sliders to see the effect in real time.
+		</p>
 		<p>Selected: {selectedSensitivity}</p>
 		<div class="controls-section">
 			<div class="slider-row">
@@ -510,6 +575,25 @@
 		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: 14px;
 		color: var(--color-text-muted);
+	}
+
+	.features-list {
+		list-style: disc;
+		padding-left: 20px;
+		font-size: 14px;
+		color: var(--color-text-muted);
+		line-height: 1.6;
+	}
+
+	.features-list li {
+		margin-bottom: 4px;
+	}
+
+	.section-description {
+		font-size: 14px;
+		color: var(--color-text-muted);
+		line-height: 1.6;
+		margin-bottom: 12px;
 	}
 
 	h2 {
