@@ -166,10 +166,11 @@ None yet.
 | 260402-d8h | Fix scroll sensitivity not changing at runtime | 2026-04-02 | 343644b | Completed | [260402-d8h-fix-scroll-sensitivity-not-changing-visi](./quick/260402-d8h-fix-scroll-sensitivity-not-changing-visi/) |
 | 260402-dh6 | Fix mouse wheel scroll speed — too slow compared to mouse drag | 2026-04-02 | 7bf0959 | Completed | [260402-dh6-fix-mouse-wheel-scroll-speed-too-slow-co](./quick/260402-dh6-fix-mouse-wheel-scroll-speed-too-slow-co/) |
 | 260402-djm | Add E2E tests for keyboard navigation, mouse wheel scrolling, and touch gestures | 2026-04-02 | f626280 | Completed | [260402-djm-add-e2e-tests-for-keyboard-navigation-mo](./quick/260402-djm-add-e2e-tests-for-keyboard-navigation-mo/) |
+| 260404-ltk | add a slider in the demo site for adjusting the scroll and drag sensitivity | 2026-04-04 | fb8e97d | Completed | [260404-ltk-add-a-slider-in-the-demo-site-for-adjust](./quick/260404-ltk-add-a-slider-in-the-demo-site-for-adjust/) |
 
 ## Session Continuity
 
 Last session: 2026-04-04T10:16:15.398Z
-Last activity: 2026-04-02 - Completed quick task 260402-djm: Add E2E tests for keyboard navigation, mouse wheel scrolling, and touch gestures
+Last activity: 2026-04-04 - Completed quick task 260404-ltk: add a slider in the demo site for adjusting the scroll and drag sensitivity
 Stopped at: Completed quick-260404-ltk-PLAN.md — add sensitivity sliders to demo site
 Resume file: None
