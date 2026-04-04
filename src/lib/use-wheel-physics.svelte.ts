@@ -270,10 +270,15 @@ export class WheelPhysics {
 		// Cancel any in-flight animation so rapid scrolling feels immediate
 		this.#cancelRaf();
 
-		// Calculate number of items to move based on deltaY magnitude.
+		// Calculate number of items to move based on deltaY magnitude and scroll sensitivity.
 		// A typical mouse wheel notch sends deltaY ~100-150px.
-		// Divide by itemHeight to get proportional item count, minimum 1.
-		const itemsToMove = Math.max(1, Math.round(Math.abs(deltaY) / this.#itemHeight));
+		// Multiply by scrollSensitivity / DEFAULT to amplify or dampen the movement.
+		// sensitivity 1 → 0.2x (barely moves), sensitivity 5 → 1x (default), sensitivity 20 → 4x (fast)
+		const sensitivityMultiplier = this.#scrollSensitivity / DEFAULT_SCROLL_SENSITIVITY;
+		const itemsToMove = Math.max(
+			1,
+			Math.round((Math.abs(deltaY) * sensitivityMultiplier) / this.#itemHeight),
+		);
 		const direction = deltaY > 0 ? 1 : -1;
 		const steps = itemsToMove * direction;
 
