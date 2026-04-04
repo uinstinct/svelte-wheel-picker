@@ -1,75 +1,75 @@
 {
-	"name": "@uinstinct/svelte-wheel-picker",
-	"version": "0.1.7",
-	"type": "module",
-	"description": "iOS-style wheel picker for Svelte 5 with inertia scrolling, infinite loop, and keyboard navigation",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/uinstinct/svelte-wheel-picker.git"
-	},
-	"bugs": {
-		"url": "https://github.com/uinstinct/svelte-wheel-picker/issues"
-	},
-	"homepage": "https://svelte-wheel-picker.netlify.app",
-	"engines": {
-		"node": ">=18"
-	},
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		}
-	},
-	"files": [
-		"dist",
-		"README.md",
-		"LICENSE"
-	],
-	"sideEffects": false,
-	"publishConfig": {
-		"access": "public"
-	},
-	"peerDependencies": {
-		"svelte": "^5.0.0"
-	},
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"package": "svelte-package && rm -rf dist/__tests__ && rm -f dist/*.test.js dist/*.test.d.ts && publint",
-		"prepack": "npm run package",
-		"test": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest run",
-		"test:watch": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest",
-		"test:e2e": "PLAYWRIGHT_BROWSERS_PATH=.playwright npx playwright test --config=playwright.config.ts",
-		"lint": "eslint .",
-		"format": "prettier --write .",
-		"registry:build": "shadcn-svelte registry build",
-		"agent": "safehouse --enable=playwright-chrome claude --dangerously-skip-permissions"
-	},
-	"devDependencies": {
-		"@eslint/js": "10.0.1",
-		"@playwright/test": "1.58.2",
-		"@sveltejs/adapter-static": "3.0.10",
-		"@sveltejs/kit": "2.55.0",
-		"@sveltejs/package": "2.5.7",
-		"@sveltejs/vite-plugin-svelte": "7.0.0",
-		"@vitest/browser-playwright": "4.1.0",
-		"playwright": "1.58.2",
-		"eslint": "10.1.0",
-		"eslint-plugin-svelte": "3.16.0",
-		"globals": "17.4.0",
-		"prettier": "3.8.1",
-		"prettier-plugin-svelte": "3.5.1",
-		"publint": "0.3.18",
-		"shadcn-svelte": "1.2.3",
-		"svelte": "5.54.1",
-		"svelte-eslint-parser": "1.6.0",
-		"typescript": "5.9.3",
-		"typescript-eslint": "8.57.1",
-		"vite": "8.0.1",
-		"vitest": "4.1.0",
-		"vitest-browser-svelte": "2.1.0"
-	}
+  "name": "@uinstinct/svelte-wheel-picker",
+  "version": "0.1.27",
+  "type": "module",
+  "description": "iOS-style wheel picker for Svelte 5 with inertia scrolling, infinite loop, and keyboard navigation",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uinstinct/svelte-wheel-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uinstinct/svelte-wheel-picker/issues"
+  },
+  "homepage": "https://svelte-wheel-picker.netlify.app",
+  "engines": {
+    "node": ">=18"
+  },
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "package": "svelte-package && rm -rf dist/__tests__ && rm -f dist/*.test.js dist/*.test.d.ts && publint",
+    "prepack": "npm run package",
+    "test": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest run",
+    "test:watch": "PLAYWRIGHT_BROWSERS_PATH=.playwright vitest",
+    "test:e2e": "PLAYWRIGHT_BROWSERS_PATH=.playwright npx playwright test --config=playwright.config.ts",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "registry:build": "shadcn-svelte registry build",
+    "agent": "safehouse --enable=playwright-chrome claude --dangerously-skip-permissions"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.58.2",
+    "@sveltejs/adapter-static": "3.0.10",
+    "@sveltejs/kit": "2.55.0",
+    "@sveltejs/package": "2.5.7",
+    "@sveltejs/vite-plugin-svelte": "7.0.0",
+    "@vitest/browser-playwright": "4.1.0",
+    "playwright": "1.58.2",
+    "eslint": "10.1.0",
+    "eslint-plugin-svelte": "3.16.0",
+    "globals": "17.4.0",
+    "prettier": "3.8.1",
+    "prettier-plugin-svelte": "3.5.1",
+    "publint": "0.3.18",
+    "shadcn-svelte": "1.2.3",
+    "svelte": "5.54.1",
+    "svelte-eslint-parser": "1.6.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.57.1",
+    "vite": "8.0.1",
+    "vitest": "4.1.0",
+    "vitest-browser-svelte": "2.1.0"
+  }
 }
