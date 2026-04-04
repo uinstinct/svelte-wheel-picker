@@ -45,7 +45,8 @@
 		"test:e2e": "PLAYWRIGHT_BROWSERS_PATH=.playwright npx playwright test --config=playwright.config.ts",
 		"lint": "eslint .",
 		"format": "prettier --write .",
-		"registry:build": "shadcn-svelte registry build"
+		"registry:build": "shadcn-svelte registry build",
+		"agent": "safehouse --enable=playwright-chrome claude --dangerously-skip-permissions"
 	},
 	"devDependencies": {
 		"@eslint/js": "10.0.1",
