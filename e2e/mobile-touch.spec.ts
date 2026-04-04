@@ -31,7 +31,7 @@ test.describe('Mobile Touch Scrolling', () => {
 	});
 
 	test('pointer drag on wheel picker changes selected value', async ({ page }) => {
-		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		const wrapper = page.locator('[data-swp-wrapper]').first();

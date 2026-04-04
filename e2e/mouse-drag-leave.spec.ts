@@ -4,13 +4,11 @@ test.describe('Mouse Drag Leave Behavior', () => {
 	test('mouse drag leaving component ends drag and snaps', async ({ page }) => {
 		await page.goto('/');
 
-		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).locator('p');
+		const section = page.locator('section').filter({ hasText: 'Single Wheel' });
+		const selectedText = section.getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
-		const wrapper = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('[data-swp-wrapper]');
+		const wrapper = section.locator('[data-swp-wrapper]');
 		await wrapper.waitFor({ state: 'visible' });
 		await wrapper.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(300);
@@ -26,13 +24,13 @@ test.describe('Mouse Drag Leave Behavior', () => {
 		await page.mouse.down();
 
 		// Drag upward in steps (moves list down = scrolls toward later items)
-		for (let i = 1; i <= 5; i++) {
+		for (let i = 1; i <= 10; i++) {
 			await page.mouse.move(cx, startY - 15 * i);
 			await page.waitForTimeout(16);
 		}
 
-		// Move outside component (above it) — without calling mouse.up()
-		await page.mouse.move(cx, box.y - 50);
+		// Move outside component (above it)
+		await page.mouse.move(cx, box.y - 100);
 		await page.waitForTimeout(16);
 
 		// Release mouse outside — the drag should already have ended on pointerleave
@@ -53,13 +51,11 @@ test.describe('Mouse Drag Leave Behavior', () => {
 	test('mouse drag leaving and re-entering does not resume old drag', async ({ page }) => {
 		await page.goto('/');
 
-		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).locator('p');
+		const section = page.locator('section').filter({ hasText: 'Single Wheel' });
+		const selectedText = section.getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
-		const wrapper = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('[data-swp-wrapper]');
+		const wrapper = section.locator('[data-swp-wrapper]');
 		await wrapper.waitFor({ state: 'visible' });
 		await wrapper.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(300);

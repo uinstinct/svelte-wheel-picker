@@ -7,9 +7,6 @@ export default defineConfig({
 	workers: 2,
 	use: {
 		baseURL: 'http://localhost:4173',
-		launchOptions: {
-			channel: 'chromium',
-		},
 	},
 	projects: [
 		{

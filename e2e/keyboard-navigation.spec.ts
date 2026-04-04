@@ -27,10 +27,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('ArrowDown moves to next item', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		await focusWheel(page, 'Single Wheel');
@@ -40,10 +37,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('ArrowUp moves to previous item', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		await focusWheel(page, 'Single Wheel');
@@ -53,10 +47,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('Multiple ArrowDown presses', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		await focusWheel(page, 'Single Wheel');
@@ -71,10 +62,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('Home key selects first item', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		await focusWheel(page, 'Single Wheel');
@@ -84,10 +72,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('End key selects last item', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Single Wheel' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Single Wheel' }).getByText('Selected:');
 		await expect(selectedText).toContainText('cherry');
 
 		await focusWheel(page, 'Single Wheel');
@@ -97,10 +82,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('ArrowDown skips disabled options', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Disabled Options' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Disabled Options' }).getByText('Selected:');
 		await expect(selectedText).toContainText('1');
 
 		await focusWheel(page, 'Disabled Options');
@@ -111,10 +93,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('ArrowUp skips disabled options', async ({ page }) => {
-		const selectedText = page
-			.locator('section')
-			.filter({ hasText: 'Disabled Options' })
-			.locator('p');
+		const selectedText = page.locator('section').filter({ hasText: 'Disabled Options' }).getByText('Selected:');
 		await expect(selectedText).toContainText('1');
 
 		await focusWheel(page, 'Disabled Options');
