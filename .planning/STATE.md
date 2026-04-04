@@ -169,10 +169,11 @@ None yet.
 | 260402-djm | Add E2E tests for keyboard navigation, mouse wheel scrolling, and touch gestures | 2026-04-02 | f626280 | Completed | [260402-djm-add-e2e-tests-for-keyboard-navigation-mo](./quick/260402-djm-add-e2e-tests-for-keyboard-navigation-mo/) |
 | 260404-ltk | add a slider in the demo site for adjusting the scroll and drag sensitivity | 2026-04-04 | fb8e97d | Completed | [260404-ltk-add-a-slider-in-the-demo-site-for-adjust](./quick/260404-ltk-add-a-slider-in-the-demo-site-for-adjust/) |
 | 260404-mn7 | Fix critical SEO issues: add title, meta description, canonical, schema markup, sitemap, robots.txt | 2026-04-04 | pending | Completed | [260404-mn7-fix-critical-seo-issues-add-title-meta-d](./quick/260404-mn7-fix-critical-seo-issues-add-title-meta-d/) |
+| 260404-mhi | Fix mouse drag outside wheel picker area should release drag | 2026-04-04 | 4f4f6cd | Completed | [260404-mhi-fix-mouse-drag-outside-wheel-picker-area](./quick/260404-mhi-fix-mouse-drag-outside-wheel-picker-area/) |
 
 ## Session Continuity
 
 Last session: 2026-04-04T12:12:52.601Z
-Last activity: 2026-04-04 - Completed quick task 260404-mn7: Fix critical SEO issues
+Last activity: 2026-04-04 - Completed quick task 260404-mhi: Fix mouse drag outside wheel picker area
 Stopped at: Completed quick-260404-ofv-PLAN.md — add explanatory prose content to demo page
 Resume file: None
