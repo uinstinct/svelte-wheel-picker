@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://svelte-wheel-spinner.netlify.app/sitemap.xml
+Sitemap: https://svelte-wheel-picker.netlify.app/sitemap.xml

@@ -25,7 +25,7 @@ npm:
 
 shadcn-svelte CLI:
 
-    npx shadcn-svelte@latest add https://svelte-wheel-spinner.netlify.app/r/wheel-picker.json
+    npx shadcn-svelte@latest add https://svelte-wheel-picker.netlify.app/r/wheel-picker.json
 
 ## Quick Start
 
@@ -53,7 +53,7 @@ shadcn-svelte CLI:
 
 ## Links
 
-- Demo: https://svelte-wheel-spinner.netlify.app
+- Demo: https://svelte-wheel-picker.netlify.app
 - npm: https://www.npmjs.com/package/@uinstinct/svelte-wheel-picker
 - GitHub: https://github.com/uinstinct/svelte-wheel-picker
 - License: MIT

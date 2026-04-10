@@ -42,7 +42,7 @@ yarn add @uinstinct/svelte-wheel-picker
 ### shadcn-svelte
 
 ```bash
-npx shadcn-svelte@latest add https://svelte-wheel-spinner.netlify.app/r/wheel-picker.json
+npx shadcn-svelte@latest add https://svelte-wheel-picker.netlify.app/r/wheel-picker.json
 ```
 
 This copies the component source directly into your project under `src/lib/components/ui/wheel-picker/`.
