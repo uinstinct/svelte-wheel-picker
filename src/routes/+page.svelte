@@ -126,7 +126,7 @@
 				name: 'svelte-wheel-picker',
 				description:
 					'iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies.',
-				url: 'https://svelte-wheel-spinner.netlify.app/',
+				url: 'https://svelte-wheel-picker.netlify.app/',
 				applicationCategory: 'DeveloperApplication',
 				operatingSystem: 'Any',
 				offers: {
@@ -147,24 +147,24 @@
 			{
 				'@type': 'WebSite',
 				name: 'svelte-wheel-picker',
-				url: 'https://svelte-wheel-spinner.netlify.app/',
+				url: 'https://svelte-wheel-picker.netlify.app/',
 			},
 			{
 				'@type': 'WebPage',
 				name: 'svelte-wheel-picker — iOS-style Wheel Picker for Svelte 5',
 				description:
 					'iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies.',
-				url: 'https://svelte-wheel-spinner.netlify.app/',
+				url: 'https://svelte-wheel-picker.netlify.app/',
 				isPartOf: {
 					'@type': 'WebSite',
 					name: 'svelte-wheel-picker',
-					url: 'https://svelte-wheel-spinner.netlify.app/',
+					url: 'https://svelte-wheel-picker.netlify.app/',
 				},
 			},
 			{
 				'@type': 'ImageObject',
 				contentUrl:
-					'https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp',
+					'https://svelte-wheel-picker.netlify.app/svelte-wheel-picker-og-1200x630.webp',
 				description:
 					'Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background',
 				width: 1200,
@@ -183,22 +183,22 @@
 		name="description"
 		content="iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies. npm install @uinstinct/svelte-wheel-picker"
 	/>
-	<link rel="canonical" href="https://svelte-wheel-spinner.netlify.app/" />
+	<link rel="canonical" href="https://svelte-wheel-picker.netlify.app/" />
 	<meta property="og:title" content="svelte-wheel-picker — iOS-style Wheel Picker for Svelte 5" />
 	<meta
 		property="og:description"
 		content="iOS-style wheel picker for Svelte 5. Smooth inertia scrolling, infinite loop, keyboard navigation. Zero dependencies. npm install @uinstinct/svelte-wheel-picker"
 	/>
-	<meta property="og:url" content="https://svelte-wheel-spinner.netlify.app/" />
+	<meta property="og:url" content="https://svelte-wheel-picker.netlify.app/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="svelte-wheel-picker" />
-	<meta property="og:image" content="https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
+	<meta property="og:image" content="https://svelte-wheel-picker.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
 	<meta property="og:image:type" content="image/webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:image:alt" content="Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content="https://svelte-wheel-spinner.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
+	<meta name="twitter:image" content="https://svelte-wheel-picker.netlify.app/svelte-wheel-picker-og-1200x630.webp" />
 	<meta name="twitter:image:alt" content="Svelte Wheel Picker — iOS-style scroll picker component with hour, minute, and AM/PM columns on a dark background" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- JSON-LD must be injected as raw HTML -->
 	{@html jsonLdHtml}
@@ -274,7 +274,7 @@
 		<div class="install-block">
 			<pre><code>npm install @uinstinct/svelte-wheel-picker</code></pre>
 			<pre><code
-					>npx shadcn-svelte@latest add https://svelte-wheel-spinner.netlify.app/r/wheel-picker.json</code
+					>npx shadcn-svelte@latest add https://svelte-wheel-picker.netlify.app/r/wheel-picker.json</code
 				></pre>
 		</div>
 	</section>
