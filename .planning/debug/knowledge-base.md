@@ -36,3 +36,11 @@ Resolved debug sessions. Used by `gsd-debugger` to surface known-pattern hypothe
 - **Files changed:** src/lib/use-wheel-physics.svelte.ts, src/lib/WheelPicker.svelte
 ---
 
+## npm-publish-oidc-trusted-publishing — npm publish failing with 404/EOTP chain caused by stale token, package-level 2FA, .npmrc poisoning by setup-node, and pnpm publish lacking OIDC auth flow
+- **Date:** 2026-05-21
+- **Error patterns:** npm publish, 404 PUT, EOTP, NPM_TOKEN, NODE_AUTH_TOKEN, registry-url, .npmrc placeholder, XXXXX-XXXXX-XXXXX-XXXXX, granular access token, trusted publisher, OIDC, provenance, pnpm publish, npm self-upgrade, promise-retry, MODULE_NOT_FOUND, orphan tag, release.yml
+- **Root cause:** Five-layered failure. (1) Original NPM_TOKEN expired/lost publish authority. (2) Replacement granular token hit package-level 2FA requirement (npmjs.com no longer offers classic Automation tokens that bypass 2FA — only Granular). (3) After switching to Trusted Publishing OIDC, the publish still failed because `actions/setup-node@v4` with `registry-url:` writes an `.npmrc` containing `//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}`, and when the env var is unset the literal placeholder string is sent as the auth header → 404. (4) `pnpm publish` v9 uses OIDC only for provenance signing, not for publish auth, so it falls back to the poisoned `.npmrc` token. (5) Original workflow created the GitHub tag/release in a separate job *before* the publish job ran, accumulating one orphan tag per failed attempt.
+- **Fix:** Switched to npm Trusted Publishing (configured on npmjs.com pointing at `uinstinct/svelte-wheel-picker` + `release.yml` + `npm publish`). In the workflow: added `id-token: write` permission, dropped `registry-url:` from `actions/setup-node` (no more `.npmrc` poisoning), switched `pnpm publish` → `npm publish --access public --provenance`, bumped Node 22 → 24 (ships with npm 11.x natively, avoiding the brittle `npm install -g npm@latest` self-upgrade that fails with `Cannot find module 'promise-retry'` on Node 22), and collapsed the two-job workflow into one so tag creation runs *after* successful publish. Cleaned up 6 orphan tags/releases mid-investigation.
+- **Files changed:** .github/workflows/release.yml
+---
+
